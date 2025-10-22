@@ -8,5 +8,10 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxt/test-utils'
-  ]
+  ],
+  eslint: {
+    config: {
+      stylistic: true // 开启 eslint-stylistic
+    }
+  }
 })
