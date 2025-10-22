@@ -1,0 +1,17 @@
+# stylelint将只对app目录下的样式文件进行校验
+# 忽略所有非src目录的文件
+!app/**/*.css
+!app/**/*.scss
+!app/**/*.sass
+!app/**/*.less
+!app/**/*.styl
+!app/**/*.vue
+!app/**/*.html
+
+# 忽略所有的JS文件
+**/*.js
+**/*.jsx
+**/*.ts
+**/*.tsx
+**/*.mjs
+**/*.cjs
