@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@nuxt/test-utils',
     '@nuxtjs/tailwindcss',
     '@ant-design-vue/nuxt',
+    '@pinia/nuxt',
   ],
   devtools: { enabled: true },
   compatibilityDate: '2025-07-15',
