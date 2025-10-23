@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/test-utils',
     '@nuxtjs/tailwindcss',
+    '@ant-design-vue/nuxt',
   ],
   devtools: { enabled: true },
   compatibilityDate: '2025-07-15',
