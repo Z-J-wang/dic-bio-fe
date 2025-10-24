@@ -5,6 +5,7 @@ export default {
     'stylelint-config-standard', // 配置 stylelint 拓展插件
     'stylelint-config-standard-less',
     'stylelint-config-html/vue',
+    'stylelint-prettier/recommended',
   ],
   plugins: ['stylelint-order'],
   rules: {
@@ -13,10 +14,6 @@ export default {
       {
         ignoreAtRules: ['tailwind'],
       },
-    ],
-    'selector-class-pattern': [
-      '(^[a-z]([-]?[a-z0-9])*$)|(^el)', // 忽略 el 开头的类名
-      { resolveNestedSelectors: true },
     ],
     'color-hex-length': 'long', // 颜色6位长度
     // 属性的排序
