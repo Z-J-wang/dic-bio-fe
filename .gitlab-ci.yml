@@ -12,7 +12,7 @@ lint-check:
 
   # 基于commit sha创建缓存
   cache:
-    key: ${CI_COMMIT_SHA}
+    key: ${CI_COMMIT_REF_SLUG}-${{ checksum "yarn.lock" }}  # 分支名 + 锁文件哈希
     paths:
       - node_modules/
       - .cache/
@@ -22,8 +22,8 @@ lint-check:
   before_script:
     - echo "Starting lint check job"
     # 添加时区设置和基础环境检查
-    - echo "Running on branch: $CI_COMMIT_BRANCH"
-  
+    - echo "Running on branch：$CI_COMMIT_BRANCH"
+
   script:
     # 添加错误处理和更详细的输出
     - yarn install --frozen-lockfile || { echo "yarn install failed"; exit 1; }
@@ -33,11 +33,11 @@ lint-check:
   after_script:
     - echo "Lint check completed"
     # 添加作业状态输出
-    - echo "Job finished with status: $CI_JOB_STATUS"
+    - echo "Job finished with status：$CI_JOB_STATUS"
 
   # 添加作业超时设置
   timeout: 10 minutes
-  
+
   # 添加retry策略以提高稳定性
   retry:
     max: 2
