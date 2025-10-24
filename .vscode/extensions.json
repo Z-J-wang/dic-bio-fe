@@ -6,6 +6,8 @@
     "dbaeumer.vscode-eslint",
     "EditorConfig.EditorConfig",
     "esbenp.prettier-vscode",
-    "bradlc.vscode-tailwindcss"
+    "bradlc.vscode-tailwindcss",
+    "nuxtr.nuxtr-vscode",
+    "ant-design-vue.vscode-ant-design-vue-helper"
   ]
 }

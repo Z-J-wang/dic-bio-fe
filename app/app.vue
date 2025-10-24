@@ -1,16 +1,28 @@
 <script setup lang="ts">
-import { useUserStore } from '@/store/user'
+import '@/assets/css/main.less'
+// import { useUserStore } from '@/store/user'
 
-const user = useUserStore()
+const configProvider = ref({
+  autoInsertSpaceInButton: true,
+  theme: {
+    token: {
+      colorPrimary: '#1677ff',
+    },
+  },
+})
 
+// const user = useUserStore()
 onMounted(() => { console.log('Nuxt is ready') })
 onBeforeUnmount(() => { console.log('Nuxt is destroyed') })
 </script>
 
 <template>
-  <div>
-    {{ user.userinfo.name }}
+  <a-config-provider v-bind="configProvider">
     <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </div>
+    <NuxtLayout>
+      <div class="page-container">
+        <NuxtPage />
+      </div>
+    </NuxtLayout>
+  </a-config-provider>
 </template>
