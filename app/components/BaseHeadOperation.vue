@@ -2,6 +2,7 @@
 import type { SpaceSize } from 'ant-design-vue/es/space'
 import type { ButtonType } from 'ant-design-vue/es/button'
 import type { SelectValue } from 'ant-design-vue/es/select'
+import { useLanguage } from '../composables/useLanguage'
 
 interface BtnConfig {
   href: string
@@ -9,7 +10,6 @@ interface BtnConfig {
   text?: string
   type?: ButtonType
 }
-
 interface Props {
   gap?: SpaceSize // 间距
   loginConfig?: BtnConfig
@@ -18,48 +18,41 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   gap: 'middle',
-  loginConfig: () => ({ href: '/login', text: '登录', type: 'primary',
+  loginConfig: () => ({ href: '/login', type: 'primary',
   }),
-  registerConfig: () => ({ href: '/register', text: '注册', type: 'default',
+  registerConfig: () => ({ href: '/register', type: 'default',
   }),
 })
 
-const state = reactive({
-  language: 'zh',
-})
-
-const languageOptions = [
-  {
-    label: '中文',
-    value: 'zh',
-  },
-  {
-    label: 'English',
-    value: 'en',
-  },
-]
-
-const changeLanguage = (value: SelectValue) => { if (typeof value === 'string') state.language = value }
+const { locale, locales, changeLanguage: updateLanguage } = useLanguage()
+const changeLanguage = (value: SelectValue) => {
+  if (typeof value === 'string') {
+    updateLanguage(value)
+  }
+}
 </script>
 
 <template>
   <a-space :size="props.gap">
     <slot />
     <slot name="language">
-      <a-select
-        :value="state.language"
-        :options="languageOptions"
-        @select="changeLanguage"
-      />
+      <ClientOnly>
+        <a-select
+          :value="locale"
+          :options="locales"
+          :field-names="{ label: 'name', value: 'code' }"
+          @select="changeLanguage"
+        />
+      </ClientOnly>
     </slot>
     <slot name="login">
       <a-button v-bind="loginConfig">
-        {{ props.loginConfig.text }}
+        {{ props.loginConfig.text || $t('login') }}
       </a-button>
     </slot>
     <slot name="register">
       <a-button v-bind="registerConfig">
-        {{ props.registerConfig.text }}
+        {{ props.registerConfig.text || $t('register') }}
       </a-button>
     </slot>
   </a-space>

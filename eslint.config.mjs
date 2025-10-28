@@ -12,7 +12,7 @@ export default withNuxt([
     rules: {
       '@stylistic/indent': ['error', 2],
       '@stylistic/linebreak-style': ['error', 'unix'], // 使用 unix (LF) 换行符
-      '@stylistic/curly-newline': ['error', { minElements: 2 }], // 允许每行最多 2 个换行符
+      // '@stylistic/curly-newline': ['error', { minElements: 2 }], // 允许每行最多 2 个换行符
       '@stylistic/max-statements-per-line': ['error', { max: 2 }], // 允许每行最多 2 个语句
     },
   },

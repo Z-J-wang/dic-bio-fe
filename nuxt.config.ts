@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@ant-design-vue/nuxt',
     '@pinia/nuxt',
+    '@nuxtjs/i18n',
   ],
   devtools: { enabled: true },
   app: {
@@ -28,5 +29,12 @@ export default defineNuxtConfig({
     config: {
       stylistic: true, // 开启 eslint-stylistic
     },
+  },
+  i18n: {
+    defaultLocale: 'zh-hans',
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'zh-hans', name: '中文', file: 'zh-hans.json' },
+    ],
   },
 })

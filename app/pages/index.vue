@@ -7,6 +7,6 @@ useSeoMeta({
 
 <template>
   <div class="p-4">
-    Home
+    {{ $t('home') }}
   </div>
 </template>
