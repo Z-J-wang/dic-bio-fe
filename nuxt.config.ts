@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/i18n',
   ],
+  ssr: true,
   devtools: { enabled: true },
   app: {
     // 设置全局默认的 meta

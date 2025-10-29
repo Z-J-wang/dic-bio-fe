@@ -6,9 +6,9 @@
   >
     <a-layout>
       <a-layout-header>
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between gap-10">
           <a-space
-            class="h-full"
+            class="h-full "
             align="center"
           >
             <NuxtLink to="/">
@@ -17,6 +17,9 @@
               </div>
             </NuxtLink>
           </a-space>
+          <div class="flex-grow">
+            <HeadNav />
+          </div>
           <BaseHeadOperation />
         </div>
       </a-layout-header>
