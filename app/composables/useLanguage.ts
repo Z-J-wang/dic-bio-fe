@@ -1,3 +1,5 @@
+import * as localesList from '@nuxt/ui/locale'
+
 export function useLanguage() {
   const { locale, locales, setLocale } = useI18n()
 
@@ -8,5 +10,9 @@ export function useLanguage() {
     setLocale(newLocale as LocaleCode)
   }
 
-  return { locale, locales, changeLanguage }
+  const activeLocales = computed(() => {
+    return locales.value.map(item => localesList[item.code])
+  })
+
+  return { locale, locales: activeLocales, changeLanguage }
 }

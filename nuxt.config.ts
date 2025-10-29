@@ -4,9 +4,8 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/icon',
     '@nuxt/image',
+    '@nuxt/ui',
     '@nuxt/test-utils',
-    '@nuxtjs/tailwindcss',
-    '@ant-design-vue/nuxt',
     '@pinia/nuxt',
     '@nuxtjs/i18n',
   ],
@@ -21,6 +20,7 @@ export default defineNuxtConfig({
       ],
     },
   },
+  css: ['~/assets/css/main.css'],
   devServer: {
     // host: '0.0.0.0', // 允许所有网络接口访问
     port: 8080,
@@ -32,10 +32,10 @@ export default defineNuxtConfig({
     },
   },
   i18n: {
-    defaultLocale: 'zh-hans',
+    defaultLocale: 'zh_cn',
     locales: [
       { code: 'en', name: 'EN', file: 'en.json' },
-      { code: 'zh-hans', name: '中', file: 'zh-hans.json' },
+      { code: 'zh_cn', name: '中', file: 'zh_cn.json' },
     ],
   },
 })

@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import type { SpaceSize } from 'ant-design-vue/es/space'
-import type { ButtonType } from 'ant-design-vue/es/button'
 import type { SelectValue } from 'ant-design-vue/es/select'
 import { useLanguage } from '../composables/useLanguage'
 
 interface BtnConfig {
-  href: string
+  to: string
   disabled?: boolean
   text?: string
-  type?: ButtonType
+  variant?: 'subtle' | 'outline' | 'solid' | 'ghost' | 'link' | 'soft'
+  color?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'error' | 'neutral'
 }
+
 interface Props {
   gap?: SpaceSize // 间距
   languageMode?: 'button' | 'select' // 语言切换方式: button | select
@@ -17,19 +18,23 @@ interface Props {
   registerConfig?: BtnConfig
 }
 
+// 修改 interface 部分以增强类型安全
+interface LanguageOption {
+  code: 'en' | 'zh_cn' // 明确语言代码的类型
+  name: string
+}
+
 const props = withDefaults(defineProps<Props>(), {
   gap: 'middle',
   languageMode: 'button',
-  loginConfig: () => ({ href: '/login', type: 'primary',
-  }),
-  registerConfig: () => ({ href: '/register', type: 'default',
-  }),
+  loginConfig: () => ({ to: '/login', color: 'primary', variant: 'solid' }),
+  registerConfig: () => ({ to: '/register', variant: 'ghost' }),
 })
 
 const { locale, locales, changeLanguage: updateLanguage } = useLanguage()
 
-const languageBtnConfig = computed(() => {
-  return locales.value.find(lang => lang.code !== locale.value)
+const languageBtnConfig = computed<LanguageOption | undefined>(() => {
+  return locales.value.find(lang => lang.code !== locale.value) as LanguageOption
 })
 const changeLanguage = (value: SelectValue) => {
   if (typeof value === 'string') {
@@ -39,7 +44,7 @@ const changeLanguage = (value: SelectValue) => {
 </script>
 
 <template>
-  <a-space :size="props.gap">
+  <div class="space-x-4">
     <slot />
     <slot name="language">
       <template v-if="languageMode === 'button'">
@@ -48,35 +53,30 @@ const changeLanguage = (value: SelectValue) => {
           :key="languageBtnConfig.code"
           :locale="languageBtnConfig.code"
         >
-          <a-button
-            shape="circle"
-            circle
-            ghost
-          >
+          <UButton variant="outline">
             {{ languageBtnConfig.name }}
-          </a-button>
+          </UButton>
         </SwitchLocalePathLink>
       </template>
       <template v-else>
         <ClientOnly>
-          <a-select
-            :value="locale"
-            :options="locales"
-            :field-names="{ label: 'name', value: 'code' }"
-            @select="changeLanguage"
+          <ULocaleSelect
+            v-model="locale"
+            :locales="locales"
+            @update:model-value="changeLanguage"
           />
         </ClientOnly>
       </template>
     </slot>
     <slot name="login">
-      <a-button v-bind="loginConfig">
+      <UButton v-bind="loginConfig">
         {{ props.loginConfig.text || $t('login') }}
-      </a-button>
+      </UButton>
     </slot>
     <slot name="register">
-      <a-button v-bind="registerConfig">
+      <UButton v-bind="registerConfig">
         {{ props.registerConfig.text || $t('register') }}
-      </a-button>
+      </UButton>
     </slot>
-  </a-space>
+  </div>
 </template>

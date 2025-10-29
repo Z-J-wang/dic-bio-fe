@@ -1,42 +1,57 @@
-<template>
-  <a-space
-    direction="vertical"
-    :style="{ width: '100%' }"
-    :size="[0, 48]"
-  >
-    <a-layout>
-      <a-layout-header>
-        <div class="flex items-center justify-between gap-10">
-          <a-space
-            class="h-full "
-            align="center"
-          >
-            <NuxtLink to="/">
-              <div class="text-primary text-3xl font-bold ">
-                NGB
-              </div>
-            </NuxtLink>
-          </a-space>
-          <div class="flex-grow">
-            <HeadNav />
-          </div>
-          <BaseHeadOperation />
-        </div>
-      </a-layout-header>
-      <a-layout-content>
-        <div class="min-h-[calc(100vh_-_132px)]">
-          <slot />
-        </div>
-      </a-layout-content>
-      <a-layout-footer>
-        <BaseFooter />
-      </a-layout-footer>
-    </a-layout>
-  </a-space>
-</template>
+<script setup lang="ts">
+import type { NavigationMenuItem } from '@nuxt/ui'
 
-<style scoped lang="less">
-.ant-layout-footer{
-  background-color: #001529;
-}
-</style>
+const localePath = useLocalePath()
+const { t } = useI18n()
+
+const items = computed<NavigationMenuItem[]>(() => [
+  {
+    label: t('home'),
+    to: localePath('/'),
+  }, {
+    label: t('about'),
+    to: localePath('/about'),
+  },
+])
+</script>
+
+<template>
+  <UApp>
+    <UHeader
+      :to="localePath('/')"
+      toggle-side="left"
+    >
+      <template #title>
+        <div class="text-primary text-3xl font-bold">
+          NGB
+        </div>
+      </template>
+
+      <UNavigationMenu :items="items" />
+
+      <template #right>
+        <BaseHeadOperation language-mode="select" />
+      </template>
+
+      <template #body>
+        <UNavigationMenu
+          :items="items"
+          orientation="vertical"
+          class="-mx-2.5"
+        />
+      </template>
+    </UHeader>
+
+    <UMain>
+      <slot />
+    </UMain>
+
+    <UFooter>
+      <template #bottom>
+        <UContainer>
+          <BaseFooter />
+        </UContainer>
+      </template>
+    </UFooter>
+  </UApp>
+</template>
