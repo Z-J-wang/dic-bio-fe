@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { SpaceSize } from 'ant-design-vue/es/space'
-import type { SelectValue } from 'ant-design-vue/es/select'
 import { useLanguage } from '../composables/useLanguage'
 
 interface BtnConfig {
@@ -12,7 +10,6 @@ interface BtnConfig {
 }
 
 interface Props {
-  gap?: SpaceSize // 间距
   languageMode?: 'button' | 'select' // 语言切换方式: button | select
   loginConfig?: BtnConfig
   registerConfig?: BtnConfig
@@ -20,7 +17,7 @@ interface Props {
 
 // 修改 interface 部分以增强类型安全
 interface LanguageOption {
-  code: 'en' | 'zh_cn' // 明确语言代码的类型
+  code: 'en' | 'zh-CN' // 明确语言代码的类型
   name: string
 }
 
@@ -31,13 +28,14 @@ const props = withDefaults(defineProps<Props>(), {
   registerConfig: () => ({ to: '/register', variant: 'ghost' }),
 })
 
-const { locale, locales, changeLanguage: updateLanguage } = useLanguage()
+const { localeCode, locales, changeLanguage: updateLanguage } = useLanguage()
 
 const languageBtnConfig = computed<LanguageOption | undefined>(() => {
-  return locales.value.find(lang => lang.code !== locale.value) as LanguageOption
+  return locales.value.find(lang => lang?.code !== localeCode.value) as LanguageOption
 })
-const changeLanguage = (value: SelectValue) => {
-  if (typeof value === 'string') {
+
+const changeLanguage = (value: string | undefined) => {
+  if (value) {
     updateLanguage(value)
   }
 }
@@ -61,9 +59,9 @@ const changeLanguage = (value: SelectValue) => {
       <template v-else>
         <ClientOnly>
           <ULocaleSelect
-            v-model="locale"
+            v-model="localeCode"
             :locales="locales"
-            @update:model-value="changeLanguage"
+            @update:model-value="changeLanguage($event)"
           />
         </ClientOnly>
       </template>

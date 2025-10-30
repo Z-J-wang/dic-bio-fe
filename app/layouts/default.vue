@@ -3,6 +3,7 @@ import type { NavigationMenuItem } from '@nuxt/ui'
 
 const localePath = useLocalePath()
 const { t } = useI18n()
+const { locale } = useLanguage()
 
 const items = computed<NavigationMenuItem[]>(() => [
   {
@@ -16,7 +17,7 @@ const items = computed<NavigationMenuItem[]>(() => [
 </script>
 
 <template>
-  <UApp>
+  <UApp :locale="locale">
     <UHeader
       :to="localePath('/')"
       toggle-side="left"
@@ -45,13 +46,6 @@ const items = computed<NavigationMenuItem[]>(() => [
     <UMain>
       <slot />
     </UMain>
-
-    <UFooter>
-      <template #bottom>
-        <UContainer>
-          <BaseFooter />
-        </UContainer>
-      </template>
-    </UFooter>
+    <BaseFooter />
   </UApp>
 </template>

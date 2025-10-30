@@ -15,6 +15,7 @@
     "type-check": "npx nuxt typecheck"
   },
   "dependencies": {
+    "@internationalized/date": "^3.10.0",
     "@nuxt/eslint": "1.9.0",
     "@nuxt/icon": "2.1.0",
     "@nuxt/image": "1.11.0",
