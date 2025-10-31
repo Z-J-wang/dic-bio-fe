@@ -1,12 +1,10 @@
 <script setup lang="ts">
 // 设置页面的的TDK
 useSeoMeta({
-  title: '首页 - smart nuxt template',
+  title: '首页 - smart nuxt template'
 })
 </script>
 
 <template>
-  <div class="p-4">
-    {{ $t('home') }}
-  </div>
+  <div class="p-4">{{ $t('home') }}</div>
 </template>

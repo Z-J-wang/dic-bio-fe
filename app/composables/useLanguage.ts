@@ -2,7 +2,7 @@ import type { Locale } from '@nuxt/ui'
 import * as localesList from '@nuxt/ui/locale'
 
 export interface LocaleOption extends Locale<object> {
-  code: 'en' | 'zh-CN' // 明确语言代码的类型
+  code: "en" | 'zh-CN' // 明确语言代码的类型
   name: string
   alias?: string
 }
@@ -19,16 +19,10 @@ export function useLanguage() {
 
   const activeLocales = computed(() => {
     return locales.value.map((item) => {
-      return {
-        ...item,
-        ...Object.values(localesList).find(({ code }) => code === item.code),
-      }
+      return { ...item, ...Object.values(localesList).find(({ code }) => code === item.code), }
     }) as LocaleOption[]
   })
-
-  const locale = computed(() => {
-    return Object.values(localesList).find(({ code }) => code === localeCode.value)
-  })
+  const locale = computed(() => Object.values(localesList).find(({ code }) => code === localeCode.value))
 
   return { localeCode, locale, locales: activeLocales, changeLanguage }
 }

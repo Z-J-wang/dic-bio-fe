@@ -1,20 +1,17 @@
 // @ts-check
 import withNuxt from './.nuxt/eslint.config.mjs'
 import stylistic from '@stylistic/eslint-plugin'
+import eslintConfigPrettier from 'eslint-config-prettier'
 
 export default withNuxt([
   stylistic.configs.recommended,
   {
     // 自定义 stylistic 规则，详见：https://eslint.style/rules
-    plugins: {
-      '@stylistic': stylistic,
-    },
+    plugins: { '@stylistic': stylistic },
     rules: {
       '@stylistic/indent': ['error', 2],
-      '@stylistic/linebreak-style': ['error', 'unix'], // 使用 unix (LF) 换行符
-      // '@stylistic/curly-newline': ['error', { minElements: 2 }], // 允许每行最多 2 个换行符
-      '@stylistic/max-statements-per-line': ['error', { max: 2 }], // 允许每行最多 2 个语句
-    },
+      '@stylistic/linebreak-style': ['error', 'unix'] // 使用 unix (LF) 换行符
+    }
   },
   {
     // 自定义规则，详见：https://zh-hans.eslint.org/docs/latest/use/configure/rules
@@ -26,8 +23,18 @@ export default withNuxt([
       'no-alert': 'off',
       'no-useless-escape': 'off',
       'no-control-regex': 'off',
-      'space-before-function-paren': ['off', 'always'],
-    },
+      'space-before-function-paren': ['off', 'always']
+    }
   },
+  eslintConfigPrettier,
+  // 5. 文件匹配规则
+  {
+    files: ['\*\*/\*.{js,ts,vue}'],
+    ignores: [
+      '.nuxt/\*\*', // 忽略构建目录
+      'node_modules/\*\*',
+      'dist/\*\*'
+    ]
+  }
 ])
 // Your custom configs here

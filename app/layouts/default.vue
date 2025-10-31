@@ -8,24 +8,20 @@ const { locale } = useLanguage()
 const items = computed<NavigationMenuItem[]>(() => [
   {
     label: t('home'),
-    to: localePath('/'),
-  }, {
-    label: t('about'),
-    to: localePath('/about'),
+    to: localePath('/')
   },
+  {
+    label: t('about'),
+    to: localePath('/about')
+  }
 ])
 </script>
 
 <template>
   <UApp :locale="locale">
-    <UHeader
-      :to="localePath('/')"
-      toggle-side="left"
-    >
+    <UHeader :to="localePath('/')" toggle-side="left">
       <template #title>
-        <div class="text-primary text-3xl font-bold">
-          NBC
-        </div>
+        <div class="text-primary text-3xl font-bold">NBC</div>
       </template>
 
       <UNavigationMenu :items="items" />
@@ -35,11 +31,7 @@ const items = computed<NavigationMenuItem[]>(() => [
       </template>
 
       <template #body>
-        <UNavigationMenu
-          :items="items"
-          orientation="vertical"
-          class="-mx-2.5"
-        />
+        <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5" />
       </template>
     </UHeader>
 

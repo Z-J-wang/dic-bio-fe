@@ -5,15 +5,15 @@ export default {
     'stylelint-config-standard', // 配置 stylelint 拓展插件
     'stylelint-config-standard-less',
     'stylelint-config-html/vue',
-    'stylelint-prettier/recommended',
+    'stylelint-prettier/recommended'
   ],
   plugins: ['stylelint-order'],
   rules: {
     'at-rule-no-unknown': [
       true,
       {
-        ignoreAtRules: ['tailwind'],
-      },
+        ignoreAtRules: ['tailwind', 'theme']
+      }
     ],
     'color-hex-length': 'long', // 颜色6位长度
     // 属性的排序
@@ -93,7 +93,7 @@ export default {
       'box-shadow',
       'text-shadow',
       'resize',
-      'transition',
-    ],
-  },
+      'transition'
+    ]
+  }
 }

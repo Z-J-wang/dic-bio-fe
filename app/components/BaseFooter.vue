@@ -10,17 +10,17 @@ const columns = computed<FooterColumn[]>(() => {
       children: [
         { label: t('aboutUs'), to: { path: '/about' } },
         { label: t('contactUs'), to: { path: '/about' } },
-        { label: t('news'), to: { path: '/about' } },
-      ],
+        { label: t('news'), to: { path: '/about' } }
+      ]
     },
     {
       label: t('support&docs'),
       children: [
         { label: t('help'), to: { path: '/' } },
         { label: t('FAQ'), to: { path: '/' } },
-        { label: t('userManual'), to: { path: '/' } },
-      ],
-    },
+        { label: t('userManual'), to: { path: '/' } }
+      ]
+    }
   ]
 })
 </script>
@@ -28,9 +28,7 @@ const columns = computed<FooterColumn[]>(() => {
 <template>
   <UFooter>
     <template #left>
-      <div class=" text-3xl font-extrabold">
-        SMART-NBC
-      </div>
+      <div class="text-3xl font-extrabold">SMART-NBC</div>
     </template>
     <UFooterColumns :columns="columns" />
     <template #bottom>
@@ -38,10 +36,8 @@ const columns = computed<FooterColumn[]>(() => {
       <UContainer>
         <div class="flex justify-between items-center">
           <div>
-            <i18n-t keypath="copyrighted">
-              <span>
-                © {{ year }} SMART-NBC
-              </span>
+            <i18n-t keypath=" copyrighted">
+              <span> © {{ year }} SMART-NBC </span>
             </i18n-t>
           </div>
           <div>粤ICP备xxxxxxxxx</div>

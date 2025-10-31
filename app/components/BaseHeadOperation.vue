@@ -10,10 +10,8 @@ interface BtnConfig {
 }
 
 interface Props {
-  languageMode?:
-  // 语言切换方式: button | select。
-    | 'button'
-    | 'select' // ! 由于 setLocale 方法失效，暂时不要使用 select 模式
+  languageMode?: // 语言切换方式: button | select。
+  'button' | 'select' // ! 由于 setLocale 方法失效，暂时不要使用 select 模式
   loginConfig?: BtnConfig
   registerConfig?: BtnConfig
 }
@@ -22,7 +20,7 @@ const props = withDefaults(defineProps<Props>(), {
   gap: 'middle',
   languageMode: 'button',
   loginConfig: () => ({ to: '/login', color: 'primary', variant: 'solid' }),
-  registerConfig: () => ({ to: '/register', variant: 'ghost' }),
+  registerConfig: () => ({ to: '/register', variant: 'ghost' })
 })
 
 const language = useLanguage()
@@ -30,7 +28,7 @@ const localeCode = language.localeCode
 const locales = language.locales
 
 const languageBtnConfig = computed(() => {
-  return locales.value.find(lang => lang?.code !== localeCode.value)
+  return locales.value.find((lang) => lang?.code !== localeCode.value)
 })
 </script>
 
@@ -39,24 +37,14 @@ const languageBtnConfig = computed(() => {
     <slot />
     <slot name="language">
       <template v-if="languageMode === 'button'">
-        <SwitchLocalePathLink
-          v-if="languageBtnConfig"
-          :key="languageBtnConfig.code"
-          :locale="languageBtnConfig.code"
-        >
-          <UButton
-            class="cursor-pointer"
-            variant="outline"
-          >
+        <SwitchLocalePathLink v-if="languageBtnConfig" :key="languageBtnConfig.code" :locale="languageBtnConfig.code">
+          <UButton class="cursor-pointer" variant="outline">
             {{ languageBtnConfig.alias || languageBtnConfig.name }}
           </UButton>
         </SwitchLocalePathLink>
       </template>
       <template v-else>
-        <ULocaleSelect
-          v-model="localeCode"
-          :locales="locales"
-        />
+        <ULocaleSelect v-model="localeCode" :locales="locales" />
       </template>
     </slot>
     <slot name="login">
