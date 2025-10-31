@@ -1627,7 +1627,7 @@
     pkg-types "^1.2.1"
     semver "^7.6.3"
 
-"@nuxtjs/i18n@^10.1.2":
+"@nuxtjs/i18n@10.1.2":
   version "10.1.2"
   resolved "https://registry.npmmirror.com/@nuxtjs/i18n/-/i18n-10.1.2.tgz#8a70e900ded82ddd853aedde7ac93ebbd86952d9"
   integrity sha512-3OY8eozqNRiaZaMcmZPfLK1cqe5nUg8ADpGct3iSS6JPIkp8lHhBV6e9PFAMd9u0gz2QlMILySCRV0fNcGLCIA==

@@ -1,6 +1,12 @@
 import type { Locale } from '@nuxt/ui'
 import * as localesList from '@nuxt/ui/locale'
 
+export interface LocaleOption extends Locale<object> {
+  code: 'en' | 'zh-CN' // 明确语言代码的类型
+  name: string
+  alias?: string
+}
+
 export function useLanguage() {
   const { locale: localeCode, locales, setLocale } = useI18n()
 
@@ -8,11 +14,16 @@ export function useLanguage() {
   type LocaleCode = typeof locales.value[number]['code']
 
   const changeLanguage = (newLocale: LocaleCode | string) => {
-    setLocale(newLocale as LocaleCode)
+    setLocale(newLocale as LocaleCode) // ! Nuxt i18n 结合 Nuxt UI 下，该方法失效
   }
 
   const activeLocales = computed(() => {
-    return locales.value.map(item => Object.values(localesList).find(({ code }) => code === item.code)) as Locale<object>[]
+    return locales.value.map((item) => {
+      return {
+        ...item,
+        ...Object.values(localesList).find(({ code }) => code === item.code),
+      }
+    }) as LocaleOption[]
   })
 
   const locale = computed(() => {

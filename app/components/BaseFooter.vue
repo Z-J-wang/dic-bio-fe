@@ -14,7 +14,7 @@ const year = new Date().getFullYear()
           <div>
             <i18n-t keypath="copyrighted">
               <span>
-                © {{ year }} NGB
+                © {{ year }} NBC
               </span>
             </i18n-t>
           </div>

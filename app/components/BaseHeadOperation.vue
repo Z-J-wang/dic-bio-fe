@@ -10,15 +10,12 @@ interface BtnConfig {
 }
 
 interface Props {
-  languageMode?: 'button' | 'select' // 语言切换方式: button | select
+  languageMode?:
+  // 语言切换方式: button | select。
+    | 'button'
+    | 'select' // ! 由于 setLocale 方法失效，暂时不要使用 select 模式
   loginConfig?: BtnConfig
   registerConfig?: BtnConfig
-}
-
-// 修改 interface 部分以增强类型安全
-interface LanguageOption {
-  code: 'en' | 'zh-CN' // 明确语言代码的类型
-  name: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -28,17 +25,13 @@ const props = withDefaults(defineProps<Props>(), {
   registerConfig: () => ({ to: '/register', variant: 'ghost' }),
 })
 
-const { localeCode, locales, changeLanguage: updateLanguage } = useLanguage()
+const language = useLanguage()
+const localeCode = language.localeCode
+const locales = language.locales
 
-const languageBtnConfig = computed<LanguageOption | undefined>(() => {
-  return locales.value.find(lang => lang?.code !== localeCode.value) as LanguageOption
+const languageBtnConfig = computed(() => {
+  return locales.value.find(lang => lang?.code !== localeCode.value)
 })
-
-const changeLanguage = (value: string | undefined) => {
-  if (value) {
-    updateLanguage(value)
-  }
-}
 </script>
 
 <template>
@@ -51,19 +44,19 @@ const changeLanguage = (value: string | undefined) => {
           :key="languageBtnConfig.code"
           :locale="languageBtnConfig.code"
         >
-          <UButton variant="outline">
-            {{ languageBtnConfig.name }}
+          <UButton
+            class="cursor-pointer"
+            variant="outline"
+          >
+            {{ languageBtnConfig.alias || languageBtnConfig.name }}
           </UButton>
         </SwitchLocalePathLink>
       </template>
       <template v-else>
-        <ClientOnly>
-          <ULocaleSelect
-            v-model="localeCode"
-            :locales="locales"
-            @update:model-value="changeLanguage($event)"
-          />
-        </ClientOnly>
+        <ULocaleSelect
+          v-model="localeCode"
+          :locales="locales"
+        />
       </template>
     </slot>
     <slot name="login">

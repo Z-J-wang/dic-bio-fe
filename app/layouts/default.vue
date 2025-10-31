@@ -24,14 +24,14 @@ const items = computed<NavigationMenuItem[]>(() => [
     >
       <template #title>
         <div class="text-primary text-3xl font-bold">
-          NGB
+          NBC
         </div>
       </template>
 
       <UNavigationMenu :items="items" />
 
       <template #right>
-        <BaseHeadOperation language-mode="select" />
+        <BaseHeadOperation />
       </template>
 
       <template #body>
