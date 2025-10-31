@@ -4,5 +4,9 @@
   "allRightsReserved": "All rights reserved",
   "copyrighted": "Copyright {0}. All Rights Reserved.",
   "home": "Home",
-  "about": "About us"
+  "about": "About",
+  "aboutUs": "About us",
+  "contactUs": "Contact us",
+  "news": "News",
+  "help": "Help"
 }

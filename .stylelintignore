@@ -1,12 +1,27 @@
-# stylelint将只对app目录下的样式文件进行校验
-# 忽略所有非src目录的文件
-!app/**/*.css
-!app/**/*.scss
-!app/**/*.sass
-!app/**/*.less
-!app/**/*.styl
-!app/**/*.vue
-!app/**/*.html
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea
+
+# Local env files
+.env
+.env.*
+!.env.example
 
 # 忽略所有的JS文件
 **/*.js
