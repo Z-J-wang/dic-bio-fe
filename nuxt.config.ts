@@ -21,6 +21,12 @@ export default defineNuxtConfig({
     },
   },
   css: ['~/assets/css/main.css'],
+  runtimeConfig: {
+    public: {
+      baseUrl: '', // 默认的 baseUrl
+      apiBaseUrl: '', // 默认的 apiBaseUrl
+    },
+  },
   devServer: {
     // host: '0.0.0.0', // 允许所有网络接口访问
     port: 8080,
