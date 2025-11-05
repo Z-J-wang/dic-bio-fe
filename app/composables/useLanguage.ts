@@ -13,7 +13,7 @@ export function useLanguage() {
   // 获取实际的 locale 代码类型
   type LocaleCode = typeof locales.value[number]['code']
 
-  const changeLanguage = (newLocale: LocaleCode | string) => {
+  const changeLocale = (newLocale: LocaleCode | string) => {
     setLocale(newLocale as LocaleCode) // ! Nuxt i18n 结合 Nuxt UI 下，该方法失效
   }
 
@@ -24,5 +24,5 @@ export function useLanguage() {
   })
   const locale = computed(() => Object.values(localesList).find(({ code }) => code === localeCode.value))
 
-  return { localeCode, locale, locales: activeLocales, changeLanguage }
+  return { localeCode, locale, locales: activeLocales, changeLocale }
 }
