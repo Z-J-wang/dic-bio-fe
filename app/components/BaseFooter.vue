@@ -36,9 +36,9 @@ const columns = computed<FooterColumn[]>(() => {
       <UContainer>
         <div class="flex justify-between items-center">
           <div>
-            <i18n keypath="general.copyrighted">
+            <i18n-t keypath="general.copyrighted">
               <span> © {{ year }} SMART-NBC </span>
-            </i18n>
+            </i18n-t>
           </div>
           <div>粤ICP备xxxxxxxxx</div>
         </div>

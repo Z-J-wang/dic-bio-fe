@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@nuxt/icon', '@nuxt/ui', '@nuxt/test-utils', '@pinia/nuxt', '@nuxtjs/i18n'],
+  modules: ['@nuxt/eslint', '@nuxt/icon', '@nuxt/ui', '@nuxt/test-utils', '@pinia/nuxt', '@nuxtjs/i18n', '@regle/nuxt'],
   ssr: true,
   devtools: { enabled: true },
   app: {
@@ -33,5 +33,8 @@ export default defineNuxtConfig({
       { code: 'en', name: 'English', files: ['en.js', 'common.en.js'], alias: 'En' },
       { code: 'zh-CN', name: '简体中文', files: ['zh-CN.js', 'common.zh-CN.js'], alias: '中' }
     ]
+  },
+  regle: {
+    setupFile: '~/regle-config.ts' // regle 配置文件
   }
 })

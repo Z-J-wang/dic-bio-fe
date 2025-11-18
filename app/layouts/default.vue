@@ -21,7 +21,10 @@ const items = computed<NavigationMenuItem[]>(() => [
       <UNavigationMenu :items="items" />
 
       <template #right>
-        <BaseHeadOperation />
+        <BaseHeadOperation
+          :login-config="{ to: localePath('/login') }"
+          :register-config="{ to: localePath('/register') }"
+        />
       </template>
 
       <template #body>
