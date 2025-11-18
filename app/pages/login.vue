@@ -3,8 +3,6 @@ import { useRegle, type InferInput } from '@regle/core'
 import { required, email, minLength, withMessage } from '@regle/rules'
 import type { FormSubmitEvent } from '@nuxt/ui'
 
-const { t } = useI18n()
-
 const { r$ } = useRegle(
   { email: '', password: '' },
   {

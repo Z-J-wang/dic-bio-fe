@@ -6,7 +6,6 @@ export default defineRegleNuxtPlugin(() => {
   return defineRegleConfig({
     rules: () => {
       const { t } = useI18n()
-      console.log('regle')
 
       return {
         required: withMessage(required, t('validate.required')),

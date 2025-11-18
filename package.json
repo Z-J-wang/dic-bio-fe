@@ -28,11 +28,13 @@
     "eslint": "^9.39.1",
     "nuxt": "4.2.1",
     "pinia": "^3.0.4",
+    "tailwindcss": "^4.1.17",
     "vue": "^3.5.24",
     "vue-i18n": "^11.1.12",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "@stylistic/eslint-plugin": "^5.5.0",
     "eslint-config-prettier": "^10.1.8",
     "less": "^4.4.2",
     "postcss": "^8.5.6",

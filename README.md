@@ -8,6 +8,8 @@
 - [pnpm v10](https://pnpm.io/zh/)
 - [pm2](https://pm2.node.org.cn/) （SSR项目部署需要）
 
+> 使用pnpm进行包管理时可能存在幽灵依赖问题，可通过`npx depcheck`命令来检查。
+
 ## 主要技术栈
 
 - [Nuxt v4](https://nuxt.zhcndoc.com/)
