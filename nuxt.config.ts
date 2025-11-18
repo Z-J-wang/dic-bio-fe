@@ -30,8 +30,8 @@ export default defineNuxtConfig({
   i18n: {
     defaultLocale: 'zh-CN',
     locales: [
-      { code: 'en', name: 'English', file: 'en.json', alias: 'En' },
-      { code: 'zh-CN', name: '简体中文', file: 'zh-CN.json', alias: '中' }
+      { code: 'en', name: 'English', files: ['en.js', 'common.en.js'], alias: 'En' },
+      { code: 'zh-CN', name: '简体中文', files: ['zh-CN.json', 'common.zh-CN.js'], alias: '中' }
     ]
   }
 })
