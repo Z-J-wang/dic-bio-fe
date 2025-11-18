@@ -1,3 +1,3 @@
 <template>
-  <div>{{ $t('about') }}</div>
+  <div>{{ $t('general.about') }}</div>
 </template>

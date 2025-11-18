@@ -6,5 +6,5 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="p-4">{{ $t('home') }}</div>
+  <div class="p-4">{{ $t('general.home') }}</div>
 </template>

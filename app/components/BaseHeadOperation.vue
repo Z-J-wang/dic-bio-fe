@@ -49,12 +49,12 @@ const languageBtnConfig = computed(() => {
     </slot>
     <slot name="login">
       <UButton v-bind="loginConfig">
-        {{ props.loginConfig.text || $t('login') }}
+        {{ props.loginConfig.text || $t('general.login') }}
       </UButton>
     </slot>
     <slot name="register">
       <UButton v-bind="registerConfig">
-        {{ props.registerConfig.text || $t('register') }}
+        {{ props.registerConfig.text || $t('general.register') }}
       </UButton>
     </slot>
   </div>

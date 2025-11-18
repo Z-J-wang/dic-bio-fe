@@ -15,7 +15,7 @@ export default {
     password: 'Password',
     rememberMe: 'Remember Me',
     forgotPassword: 'Forgot Password?',
-    
+
     // 用户相关
     firstName: 'First Name',
     lastName: 'Last Name',
@@ -43,14 +43,13 @@ export default {
     selected: 'Selected',
     discard: 'Discard',
     preview: 'Preview',
-    
+
     // 表单字段
     title: 'Title',
     name: 'Name',
     description: 'Description',
     category: 'Category',
     tag: 'Tag',
-    status: 'Status',
     createdAt: 'Created At',
     updatedAt: 'Updated At',
 
@@ -88,6 +87,9 @@ export default {
     view: 'View',
     navigation: 'Navigation',
     date: 'Date',
+    aboutUs: 'About us',
+    contactUs: 'Contact us',
+    help: 'Help',
 
     // 状态和反馈
     loading: 'Loading...',
@@ -101,7 +103,7 @@ export default {
     pending: 'Pending',
     enabled: 'Enabled',
     disabled: 'Disabled',
-    
+
     // 操作结果
     operationSuccessful: 'Operation successful',
     operationFailed: 'Operation failed',
@@ -156,11 +158,11 @@ export default {
     // 数据状态验证
     alreadyExists: 'Already exists',
     notFound: 'Not found',
-    
+
     // 权限相关
     accessDenied: 'Access denied',
     permissionRequired: 'Permission required to perform this action',
-    
+
     // 网络和服务器错误
     networkError: 'Network error occurred',
     serverError: 'Server error occurred',

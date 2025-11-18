@@ -31,7 +31,7 @@ export default defineNuxtConfig({
     defaultLocale: 'zh-CN',
     locales: [
       { code: 'en', name: 'English', files: ['en.js', 'common.en.js'], alias: 'En' },
-      { code: 'zh-CN', name: '简体中文', files: ['zh-CN.json', 'common.zh-CN.js'], alias: '中' }
+      { code: 'zh-CN', name: '简体中文', files: ['zh-CN.js', 'common.zh-CN.js'], alias: '中' }
     ]
   }
 })

@@ -6,8 +6,8 @@ const { t } = useI18n()
 const { locale } = useLanguage()
 
 const items = computed<NavigationMenuItem[]>(() => [
-  { label: t('home'), to: localePath('/') },
-  { label: t('about'), to: localePath('/about') }
+  { label: t('general.home'), to: localePath('/') },
+  { label: t('general.about'), to: localePath('/about') }
 ])
 </script>
 

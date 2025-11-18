@@ -6,10 +6,10 @@ const year = new Date().getFullYear()
 const columns = computed<FooterColumn[]>(() => {
   return [
     {
-      label: t('about'),
+      label: t('general.about'),
       children: [
-        { label: t('aboutUs'), to: { path: '/about' } },
-        { label: t('contactUs'), to: { path: '/about' } },
+        { label: t('general.aboutUs'), to: { path: '/about' } },
+        { label: t('general.contactUs'), to: { path: '/about' } },
         { label: t('news'), to: { path: '/about' } }
       ]
     },
@@ -36,9 +36,9 @@ const columns = computed<FooterColumn[]>(() => {
       <UContainer>
         <div class="flex justify-between items-center">
           <div>
-            <i18n-t keypath=" copyrighted">
+            <i18n keypath="general.copyrighted">
               <span> © {{ year }} SMART-NBC </span>
-            </i18n-t>
+            </i18n>
           </div>
           <div>粤ICP备xxxxxxxxx</div>
         </div>

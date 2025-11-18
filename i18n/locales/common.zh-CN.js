@@ -15,7 +15,7 @@ export default {
     password: '密码',
     rememberMe: '记住我',
     forgotPassword: '忘记密码？',
-    
+
     // 用户相关
     firstName: '名',
     lastName: '姓',
@@ -43,14 +43,13 @@ export default {
     selected: '已选择',
     discard: '丢弃',
     preview: '预览',
-    
+
     // 表单字段
     title: '标题',
     name: '名称',
     description: '描述',
     category: '分类',
     tag: '标签',
-    status: '状态',
     createdAt: '创建时间',
     updatedAt: '更新时间',
 
@@ -88,6 +87,9 @@ export default {
     view: '查看',
     navigation: '导航',
     date: '日期',
+    aboutUs: '关于我们',
+    contactUs: '联系我们',
+    help: '帮助',
 
     // 状态和反馈
     loading: '加载中...',
@@ -101,7 +103,7 @@ export default {
     pending: '待处理',
     enabled: '已启用',
     disabled: '已禁用',
-    
+
     // 操作结果
     operationSuccessful: '操作成功',
     operationFailed: '操作失败',
@@ -156,11 +158,11 @@ export default {
     // 数据状态验证
     alreadyExists: '已存在',
     notFound: '未找到',
-    
+
     // 权限相关
     accessDenied: '访问被拒绝',
     permissionRequired: '执行此操作需要相应权限',
-    
+
     // 网络和服务器错误
     networkError: '网络错误',
     serverError: '服务器错误',
