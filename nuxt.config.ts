@@ -35,6 +35,6 @@ export default defineNuxtConfig({
     ]
   },
   regle: {
-    setupFile: '~/regle-config.ts' // regle 配置文件
+    setupFile: '~/regle.config.ts' // regle 配置文件
   }
 })

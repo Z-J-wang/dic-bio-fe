@@ -4,17 +4,17 @@ export default {
     home: 'Home',
     dashboard: 'Dashboard',
     welcome: 'Welcome',
-    login: 'Log In',
-    register: 'Sign Up',
-    logout: 'Log Out',
+    login: 'Login',
+    register: 'Register',
+    logout: 'Logout',
     profile: 'Profile',
     settings: 'Settings',
     user: 'User',
     username: 'Username',
-    emailAddress: 'Email Address',
+    emailAddress: 'Email address',
     password: 'Password',
-    rememberMe: 'Remember Me',
-    forgotPassword: 'Forgot Password?',
+    rememberMe: 'Remember me',
+    forgotPassword: 'Forgot password?',
 
     // 用户相关
     firstName: 'First Name',
@@ -82,13 +82,13 @@ export default {
     introduction: 'Introduction',
     about: 'About',
     more: 'More',
-    learnMore: 'Learn More',
+    learnMore: 'Learn more',
     download: 'Download',
     view: 'View',
     navigation: 'Navigation',
     date: 'Date',
-    aboutUs: 'About us',
-    contactUs: 'Contact us',
+    aboutUs: 'About Us',
+    contactUs: 'Contact Us',
     help: 'Help',
 
     // 状态和反馈
@@ -122,12 +122,12 @@ export default {
 
     // 版权信息
     allRightsReserved: 'All rights reserved',
-    copyrighted: 'Copyright {0}. All Rights Reserved.'
+    copyrighted: 'Copyright {0}. All rights reserved.'
   },
   validate: {
     // 必填和格式验证
     required: 'This field is required.',
-    invalidFormat: 'Invalid format',
+    invalidFormat: 'Invalid format.',
     invalidDate: 'Please enter a valid date.',
     invalidTime: 'Please enter a valid time.',
     invalidEmail: 'Please enter a valid email address.',
@@ -139,33 +139,41 @@ export default {
     number: 'Please enter a valid number.',
     integer: 'Please enter a whole number.',
     decimal: 'Please enter a decimal number.',
+    string: 'Please enter text.',
+    numeric: 'Please enter a numeric value.',
+    alpha: 'Please enter letters only.',
+    alphaNum: 'Please enter letters and numbers only.',
+    ipv4Address: 'Please enter a valid IPv4 address.',
+    macAddress: 'Please enter a valid MAC address.',
+    checked: 'Please check this box.',
+    nativeEnum: 'Please select a valid option.',
 
     // 长度限制
-    minLength: 'This field must be at least {0} characters long.',
-    maxLength: 'This field must be no more than {0} characters long.',
+    minLength: 'Must be at least {0} characters.',
+    maxLength: 'Must be no more than {0} characters.',
 
     // 数值范围
-    min: 'This value must be greater than {0}.',
-    max: 'This value must be less than {0}.',
-    between: 'This value must be between {0} and {1}.',
+    min: 'Must be greater than {0}.',
+    max: 'Must be less than {0}.',
+    between: 'Must be between {0} and {1}.',
 
     // 密码相关验证
-    passwordMismatch: 'Passwords do not match',
+    passwordMismatch: 'Passwords do not match.',
     passwordTooWeak: 'Password is too weak.',
-    passwordMinLength: 'Password must be at least {0} characters long.',
-    passwordRequirements: 'Password must contain uppercase, lowercase, number and special character.',
+    passwordMinLength: 'Must be at least {0} characters.',
+    passwordRequirements: 'Must contain uppercase, lowercase, number and special character.',
 
     // 数据状态验证
-    alreadyExists: 'Already exists',
-    notFound: 'Not found',
+    alreadyExists: 'Already exists.',
+    notFound: 'Not found.',
 
     // 权限相关
-    accessDenied: 'Access denied',
-    permissionRequired: 'Permission required to perform this action',
+    accessDenied: 'Access denied.',
+    permissionRequired: 'Permission required to perform this action.',
 
     // 网络和服务器错误
-    networkError: 'Network error occurred',
-    serverError: 'Server error occurred',
-    serviceUnavailable: 'Service unavailable'
+    networkError: 'A network error occurred.',
+    serverError: 'A server error occurred.',
+    serviceUnavailable: 'Service unavailable.'
   }
 }

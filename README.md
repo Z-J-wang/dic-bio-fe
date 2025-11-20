@@ -17,6 +17,7 @@
 - [Nuxt i18n](https://nuxt-i18n.zhcndoc.com/)
 - [Pinia](https://pinia.vuejs.ac.cn/)
 - [Tailwind CSS](https://tailwind.org.cn/)
+- [Regle](https://reglejs.dev/)
 
 ### 关于UI组件库
 
@@ -37,6 +38,51 @@ Tailwind CSS 安装方法详见：[使用 Nuxt 安装 Tailwind CSS - Tailwind CS
 > 如果在使用过程中发现 UI 组件库的样式存在异常，可能是 Tailwind CSS 的基础样式覆盖导致的。
 >
 > 可通过关闭基础样式导入解决。详见：[Preflight - 基础样式 - Tailwind CSS 框架](https://tailwind.org.cn/docs/preflight#disabling-preflight)
+
+### 关于表单校验
+
+表单校验采用 [Regle](https://reglejs.dev/) 校验库。通过全局配置文件`app/regle.config.ts`，为常用的校验规则设置了默认的错误提示语。
+
+> 注意：[Nuxt | Regle](https://reglejs.dev/integrations/nuxt)文档中的全局配置使用方法不知道什么原因无效，必须在使用的地方手动导入全局配置文件导出的`useGlobalRegle`。否则，全局配置文件失效。
+
+用法示例：
+
+```vue
+<script setup lang="ts">
+import type { InferInput } from '@regle/core'
+import { required, email, minLength, withMessage } from '@regle/rules'
+import type { FormSubmitEvent } from '@nuxt/ui'
+import { useRegle } from '~/regle.config'
+
+const { r$ } = useRegle(
+  { email: '', password: '' },
+  {
+    email: { required, email },
+    password: { required, minLength: withMessage(minLength(8), 'Must be at least 8 characters') }
+  }
+)
+
+type Schema = InferInput<typeof r$>
+
+const toast = useToast()
+async function onSubmit(event: FormSubmitEvent<Schema>) {
+  toast.add({ title: 'Success', description: 'The form has been submitted.', color: 'success' })
+  console.log(event.data)
+}
+</script>
+
+<template>
+  <UForm :schema="r$" :state="r$.$value" class="space-y-4" @submit="onSubmit">
+    <UFormField label="Email" name="email">
+      <UInput v-model="r$.$value.email" />
+    </UFormField>
+    <UFormField label="Password" name="password">
+      <UInput v-model="r$.$value.password" type="password" />
+    </UFormField>
+    <UButton type="submit">{{ $t('general.submit') }}</UButton>
+  </UForm>
+</template>
+```
 
 ## 目录结构说明
 

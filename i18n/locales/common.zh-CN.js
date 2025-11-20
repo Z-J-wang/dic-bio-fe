@@ -17,8 +17,8 @@ export default {
     forgotPassword: '忘记密码？',
 
     // 用户相关
-    firstName: '名',
-    lastName: '姓',
+    firstName: '名字',
+    lastName: '姓氏',
     fullName: '全名',
     avatar: '头像',
     role: '角色',
@@ -122,12 +122,12 @@ export default {
 
     // 版权信息
     allRightsReserved: '版权所有',
-    copyrighted: '版权所有 {0}'
+    copyrighted: '版权所有 {0}。保留所有权利。'
   },
   validate: {
     // 必填和格式验证
-    required: '此字段为必填项。',
-    invalidFormat: '格式无效',
+    required: '该字段为必填项。',
+    invalidFormat: '格式无效。',
     invalidDate: '请输入有效日期。',
     invalidTime: '请输入有效时间。',
     invalidEmail: '请输入有效的邮箱地址。',
@@ -136,36 +136,44 @@ export default {
     email: '请输入有效的邮箱地址。',
     phone: '请输入有效的电话号码。',
     url: '请输入有效的网址。',
-    number: '请输入有效的数字。',
+    number: '请输入有效数字。',
     integer: '请输入整数。',
     decimal: '请输入小数。',
+    string: '请输入文本。',
+    numeric: '请输入数值。',
+    alpha: '只能输入字母。',
+    alphaNum: '只能输入字母和数字。',
+    ipv4Address: '请输入有效的IPv4地址。',
+    macAddress: '请输入有效的MAC地址。',
+    checked: '请勾选此项。',
+    nativeEnum: '请选择有效选项。',
 
     // 长度限制
-    minLength: '此字段至少需要{0}个字符。',
-    maxLength: '此字段不能超过{0}个字符。',
+    minLength: '至少需要{0}个字符。',
+    maxLength: '最多允许{0}个字符。',
 
     // 数值范围
-    min: '此值必须大于{0}。',
-    max: '此值必须小于{0}。',
-    between: '此值必须在{0}和{1}之间。',
+    min: '必须大于{0}。',
+    max: '必须小于{0}。',
+    between: '必须在{0}和{1}之间。',
 
     // 密码相关验证
-    passwordMismatch: '密码不匹配',
+    passwordMismatch: '密码不匹配。',
     passwordTooWeak: '密码强度太弱。',
-    passwordMinLength: '密码至少需要{0}个字符。',
-    passwordRequirements: '密码必须包含大写字母、小写字母、数字和特殊字符。',
+    passwordMinLength: '至少需要{0}个字符。',
+    passwordRequirements: '必须包含大写字母、小写字母、数字和特殊字符。',
 
     // 数据状态验证
-    alreadyExists: '已存在',
-    notFound: '未找到',
+    alreadyExists: '已存在。',
+    notFound: '未找到。',
 
     // 权限相关
-    accessDenied: '访问被拒绝',
-    permissionRequired: '执行此操作需要相应权限',
+    accessDenied: '拒绝访问。',
+    permissionRequired: '执行此操作需要相应权限。',
 
     // 网络和服务器错误
-    networkError: '网络错误',
-    serverError: '服务器错误',
-    serviceUnavailable: '服务不可用'
+    networkError: '发生网络错误。',
+    serverError: '发生服务器错误。',
+    serviceUnavailable: '服务不可用。'
   }
 }

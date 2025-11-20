@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { useRegle, type InferInput } from '@regle/core'
+import type { InferInput } from '@regle/core'
 import { required, email, minLength, withMessage } from '@regle/rules'
 import type { FormSubmitEvent } from '@nuxt/ui'
+import { useRegle } from '~/regle.config'
 
 const { r$ } = useRegle(
   { email: '', password: '' },
@@ -25,11 +26,9 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     <UFormField label="Email" name="email">
       <UInput v-model="r$.$value.email" />
     </UFormField>
-
     <UFormField label="Password" name="password">
       <UInput v-model="r$.$value.password" type="password" />
     </UFormField>
-
-    <UButton type="submit"> Submit </UButton>
+    <UButton type="submit">{{ $t('general.submit') }}</UButton>
   </UForm>
 </template>
