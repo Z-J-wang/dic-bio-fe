@@ -1,8 +1,8 @@
 module.exports = {
   apps: [
     {
-      name: 'GTOP White Book',
-      port: '3000',
+      name: 'NBC-nuxt-template',
+      port: '3000', // 根据实际项目占用端口调整
       exec_mode: 'cluster',
       instances: 'max',
       script: './.output/server/index.mjs'
