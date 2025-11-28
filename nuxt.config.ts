@@ -13,12 +13,13 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   runtimeConfig: {
     public: {
-      baseUrl: '', // 默认的 baseUrl
-      apiBaseUrl: '' // 默认的 apiBaseUrl
+      // 客户端变量
+      devMock: false,
+      baseUrl: '', // 默认的 baseUrl，此处应该填写生产环境的客户端的 baseUrl
+      apiBaseUrl: '' // 默认的 apiBaseUrl，此处应该填写生产环境的服务器的 apiBaseUrl
     }
   },
   devServer: {
-    // host: '0.0.0.0', // 允许所有网络接口访问
     port: 8080
   },
   compatibilityDate: '2025-07-15',

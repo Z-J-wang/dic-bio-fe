@@ -5,6 +5,7 @@ import eslintConfigPrettier from 'eslint-config-prettier'
 
 export default withNuxt([
   stylistic.configs.recommended,
+  eslintConfigPrettier,
   {
     // 自定义 stylistic 规则，详见：https://eslint.style/rules
     plugins: { '@stylistic': stylistic },
@@ -26,7 +27,6 @@ export default withNuxt([
       'space-before-function-paren': ['off', 'always']
     }
   },
-  eslintConfigPrettier,
   // 5. 文件匹配规则
   {
     files: ['\*\*/\*.{js,ts,vue}'],
@@ -37,4 +37,3 @@ export default withNuxt([
     ]
   }
 ])
-// Your custom configs here
