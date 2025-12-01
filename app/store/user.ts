@@ -1,15 +1,25 @@
 /**
  * 用户信息
  */
+
+// 定义用户数据接口
+interface UserInfo {
+  name: string
+  age: number
+}
+
 export const useUserStore = defineStore('userinfo', () => {
-  const userinfo = ref({
-    name: 'Eduardo',
-    age: 18,
-  })
-  const age = computed(() => userinfo.value.age)
+  const userInfo = ref<UserInfo>()
+  const age = computed(() => userInfo.value?.age)
 
-  const isLogin = computed(() => userinfo.value.name !== '')
-  function updateAge(age: number) { userinfo.value.age = age }
+  const isLogin = computed(() => userInfo.value?.name !== '')
+  async function getUserData() {
+    const res = await useCustomFetch('/user')
+    const data = res.data.value as UserInfo
+    if (data) {
+      userInfo.value = data
+    }
+  }
 
-  return { userinfo, age, isLogin, updateAge }
+  return { userInfo, age, isLogin, getUserData }
 })

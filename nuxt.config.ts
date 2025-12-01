@@ -14,9 +14,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       // 客户端变量
-      devMock: false,
       baseUrl: '', // 默认的 baseUrl，此处应该填写生产环境的客户端的 baseUrl
-      apiBaseUrl: '' // 默认的 apiBaseUrl，此处应该填写生产环境的服务器的 apiBaseUrl
+      apiBaseUrl: '/api' // 默认的 apiBaseUrl，此处应该填写生产环境的服务器的 apiBaseUrl
     }
   },
   devServer: {

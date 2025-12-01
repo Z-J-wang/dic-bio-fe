@@ -84,6 +84,49 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 </template>
 ```
 
+### 关于接口 Mock
+
+接口 Mock 借助 Nuxt 的 Nitro 服务器引擎以及`.env`来实现。
+
+大体思路如下：
+
+1. 通过变更环境变量来将接口的请求地址改为指向 Mock 服务器的地址。
+2. 借助 Nitro 服务器引擎来实现本地的 Mock 服务器。
+
+#### 环境变量实现接口地址的切换
+
+在本项目中，所有接口的 Mock 地址设定为在`/api`后面增加`/mock`次级路径（即，`/api/mock`）。
+
+因此，只需要将接口中前缀的`/api`替换成`/api/mock`就可以实现将接口地址指向 Mock 服务器。
+
+基于此，本项目注册了一个环境变量`NUXT_PUBLIC_API_BASE_URL`，用于实现接口前缀的替换。
+
+具体思路如下：
+
+1. 给环境变量`NUXT_PUBLIC_API_BASE_URL`设定默认值为：`/api`（可补充完整的域名）
+2. 额外新建一个`.env.mock`环境变量文件，其中将`NUXT_PUBLIC_API_BASE_URL`设置为`/api/mock`（不要补充完整的域名，Mock 服务器就在本地）
+3. 在运行指令中通过`--dotenv`来指定要加载的环境变量文件为`.env.mock`。即，在package.json文件中的`scripts`中新建指令：`"dev:mock": "nuxt dev --dotenv .env.mock"`
+4. 运行`pnpm dev:mock`指令来启动本地项目，即可实现接口地址的切换。
+
+> 环境变量相关说明：
+>
+> 1. [.env - 目录结构 - Nuxt 中文文档 v4](https://nuxt.zhcndoc.com/docs/4.x/directory-structure/env)
+> 2. [运行时配置 - 进阶内容 - Nuxt 中文文档 v4](https://nuxt.zhcndoc.com/docs/4.x/guide/going-further/runtime-config#环境变量)
+
+#### 搭建 Mock 服务器
+
+Nuxt 已经借助 Nitro 实现的服务器功能。所以本项目可依托 Nuxt 的服务器功能来说实现 Mock 服务器。
+
+> 详见：[server - 目录结构 - Nuxt 中文文档 v4](https://nuxt.zhcndoc.com/docs/4.x/directory-structure/server)
+
+Nuxt 默认将`server/api`目录下的服务注册为Api服务。例如：`server/api/user.get.ts`则会被注册为`Get /api/user`。
+
+因此，只需要在`server/api/`目录下新建一个`mock/`子目录，然后在其中编写接口的Mock代码即可实现 Mock 服务器。
+
+例如，在`server/api/mock`目录下创建`server/api/mock/user.get.ts`文件，则 Nuxt 会自动给对外暴露接口`Get /api/mock/user`。
+
+
+
 ## 目录结构说明
 
 详见：[Nuxt 指南 v4](https://nuxt.zhcndoc.com/docs/4.x/guide)
