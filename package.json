@@ -2,6 +2,9 @@
   "name": "smart-nuxt-template",
   "type": "module",
   "private": true,
+  "version": "0.0.1",
+  "description": "深圳医学科学院-国家基因库数据库开发小组-前端 nuxt 模板项目。",
+  "author": "wangzhijie <wangzhijie@smart.org.cn>",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -53,5 +56,9 @@
     "stylelint-prettier": "5.0.3",
     "typescript": "5.9.3",
     "vue-tsc": "3.1.5"
+  },
+  "engines": {
+    "node": "^22.21.1",
+    "pnpm": "^10.23.0"
   }
 }
