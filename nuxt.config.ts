@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   ssr: true,
   devtools: { enabled: true },
   app: {
+    baseURL: './',
     // 设置全局默认的 meta
     head: {
       title: 'SMART-Nuxt-Template',
@@ -11,6 +12,9 @@ export default defineNuxtConfig({
     }
   },
   css: ['~/assets/css/main.css'],
+  ui: {
+    colorMode: false // 关闭自动切换主题，即禁用深色模式
+  },
   runtimeConfig: {
     public: {
       // 客户端变量
