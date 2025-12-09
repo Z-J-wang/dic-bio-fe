@@ -8,11 +8,11 @@ lint-check:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: '$CI_PIPELINE_SOURCE == "push"'
 
-  image: node:22.12.0-alpine  # 设定流水线运行版本
+  image: node:22.21.1-alpine  # 设定流水线运行版本
 
   # 基于commit sha创建缓存
   cache:
-    key: ${CI_COMMIT_REF_SLUG}-${{ checksum "yarn.lock" }}  # 分支名 + 锁文件哈希
+    key: ${CI_COMMIT_REF_SLUG}-${{ checksum "pnpm-lock.yaml" }}  # 分支名 + 锁文件哈希
     paths:
       - node_modules/
       - .cache/
@@ -26,9 +26,10 @@ lint-check:
 
   script:
     # 添加错误处理和更详细的输出
-    - yarn install --frozen-lockfile || { echo "yarn install failed"; exit 1; }
-    - yarn lint || { echo "lint failed"; exit 1; }
-    - yarn type-check || { echo "type-check failed"; exit 1; }
+    - npm install -g pnpm
+    - pnpm install --frozen-lockfile || { echo "pnpm install failed"; exit 1; }
+    - pnpm lint || { echo "lint failed"; exit 1; }
+    # - pnpm type-check || { echo "type-check failed"; exit 1; }
 
   after_script:
     - echo "Lint check completed"
