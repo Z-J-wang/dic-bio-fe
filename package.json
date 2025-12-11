@@ -8,6 +8,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "dev:local": "nuxt dev --dotenv .env.local",
     "dev:mock": "nuxt dev --dotenv .env.mock",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
