@@ -7,8 +7,10 @@ export function useBreakpoint() {
   })
   const current = breakpoints.current()
   const active = breakpoints.active()
+  const isMobile = breakpoints.smaller('sm') // 小于 sm 为移动端
 
   return {
+    isMobile,
     active,
     current,
     breakpoints
