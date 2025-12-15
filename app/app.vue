@@ -7,9 +7,7 @@
   <NuxtRouteAnnouncer />
   <NuxtLayout>
     <UContainer>
-      <div class="page-container">
-        <NuxtPage />
-      </div>
+      <NuxtPage />
     </UContainer>
   </NuxtLayout>
 </template>
