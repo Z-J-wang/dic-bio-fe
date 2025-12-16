@@ -1,13 +1,12 @@
 <script setup lang="ts">
-// import '@/assets/css/main.less'
-// import { useUserStore } from '@/store/user'
+import { provideSSRWidth } from '@vueuse/core'
+
+provideSSRWidth(1280)
 </script>
 
 <template>
   <NuxtRouteAnnouncer />
   <NuxtLayout>
-    <UContainer>
-      <NuxtPage />
-    </UContainer>
+    <NuxtPage />
   </NuxtLayout>
 </template>

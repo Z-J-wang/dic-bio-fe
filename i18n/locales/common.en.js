@@ -109,6 +109,8 @@ export default {
     aboutUs: 'About Us',
     contactUs: 'Contact Us',
     help: 'Help',
+    updateDate: 'Update Date: ',
+    updateTime: 'Update Time: ',
 
     // 状态和反馈
     loading: 'Loading...',
