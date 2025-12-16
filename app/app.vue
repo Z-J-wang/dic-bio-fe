@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { provideSSRWidth } from '@vueuse/core'
 
-provideSSRWidth(1280)
+provideSSRWidth(1440)
 </script>
 
 <template>
