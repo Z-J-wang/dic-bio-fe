@@ -8,6 +8,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "dev:local": "nuxt dev --dotenv .env.local",
     "dev:mock": "nuxt dev --dotenv .env.mock",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -30,6 +31,7 @@
     "@regle/nuxt": "1.11.0",
     "@regle/rules": "1.11.0",
     "@vueuse/core": "^14.1.0",
+    "@vueuse/nuxt": "14.1.0",
     "nuxt": "4.2.1",
     "pinia": "3.0.4",
     "tailwindcss": "4.1.17",

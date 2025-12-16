@@ -15,6 +15,7 @@ export default {
     password: '密码',
     rememberMe: '记住我',
     forgotPassword: '忘记密码？',
+    example: '例如：',
 
     // 用户相关
     firstName: '名字',
@@ -52,6 +53,24 @@ export default {
     tag: '标签',
     createdAt: '创建时间',
     updatedAt: '更新时间',
+    size: '大小',
+    type: '类型',
+    email: '邮箱',
+    phone: '电话',
+    address: '地址',
+    city: '城市',
+    state: '州/省',
+    country: '国家',
+    zipCode: '邮政编码',
+    timeZone: '时区',
+    language: '语言',
+    currency: '货币',
+    time: '时间',
+    dateTime: '日期时间',
+    timeFormat: '时间格式',
+    dateFormat: '日期格式',
+    message: '消息',
+    content: '内容',
 
     // 确认选项
     yes: '是',
@@ -90,6 +109,8 @@ export default {
     aboutUs: '关于我们',
     contactUs: '联系我们',
     help: '帮助',
+    updateDate: '更新日期：',
+    updateTime: '更新时间：',
 
     // 状态和反馈
     loading: '加载中...',

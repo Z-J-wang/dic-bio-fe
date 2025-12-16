@@ -1,6 +1,6 @@
-# SMART-NUXT-TEMPLATE
+# submitting-system-fe
 
-前端模板项目。本模板项目采用Nuxt技术框架，以兼容 SSR/SPA 两种开发模式。
+数据递交系统前端代码仓库。
 
 ## 运行环境
 
@@ -124,8 +124,6 @@ Nuxt 默认将`server/api`目录下的服务注册为Api服务。例如：`serve
 因此，只需要在`server/api/`目录下新建一个`mock/`子目录，然后在其中编写接口的Mock代码即可实现 Mock 服务器。
 
 例如，在`server/api/mock`目录下创建`server/api/mock/user.get.ts`文件，则 Nuxt 会自动给对外暴露接口`Get /api/mock/user`。
-
-
 
 ## 目录结构说明
 

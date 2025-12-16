@@ -1,6 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@nuxt/icon', '@nuxt/ui', '@nuxt/test-utils', '@pinia/nuxt', '@nuxtjs/i18n', '@regle/nuxt'],
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/ui',
+    '@nuxt/icon',
+    '@nuxt/test-utils',
+    '@pinia/nuxt',
+    '@nuxtjs/i18n',
+    '@regle/nuxt',
+    '@vueuse/nuxt'
+  ],
   ssr: true,
   devtools: { enabled: true },
   app: {
