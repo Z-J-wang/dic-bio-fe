@@ -5,7 +5,34 @@
 @import '@nuxt/ui';
 @import './utils.less';
 
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --ui-header-height: 64px;
+}
+
+@media (width >= 1440px) {
+  :root {
+    --ui-container: 1440px; /* 主体内容宽度改为1440px */
+  }
+}
+
+@media (width <= 1440px) {
+  :root {
+    --ui-container: 1280px; /* 主体内容宽度改为1280px */
+  }
+}
+
+@media (width <= 1024px) {
+  html {
+    font-size: 14px;
+  }
+}
+
 @theme {
-  --ui-container: 90rem;
-  --color-primary: #1677ff;
+  --font-sans: 'Roboto';
+  --color-primary: var(--color-slate-700);
 }
