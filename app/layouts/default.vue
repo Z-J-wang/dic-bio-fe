@@ -22,6 +22,7 @@ const items = computed<NavigationMenuItem[]>(() => [
 
       <template #right>
         <BaseHeadOperation
+          dark
           :login-config="{ to: localePath('/login') }"
           :register-config="{ to: localePath('/register') }"
         />
