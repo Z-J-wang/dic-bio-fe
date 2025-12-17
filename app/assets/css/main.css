@@ -6,18 +6,27 @@
 @import './utils.less';
 
 html {
+  font-size: 16px;
   scroll-behavior: smooth;
 }
 
-/* 当屏幕大于1440px时，将字体大小设置为16px */
+:root {
+  --ui-header-height: 64px;
+}
 
 @media (width >= 1440px) {
-  html {
-    font-size: 16px;
+  :root {
+    --ui-container: 1440px; /* 主体内容宽度改为1440px */
   }
 }
 
-@media (width <= 768px) {
+@media (width <= 1440px) {
+  :root {
+    --ui-container: 1280px; /* 主体内容宽度改为1280px */
+  }
+}
+
+@media (width <= 1024px) {
   html {
     font-size: 14px;
   }
@@ -26,9 +35,4 @@ html {
 @theme {
   --font-sans: 'Roboto';
   --color-primary: var(--color-slate-700);
-}
-
-:root {
-  --ui-header-height: 64px;
-  --ui-container: 1440px; /* 主体内容宽度改为1440px */
 }
