@@ -12,7 +12,8 @@ const userStore = useUserStore()
 </script>
 
 <template>
-  <div class="p-4">
+  <PageScrollAnimation />
+  <UContainer>
     <UButton :disabled="!!userStore.userInfo" @click="userStore.getUserData()">{{ t('getUserData') }}</UButton>
     <div v-if="userStore.userInfo" class="mt-4">
       <p>
@@ -22,7 +23,7 @@ const userStore = useUserStore()
         <span class="mr-2">{{ t('age') }}:</span>{{ userStore.userInfo.age }}
       </p>
     </div>
-  </div>
+  </UContainer>
 </template>
 
 <i18n lang="yaml">

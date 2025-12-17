@@ -17,6 +17,7 @@ export default withNuxt([
   {
     // 自定义规则，详见：https://zh-hans.eslint.org/docs/latest/use/configure/rules
     rules: {
+      'vue/no-multiple-template-root': 'off',
       'no-console': 'off',
       'no-debugger': 'off',
       'no-spaced-func': 'error',
