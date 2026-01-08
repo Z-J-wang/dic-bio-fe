@@ -111,6 +111,7 @@ export default {
     help: '帮助',
     updateDate: '更新日期：',
     updateTime: '更新时间：',
+    summary: '摘要',
 
     // 状态和反馈
     loading: '加载中...',

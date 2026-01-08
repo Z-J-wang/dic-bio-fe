@@ -101,7 +101,7 @@ export default {
     introduction: 'Introduction',
     about: 'About',
     more: 'More',
-    learnMore: 'Learn more',
+    learnMore: 'Learn More',
     download: 'Download',
     view: 'View',
     navigation: 'Navigation',
@@ -109,8 +109,7 @@ export default {
     aboutUs: 'About Us',
     contactUs: 'Contact Us',
     help: 'Help',
-    updateDate: 'Update Date: ',
-    updateTime: 'Update Time: ',
+    summary: 'Summary',
 
     // 状态和反馈
     loading: 'Loading...',
