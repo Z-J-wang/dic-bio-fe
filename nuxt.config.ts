@@ -1,15 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: [
-    '@nuxt/eslint',
-    '@nuxt/ui',
-    '@nuxt/icon',
-    '@nuxt/test-utils',
-    '@pinia/nuxt',
-    '@nuxtjs/i18n',
-    '@regle/nuxt',
-    '@vueuse/nuxt'
-  ],
+  extends: ['github:Z-J-wang/nbc-nuxt-layer#v0.0.1-alpha.1'],
+  modules: ['@nuxt/eslint', '@nuxt/ui', '@nuxt/icon', '@pinia/nuxt', '@nuxtjs/i18n', '@regle/nuxt', '@vueuse/nuxt'],
   ssr: true,
   devtools: { enabled: true },
   app: {
@@ -41,8 +33,8 @@ export default defineNuxtConfig({
   i18n: {
     defaultLocale: 'zh-CN',
     locales: [
-      { code: 'en', name: 'English', files: ['en.js', 'common.en.js'], alias: 'En' },
-      { code: 'zh-CN', name: '简体中文', files: ['zh-CN.js', 'common.zh-CN.js'], alias: '中' }
+      { code: 'en', name: 'English', files: ['en.js'], alias: 'En' },
+      { code: 'zh-CN', name: '简体中文', files: ['zh-CN.js'], alias: '中' }
     ]
   },
   regle: {

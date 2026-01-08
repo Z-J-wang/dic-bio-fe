@@ -19,7 +19,6 @@ const items = computed<NavigationMenuItem[]>(() => [
       </template>
 
       <UNavigationMenu :items="items" />
-
       <template #right>
         <BaseHeadOperation
           dark
