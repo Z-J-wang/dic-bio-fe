@@ -31,9 +31,7 @@ export default defineNuxtConfig({
       apiBaseUrl: '/api' // 默认的 apiBaseUrl，此处应该填写生产环境的服务器的 apiBaseUrl
     }
   },
-  devServer: {
-    port: 8080
-  },
+  devServer: { port: 8080 },
   compatibilityDate: '2025-07-15',
   eslint: {
     config: {
