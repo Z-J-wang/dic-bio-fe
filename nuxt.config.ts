@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  extends: ['github:Z-J-wang/nbc-nuxt-layer#v0.0.1-alpha.1'],
+  extends: ['github:Z-J-wang/nbc-nuxt-layer#v0.0.1-alpha.3'],
   modules: ['@nuxt/eslint', '@nuxt/ui', '@nuxt/icon', '@pinia/nuxt', '@nuxtjs/i18n', '@regle/nuxt', '@vueuse/nuxt'],
   ssr: true,
   devtools: { enabled: true },

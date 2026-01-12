@@ -6,7 +6,7 @@ provideSSRWidth(1440)
 
 <template>
   <NuxtRouteAnnouncer />
-  <NuxtLayout>
+  <NuxtLayout name="base-layout">
     <NuxtPage />
   </NuxtLayout>
 </template>
