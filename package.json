@@ -64,7 +64,6 @@
     "stylelint-config-standard": "39.0.1",
     "stylelint-config-standard-less": "4.0.1",
     "stylelint-config-standard-vue": "1.0.0",
-    "stylelint-config-tailwindcss": "^1.0.1",
     "stylelint-order": "7.0.1",
     "stylelint-prettier": "5.0.3",
     "typescript": "5.9.3",

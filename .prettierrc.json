@@ -6,6 +6,7 @@
   "trailingComma": "none",
   "endOfLine": "lf",
   "arrowParens": "always",
+  "tailwindStylesheet": "./app/assets/css/main.css",
   "plugins": [
     "prettier-plugin-tailwindcss"
   ]
