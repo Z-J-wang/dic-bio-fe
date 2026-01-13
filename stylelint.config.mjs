@@ -5,14 +5,15 @@ export default {
     'stylelint-config-standard', // 配置 stylelint 拓展插件
     'stylelint-config-standard-less',
     'stylelint-config-html/vue',
-    'stylelint-prettier/recommended'
+    'stylelint-prettier/recommended',
+    'stylelint-config-tailwindcss'
   ],
   plugins: ['stylelint-order'],
   rules: {
     'at-rule-no-unknown': [
       true,
       {
-        ignoreAtRules: ['tailwind', 'theme']
+        ignoreAtRules: ['tailwind', 'theme', 'source']
       }
     ],
     'color-hex-length': 'long', // 颜色6位长度
