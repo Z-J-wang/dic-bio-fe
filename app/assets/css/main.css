@@ -3,7 +3,6 @@
  */
 @import 'tailwindcss';
 @import '@nuxt/ui';
-@import './utils.less';
 
 html {
   scroll-behavior: smooth;
