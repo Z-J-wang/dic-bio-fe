@@ -5,8 +5,7 @@ export default {
     'stylelint-config-standard', // 配置 stylelint 拓展插件
     'stylelint-config-standard-less',
     'stylelint-config-html/vue',
-    'stylelint-prettier/recommended',
-    'stylelint-config-tailwindcss'
+    'stylelint-prettier/recommended'
   ],
   plugins: ['stylelint-order'],
   rules: {
