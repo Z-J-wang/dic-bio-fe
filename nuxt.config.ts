@@ -25,6 +25,15 @@ export default defineNuxtConfig({
   },
   devServer: { port: 8080 },
   compatibilityDate: '2025-07-15',
+  nitro: {
+    devProxy: {
+      '/api': {
+        target: '',
+        changeOrigin: true,
+        prependPath: true
+      }
+    }
+  },
   eslint: {
     config: {
       stylistic: true // 开启 eslint-stylistic
