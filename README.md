@@ -1,6 +1,4 @@
-# submitting-system-fe
-
-数据递交系统前端代码仓库。
+# dic-bio-fe
 
 ## 运行环境
 

@@ -1,10 +1,10 @@
 {
-  "name": "smart-nuxt-template",
+  "name": "dic-bio-fe",
   "type": "module",
-  "private": true,
+  "private": false,
   "version": "0.0.1",
-  "description": "深圳医学科学院-国家基因库数据库开发小组-前端 nuxt 模板项目。",
-  "author": "wangzhijie <wangzhijie@smart.org.cn>",
+  "description": "",
+  "author": "wangzhijie <Jay040030@outlook.com>",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev --dotenv .env.local",
