@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鼎利成生物科技 · 移动端设计稿</title>
+<title>深圳鼎利成生物科技有限公司 · 移动端设计稿</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -559,7 +559,7 @@ body {
       <div class="m-header">
         <div class="m-logo" onclick="gotoPage('home')">
           <div class="m-logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="white" opacity="0.9"/><path d="M5 20c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="white" stroke-width="1.8" fill="none" opacity="0.85"/></svg></div>
-          <span class="m-logo-text">鼎利成生物科技</span>
+          <span class="m-logo-text" style="font-size:12px;">深圳鼎利成生物科技有限公司</span>
         </div>
         <div class="m-menu-btn" onclick="toggleMenu()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
@@ -606,10 +606,10 @@ body {
         <div class="m-cat-grid">
           <div class="m-cat-card" onclick="gotoPage('list')"><div class="m-cat-icon">💊</div><div class="m-cat-name">医药对照品</div><div class="m-cat-count">45,000+ 种</div></div>
           <div class="m-cat-card" onclick="gotoPage('list')"><div class="m-cat-icon">🧬</div><div class="m-cat-name">生化标准品</div><div class="m-cat-count">28,000+ 种</div></div>
-          <div class="m-cat-card" onclick="gotoPage('list')"><div class="m-cat-icon">⚗️</div><div class="m-cat-name">有机对照品</div><div class="m-cat-count">18,000+ 种</div></div>
+          <div class="m-cat-card" onclick="gotoPage('list')"><div class="m-cat-icon">⚗️</div><div class="m-cat-name">杂质对照品</div><div class="m-cat-count">18,000+ 种</div></div>
           <div class="m-cat-card" onclick="gotoPage('list')"><div class="m-cat-icon">🔬</div><div class="m-cat-name">无机标准品</div><div class="m-cat-count">9,000+ 种</div></div>
           <div class="m-cat-card" onclick="gotoPage('list')"><div class="m-cat-icon">🏭</div><div class="m-cat-name">工业检测</div><div class="m-cat-count">6,500+ 种</div></div>
-          <div class="m-cat-card" onclick="gotoPage('list')"><div class="m-cat-icon">🌿</div><div class="m-cat-name">植化对照品</div><div class="m-cat-count">12,000+ 种</div></div>
+          <div class="m-cat-card" onclick="gotoPage('list')"><div class="m-cat-icon">🌿</div><div class="m-cat-name">植物提取物</div><div class="m-cat-count">12,000+ 种</div></div>
         </div>
       </div>
 
@@ -663,13 +663,58 @@ body {
       </div>
 
       <div class="m-list-wrap">
+        <!-- Category filters -->
         <div class="m-filter-row">
           <div class="m-filter-pill active">全部</div>
           <div class="m-filter-pill">医药对照品</div>
           <div class="m-filter-pill">生化标准品</div>
-          <div class="m-filter-pill">有机对照品</div>
-          <div class="m-filter-pill">CFDI</div>
+          <div class="m-filter-pill">杂质对照品</div>
+          <div class="m-filter-pill">无机标准品</div>
+          <div class="m-filter-pill">工业检测标准</div>
+          <div class="m-filter-pill">认证参考物质</div>
+          <div class="m-filter-pill">植物提取物</div>
+          <div class="m-filter-pill">农兽药残留标准</div>
+        </div>
+        <!-- Brand filters: show 5 then expand -->
+        <div class="m-filter-row" id="m-brand-row">
+          <div class="m-filter-pill">中检院</div>
           <div class="m-filter-pill">USP</div>
+          <div class="m-filter-pill">EP</div>
+          <div class="m-filter-pill">SIGMA</div>
+          <div class="m-filter-pill">TRC</div>
+          <div class="m-filter-pill" onclick="openMBrandModal()" style="border-style:dashed;color:var(--blue);border-color:var(--blue);">全部品牌 +</div>
+        </div>
+        <!-- Mobile brand modal -->
+        <div id="m-brand-modal" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.5);" onclick="if(event.target===this)closeMBrandModal()">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:#fff;border-radius:16px 16px 0 0;padding:20px 16px;max-height:80vh;overflow-y:auto;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+              <div style="font-size:15px;font-weight:700;color:var(--navy);">全部品牌</div>
+              <button onclick="closeMBrandModal()" style="border:none;background:var(--line);border-radius:5px;width:28px;height:28px;cursor:pointer;font-size:14px;">✕</button>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> 中检院 CFDI</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> USP</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> EP</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> BP</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> SIGMA</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> TRC</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> NIST</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> LGC</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> AccuStandard</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> ERM</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> NIBSC</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> CDN Isotopes</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> Chromogenix</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> TLC PharmaChem</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> CHIRON</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> ACOS</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> Chem Service</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> 麦克林试剂</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;"><input type="checkbox"> 阿拉丁试剂</label>
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 0;font-size:13px;"><input type="checkbox"> 罗恩试剂</label>
+            </div>
+            <button onclick="closeMBrandModal()" style="margin-top:16px;width:100%;padding:12px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Noto Sans SC',sans-serif;">确定筛选</button>
+          </div>
         </div>
         <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">共 <b style="color:var(--navy)">45,218</b> 条结果</div>
         <div class="m-prod-list">
@@ -733,7 +778,6 @@ body {
         <div class="m-data-card">
           <div class="m-data-card-hdr"><span class="m-data-card-title">核心技术参数</span></div>
           <div class="m-data-grid">
-            <div class="m-data-cell"><div class="m-data-cell-label">纯度</div><div class="m-data-cell-value highlight">99.8 %</div></div>
             <div class="m-data-cell"><div class="m-data-cell-label">分子量</div><div class="m-data-cell-value">194.19 g/mol</div></div>
             <div class="m-data-cell"><div class="m-data-cell-label">分子式</div><div class="m-data-cell-value">C₈H₁₀N₄O₂</div></div>
             <div class="m-data-cell"><div class="m-data-cell-label">外观</div><div class="m-data-cell-value" style="font-family:inherit;font-size:12px;">白色结晶粉末</div></div>
@@ -751,9 +795,6 @@ body {
               <tr><td>品牌来源</td><td>CFDI 中检院</td></tr>
               <tr><td>批号</td><td>100081-202115</td></tr>
               <tr><td>标准依据</td><td>《中国药典》2020版</td></tr>
-              <tr><td>纯度 HPLC</td><td>99.8 %</td></tr>
-              <tr><td>水分</td><td>≤ 0.5 %</td></tr>
-              <tr><td>重金属</td><td>≤ 10 ppm</td></tr>
             </table>
           </div>
         </div>
@@ -774,7 +815,7 @@ body {
         <div class="m-contact-panel" style="margin-top:14px;">
           <div class="m-contact-title">联系与咨询</div>
           <div class="m-contact-item">📞 <div>0755-XXXX-XXXX<small>工作日 09:00–18:00</small></div></div>
-          <div class="m-contact-item">✉️ <div>info@dlcbiotech.com<small>24h内回复</small></div></div>
+          <div class="m-contact-item">✉️ <div><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5d34333b321d39313e3f343229383e35733e3230">[email&#160;protected]</a><small>24h内回复</small></div></div>
         </div>
         <div style="margin-top:14px;">
           <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px;">相关产品</div>
@@ -857,7 +898,7 @@ body {
             </div>
             <div class="contact-row">
               <div class="contact-icon-wrap" style="background:var(--tag-bg)">✉️</div>
-              <div class="contact-info"><div class="contact-label">邮箱</div><div class="contact-value contact-blue">info@dlcbiotech.com</div><div class="contact-sub">24小时内回复</div></div>
+              <div class="contact-info"><div class="contact-label">邮箱</div><div class="contact-value contact-blue"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="751c1b131a35111916171c1a0110161d5b161a18">[email&#160;protected]</a></div><div class="contact-sub">24小时内回复</div></div>
             </div>
             <div class="contact-row">
               <div class="contact-icon-wrap" style="background:var(--tag-bg)">📍</div>
@@ -916,35 +957,51 @@ const PAGES = ['home', 'list', 'detail', 'about'];
 
 function gotoPage(id) {
   closeMenu();
-  PAGES.forEach(p => {
-    const el = document.getElementById('m-page-' + p);
+  PAGES.forEach(function(p) {
+    var el = document.getElementById('m-page-' + p);
     if (el) el.classList.toggle('active', p === id);
   });
-  // update bottom nav
-  document.getElementById('nav-home').classList.toggle('active', id === 'home');
-  document.getElementById('nav-list').classList.toggle('active', id === 'list');
-  document.getElementById('nav-about').classList.toggle('active', id === 'about');
-  // scroll to top
-  document.getElementById('scroll-area').scrollTop = 0;
+  var navHome = document.getElementById('nav-home');
+  var navList = document.getElementById('nav-list');
+  var navAbout = document.getElementById('nav-about');
+  if (navHome) navHome.classList.toggle('active', id === 'home');
+  if (navList) navList.classList.toggle('active', id === 'list');
+  if (navAbout) navAbout.classList.toggle('active', id === 'about');
+  var sa = document.getElementById('scroll-area');
+  if (sa) sa.scrollTop = 0;
 }
 
 function toggleMenu() {
   document.getElementById('menu-drawer').classList.toggle('open');
   document.getElementById('menu-overlay').classList.toggle('open');
 }
+
 function closeMenu() {
-  document.getElementById('menu-drawer').classList.remove('open');
-  document.getElementById('menu-overlay').classList.remove('open');
+  var d = document.getElementById('menu-drawer');
+  var o = document.getElementById('menu-overlay');
+  if (d) d.classList.remove('open');
+  if (o) o.classList.remove('open');
 }
 
 function switchTab(btn, tabId) {
-  const bar = btn.closest('.m-tab-bar');
-  bar.querySelectorAll('.m-tab-item').forEach(t => t.classList.remove('active'));
+  var bar = btn.closest('.m-tab-bar');
+  if (!bar) return;
+  bar.querySelectorAll('.m-tab-item').forEach(function(t) { t.classList.remove('active'); });
   btn.classList.add('active');
-  const wrap = btn.closest('.m-page');
-  wrap.querySelectorAll('.m-tab-content').forEach(t => t.classList.remove('active'));
-  const target = document.getElementById(tabId);
+  var page = btn.closest('.m-page') || document;
+  page.querySelectorAll('.m-tab-content').forEach(function(t) { t.classList.remove('active'); });
+  var target = document.getElementById(tabId);
   if (target) target.classList.add('active');
+}
+
+function openMBrandModal() {
+  var el = document.getElementById('m-brand-modal');
+  if (el) el.style.display = '';
+}
+
+function closeMBrandModal() {
+  var el = document.getElementById('m-brand-modal');
+  if (el) el.style.display = 'none';
 }
 </script>
 </body>

@@ -1,3 +1,3 @@
 export default {
-  blcBio: 'DLC BIOTECHNOLOGY CO., LTD'
+  blcBio: 'SHENZHEN DINGLICHENG BIO-TECHNOLOGY CO.,LTD'
 }

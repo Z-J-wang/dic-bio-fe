@@ -7,8 +7,8 @@ export default defineNuxtConfig({
     baseURL: './',
     // 设置全局默认的 meta
     head: {
-      title: '鼎利成生物科技',
-      meta: [{ name: 'description', content: '鼎利成生物科技' }]
+      title: '深圳鼎利成生物科技有限公司',
+      meta: [{ name: 'description', content: '深圳鼎利成生物科技有限公司' }]
     }
   },
   css: ['~/assets/css/main.css'],

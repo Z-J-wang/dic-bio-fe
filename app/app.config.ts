@@ -5,7 +5,7 @@ export default defineAppConfig({
     },
     footer: {
       slots: {
-        root: 'bg-black text-white py-8',
+        root: 'bg-[#0f2a5e] text-white py-8',
         bottom: 'p-0!'
       }
     },

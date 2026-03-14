@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鼎利成生物科技 · PC端设计稿</title>
+<title>深圳鼎利成生物科技有限公司 · PC端设计稿</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -78,9 +78,9 @@ header {
 }
 .logo { display: flex; align-items: center; gap: 11px; cursor: pointer; flex-shrink: 0; }
 .logo-mark { width: 40px; height: 40px; background: var(--navy); border-radius: 5px; display: flex; align-items: center; justify-content: center; }
-.logo-words { display: flex; flex-direction: column; line-height: 1.15; }
-.logo-cn { font-family: 'Noto Serif SC', serif; font-weight: 700; font-size: 17px; color: var(--navy); }
-.logo-en { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .12em; color: var(--muted); }
+.logo-words { display: flex; flex-direction: column; gap: 3px; line-height: 1.2; }
+.logo-cn { font-family: 'Noto Serif SC', serif; font-weight: 700; font-size: 15px; color: var(--navy); }
+.logo-en { font-family: 'DM Mono', monospace; font-size: 8.5px; letter-spacing: .06em; color: var(--muted); }
 nav { display: flex; gap: 2px; flex: 1; }
 nav a { font-size: 14px; font-weight: 500; color: var(--muted); padding: 6px 14px; border-radius: var(--radius); transition: .15s; cursor: pointer; }
 nav a:hover { color: var(--navy); background: var(--line); }
@@ -684,8 +684,8 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
         </svg>
       </div>
       <div class="logo-words">
-        <span class="logo-cn">鼎利成生物科技</span>
-        <span class="logo-en">DLC BIOTECHNOLOGY CO., LTD</span>
+        <span class="logo-cn">深圳鼎利成生物科技有限公司</span>
+        <span class="logo-en">SHENZHEN DINGLICHENG BIO-TECHNOLOGY CO.,LTD</span>
       </div>
     </div>
     <nav>
@@ -696,6 +696,7 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
     </nav>
     <div class="hdr-actions">
       <button class="btn-primary" onclick="showPage('list')">🔍 产品检索</button>
+      <button id="hdr-service-btn" class="btn-primary" onclick="toggleQQPopup()" style="background:var(--navy-mid);">💬 在线客服</button>
     </div>
   </div>
 </header>
@@ -747,11 +748,11 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
     <div class="cat-grid">
       <div class="cat-card" onclick="showPage('list')"><div class="cat-icon blue">💊</div><div class="cat-name">医药对照品</div><div class="cat-count">45,000+ 种 · CP/EP/USP/BP</div></div>
       <div class="cat-card" onclick="showPage('list')"><div class="cat-icon green">🧬</div><div class="cat-name">生化标准品</div><div class="cat-count">28,000+ 种 · 酶、蛋白、核酸</div></div>
-      <div class="cat-card" onclick="showPage('list')"><div class="cat-icon gold">⚗️</div><div class="cat-name">有机对照品</div><div class="cat-count">18,000+ 种 · 高纯度有机化合物</div></div>
+      <div class="cat-card" onclick="showPage('list')"><div class="cat-icon gold">⚗️</div><div class="cat-name">杂质对照品</div><div class="cat-count">18,000+ 种 · 高纯度有机化合物</div></div>
       <div class="cat-card" onclick="showPage('list')"><div class="cat-icon red">🔬</div><div class="cat-name">无机标准品</div><div class="cat-count">9,000+ 种 · 金属离子、盐类</div></div>
       <div class="cat-card" onclick="showPage('list')"><div class="cat-icon blue">🏭</div><div class="cat-name">工业检测标准</div><div class="cat-count">6,500+ 种 · 环境、材料、食品</div></div>
       <div class="cat-card" onclick="showPage('list')"><div class="cat-icon green">📋</div><div class="cat-name">认证参考物质</div><div class="cat-count">3,500+ 种 · NIST/ERM/CRM</div></div>
-      <div class="cat-card" onclick="showPage('list')"><div class="cat-icon gold">🌿</div><div class="cat-name">植化对照品</div><div class="cat-count">12,000+ 种 · 天然产物、中药材</div></div>
+      <div class="cat-card" onclick="showPage('list')"><div class="cat-icon gold">🌿</div><div class="cat-name">植物提取物</div><div class="cat-count">12,000+ 种 · 天然产物、中药材</div></div>
       <div class="cat-card" onclick="showPage('list')"><div class="cat-icon red">⚡</div><div class="cat-name">农兽药残留标准</div><div class="cat-count">8,000+ 种 · 农药、兽药检测</div></div>
     </div>
   </div>
@@ -779,7 +780,7 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
       <div>
         <div class="footer-logo">
           <div class="footer-logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="white" opacity="0.8"/><path d="M5 20c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="white" stroke-width="1.8" fill="none" opacity="0.8"/></svg></div>
-          <span class="footer-logo-text">鼎利成生物科技</span>
+          <span class="footer-logo-text">深圳鼎利成生物科技有限公司</span>
         </div>
         <p class="footer-desc">深圳鼎利成生物科技有限公司，专注于对照品与标准品的代理与销售，提供超过10万种医药、生化、工业实验检测类对照品及标准品。</p>
         <p style="font-size:12px;color:rgba(255,255,255,.3);margin-top:14px;line-height:1.8;">深圳市龙岗区龙城街道回龙铺社区<br>花样年乐年广场13号楼A单元1001</p>
@@ -842,7 +843,7 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
         <div style="display:flex;gap:6px;flex-wrap:wrap;">
           <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">药典对照品</span>
           <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">12,450+ 种</span>
-          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+          
         </div>
       </div>
 
@@ -861,7 +862,7 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
         <div style="display:flex;gap:6px;flex-wrap:wrap;">
           <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">美国药典</span>
           <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">8,320+ 种</span>
-          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+          
         </div>
       </div>
 
@@ -880,7 +881,7 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
         <div style="display:flex;gap:6px;flex-wrap:wrap;">
           <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">欧洲药典</span>
           <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">7,180+ 种</span>
-          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+          
         </div>
       </div>
 
@@ -898,7 +899,7 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
         <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">英国药品和保健品监管局（MHRA）发布，提供官方化学标准物质（BPCRS），广泛用于原料药与成品检验。</p>
         <div style="display:flex;gap:6px;flex-wrap:wrap;">
           <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">英国药典</span>
-          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+          
         </div>
       </div>
 
@@ -917,7 +918,7 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
         <div style="display:flex;gap:6px;flex-wrap:wrap;">
           <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">SRM 标准</span>
           <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">3,100+ 种</span>
-          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+          
         </div>
       </div>
 
@@ -936,7 +937,7 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
         <div style="display:flex;gap:6px;flex-wrap:wrap;">
           <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">有机标准品</span>
           <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">2,890+ 种</span>
-          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+          
         </div>
       </div>
 
@@ -955,7 +956,7 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
         <div style="display:flex;gap:6px;flex-wrap:wrap;">
           <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">精细化学品</span>
           <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">6,940+ 种</span>
-          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+          
         </div>
       </div>
 
@@ -1010,7 +1011,7 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
         <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">欧盟联合研究中心（JRC）认证参考物质，广泛用于环境、食品、材料等领域的实验室能力验证与方法确认。</p>
         <div style="display:flex;gap:6px;flex-wrap:wrap;">
           <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">认证参考物质</span>
-          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+          
         </div>
       </div>
 
@@ -1028,7 +1029,7 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
         <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">英国国家生物标准与控制研究所，提供WHO国际生物标准品，用于疫苗、血液制品及生物治疗产品的效价检测。</p>
         <div style="display:flex;gap:6px;flex-wrap:wrap;">
           <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">生物标准品</span>
-          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+          
         </div>
       </div>
 
@@ -1082,7 +1083,7 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
         <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">美国农药及环境化学品标准品专业生产商，产品涵盖农残、兽残、多环芳烃等环境有机污染物标准溶液。</p>
         <div style="display:flex;gap:6px;flex-wrap:wrap;">
           <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">农残检测</span>
-          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+          
         </div>
       </div>
 
@@ -1100,7 +1101,7 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
         <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">挪威专业持久性有机污染物（POPs）标准品供应商，尤其在二噁英、PCBs及海洋环境污染物检测领域享有权威地位。</p>
         <div style="display:flex;gap:6px;flex-wrap:wrap;">
           <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">持久性污染物</span>
-          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+          
         </div>
       </div>
 
@@ -1118,7 +1119,7 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
         <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">提供有机与无机分析标准品，覆盖工业检测、材料分析及科研实验各应用领域，品质稳定可靠。</p>
         <div style="display:flex;gap:6px;flex-wrap:wrap;">
           <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">工业标准</span>
-          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+          
         </div>
       </div>
 
@@ -1215,7 +1216,7 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
       <div>
         <div class="footer-logo">
           <div class="footer-logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="white" opacity="0.8"/><path d="M5 20c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="white" stroke-width="1.8" fill="none" opacity="0.8"/></svg></div>
-          <span class="footer-logo-text">鼎利成生物科技</span>
+          <span class="footer-logo-text">深圳鼎利成生物科技有限公司</span>
         </div>
         <p class="footer-desc">深圳鼎利成生物科技有限公司，专注于对照品与标准品的代理与销售，提供超过10万种医药、生化、工业实验检测类对照品及标准品。</p>
         <p style="font-size:12px;color:rgba(255,255,255,.3);margin-top:14px;line-height:1.8;">深圳市龙岗区龙城街道回龙铺社区<br>花样年乐年广场13号楼A单元1001</p>
@@ -1428,7 +1429,7 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
       <div>
         <div class="footer-logo">
           <div class="footer-logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="white" opacity="0.8"/><path d="M5 20c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="white" stroke-width="1.8" fill="none" opacity="0.8"/></svg></div>
-          <span class="footer-logo-text">鼎利成生物科技</span>
+          <span class="footer-logo-text">深圳鼎利成生物科技有限公司</span>
         </div>
         <p class="footer-desc">深圳鼎利成生物科技有限公司，专注于对照品与标准品的代理与销售，提供超过10万种医药、生化、工业实验检测类对照品及标准品。</p>
         <p style="font-size:12px;color:rgba(255,255,255,.3);margin-top:14px;line-height:1.8;">深圳市龙岗区龙城街道回龙铺社区<br>花样年乐年广场13号楼A单元1001</p>
@@ -1457,7 +1458,7 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
       </div>
       <div class="sidebar-block">
         <div class="sidebar-title">筛选条件</div>
-        <div class="filter-group">
+        <div class="filter-group" id="brand-filter-group">
           <div class="filter-label">品牌</div>
           <label class="filter-item"><input type="checkbox" checked> 中检院 CFDI <span class="filter-count">12,450</span></label>
           <label class="filter-item"><input type="checkbox"> USP <span class="filter-count">8,320</span></label>
@@ -1466,13 +1467,54 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
           <label class="filter-item"><input type="checkbox"> TRC <span class="filter-count">5,200</span></label>
           <label class="filter-item"><input type="checkbox"> NIST <span class="filter-count">3,100</span></label>
           <label class="filter-item"><input type="checkbox"> LGC <span class="filter-count">2,890</span></label>
+          <button onclick="openBrandModal()" style="margin-top:8px;width:100%;padding:6px 0;border:1.5px dashed var(--line);border-radius:5px;background:#f8fafc;color:var(--blue);font-size:12px;font-weight:600;cursor:pointer;font-family:'Noto Sans SC',sans-serif;">全部品牌 ↓</button>
+        </div>
+
+        <!-- Brand Modal -->
+        <div id="brand-modal" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.45);" onclick="if(event.target===this)closeBrandModal()">
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:12px;padding:24px;width:480px;max-width:90vw;max-height:80vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3);">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+              <div style="font-size:15px;font-weight:700;color:var(--navy);">全部品牌</div>
+              <button onclick="closeBrandModal()" style="border:none;background:var(--line);border-radius:5px;width:28px;height:28px;cursor:pointer;font-size:14px;">✕</button>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+              <label class="filter-item"><input type="checkbox"> 中检院 CFDI <span class="filter-count">12,450</span></label>
+              <label class="filter-item"><input type="checkbox"> USP <span class="filter-count">8,320</span></label>
+              <label class="filter-item"><input type="checkbox"> EP <span class="filter-count">7,180</span></label>
+              <label class="filter-item"><input type="checkbox"> BP <span class="filter-count">4,200</span></label>
+              <label class="filter-item"><input type="checkbox"> SIGMA <span class="filter-count">6,940</span></label>
+              <label class="filter-item"><input type="checkbox"> TRC <span class="filter-count">5,200</span></label>
+              <label class="filter-item"><input type="checkbox"> NIST <span class="filter-count">3,100</span></label>
+              <label class="filter-item"><input type="checkbox"> LGC <span class="filter-count">2,890</span></label>
+              <label class="filter-item"><input type="checkbox"> AccuStandard <span class="filter-count">1,800</span></label>
+              <label class="filter-item"><input type="checkbox"> ERM <span class="filter-count">1,200</span></label>
+              <label class="filter-item"><input type="checkbox"> NIBSC <span class="filter-count">800</span></label>
+              <label class="filter-item"><input type="checkbox"> CDN Isotopes <span class="filter-count">650</span></label>
+              <label class="filter-item"><input type="checkbox"> Chromogenix <span class="filter-count">420</span></label>
+              <label class="filter-item"><input type="checkbox"> TLC PharmaChem <span class="filter-count">380</span></label>
+              <label class="filter-item"><input type="checkbox"> CHIRON <span class="filter-count">350</span></label>
+              <label class="filter-item"><input type="checkbox"> ACOS <span class="filter-count">310</span></label>
+              <label class="filter-item"><input type="checkbox"> Chem Service <span class="filter-count">290</span></label>
+              <label class="filter-item"><input type="checkbox"> 麦克林试剂 <span class="filter-count">5,600</span></label>
+              <label class="filter-item"><input type="checkbox"> 阿拉丁试剂 <span class="filter-count">4,800</span></label>
+              <label class="filter-item"><input type="checkbox"> 罗恩试剂 <span class="filter-count">3,200</span></label>
+            </div>
+            <div style="margin-top:16px;display:flex;gap:10px;">
+              <button onclick="closeBrandModal()" style="flex:1;padding:9px;background:var(--blue);color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Noto Sans SC',sans-serif;">确定筛选</button>
+              <button onclick="closeBrandModal()" style="padding:9px 16px;background:#fff;border:1.5px solid var(--line);border-radius:6px;font-size:13px;color:var(--muted);cursor:pointer;font-family:'Noto Sans SC',sans-serif;">取消</button>
+            </div>
+          </div>
         </div>
         <div class="filter-group">
           <div class="filter-label">产品类别</div>
           <label class="filter-item"><input type="checkbox" checked> 医药对照品 <span class="filter-count">45,200</span></label>
           <label class="filter-item"><input type="checkbox"> 生化标准品 <span class="filter-count">28,100</span></label>
-          <label class="filter-item"><input type="checkbox"> 有机对照品 <span class="filter-count">18,000</span></label>
+          <label class="filter-item"><input type="checkbox"> 杂质对照品 <span class="filter-count">18,000</span></label>
           <label class="filter-item"><input type="checkbox"> 无机标准品 <span class="filter-count">9,000</span></label>
+          <label class="filter-item"><input type="checkbox"> 工业检测标准 <span class="filter-count">6,500</span></label>
+          <label class="filter-item"><input type="checkbox"> 认证参考物质 <span class="filter-count">3,500</span></label>
+          <label class="filter-item"><input type="checkbox"> 植物提取物 <span class="filter-count">12,000</span></label>
+          <label class="filter-item"><input type="checkbox"> 农兽药残留标准 <span class="filter-count">8,000</span></label>
         </div>
 
       </div>
@@ -1480,7 +1522,7 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
     <main>
       <div class="list-toolbar">
         <div class="list-count">共找到 <b>45,218</b> 条产品 &nbsp;·&nbsp; 已筛选：医药对照品 / 中检院</div>
-        <select class="sort-select"><option>综合排序</option><option>按纯度排序</option><option>最新上架</option></select>
+
       </div>
       <table class="prod-table">
         <thead>
@@ -1604,12 +1646,9 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
             <span class="data-card-title">核心技术参数</span>
           </div>
           <div class="data-grid">
-            <div class="data-cell"><div class="data-cell-label">纯度 Purity</div><div class="data-cell-value highlight">99.8 %</div></div>
             <div class="data-cell"><div class="data-cell-label">分子量 MW</div><div class="data-cell-value">194.19 g/mol</div></div>
             <div class="data-cell"><div class="data-cell-label">分子式</div><div class="data-cell-value">C₈H₁₀N₄O₂</div></div>
             <div class="data-cell"><div class="data-cell-label">外观</div><div class="data-cell-value">白色结晶粉末</div></div>
-            <div class="data-cell"><div class="data-cell-label">熔点 MP</div><div class="data-cell-value">235–238 °C</div></div>
-            <div class="data-cell"><div class="data-cell-label">含量测定</div><div class="data-cell-value green-v">符合规定 ✓</div></div>
           </div>
         </div>
 
@@ -1632,10 +1671,6 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
               <tr><td>品牌 / 来源</td><td>中国食品药品检定研究院（CFDI）</td></tr>
               <tr><td>批号</td><td>100081-202115</td></tr>
               <tr><td>标准依据</td><td>《中国药典》2020版 第一部</td></tr>
-              <tr><td>纯度（HPLC）</td><td>99.8 %</td></tr>
-              <tr><td>水分（Karl Fischer）</td><td>≤ 0.5 %</td></tr>
-              <tr><td>灼烧残渣</td><td>≤ 0.1 %</td></tr>
-              <tr><td>重金属（以 Pb 计）</td><td>≤ 10 ppm</td></tr>
             </table>
           </div>
         </div>
@@ -1801,6 +1836,13 @@ footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 
 
 </div>
 <script>
+
+function openBrandModal() {
+  document.getElementById('brand-modal').style.display = '';
+}
+function closeBrandModal() {
+  document.getElementById('brand-modal').style.display = 'none';
+}
 function showPage(id) {
   document.querySelectorAll('#pc-view .page').forEach(p => p.classList.remove('active'));
   document.getElementById('pc-page-' + id).classList.add('active');
@@ -1830,8 +1872,12 @@ function toggleQQPopup() {
 }
 document.addEventListener('click', function(e) {
   const popup = document.getElementById('qq-popup');
-  const btn = document.querySelector('.qq-float-btn');
-  if (popup && !popup.contains(e.target) && btn && !btn.contains(e.target)) {
+  const floatBtn = document.querySelector('.qq-float-btn');
+  const hdrBtn = document.getElementById('hdr-service-btn');
+  if (popup && popup.classList.contains('open')
+      && !popup.contains(e.target)
+      && !(floatBtn && floatBtn.contains(e.target))
+      && !(hdrBtn && hdrBtn.contains(e.target))) {
     popup.classList.remove('open');
   }
 });
