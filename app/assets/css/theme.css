@@ -10,6 +10,8 @@
  */
 
 @theme {
+  --font-sans: 'Noto Sans SC', sans-serif; /* 无衬线字体 */
+
   --color-primary: #1050d0; /* 默认主题色 */
   --color-secondary: var(--color-blue); /* 次级主题色 */
   --color-success: var(--color-green); /* 成功色 */
@@ -66,10 +68,10 @@
 
 :root {
   --ui-text-dimmed: var(--ui-color-neutral-400); /* 弱三级文本色 */
-  --ui-text-muted: var(--ui-color-neutral-500); /* 弱二级文本色 */
-  --ui-text-toned: var(--ui-color-neutral-600); /* 弱一级文本色 */
-  --ui-text: var(--ui-color-neutral-700); /* 默认文本色 */
-  --ui-text-highlighted: var(--ui-color-neutral-900); /* 强文本色 */
+  --ui-text-muted: #6b7a99; /* 弱二级文本色 */
+  --ui-text-toned: #1a3a72; /* 弱一级文本色 */
+  --ui-text: #0f2a5e; /* 默认文本色 */
+  --ui-text-highlighted: #0f2a5e; /* 强文本色 */
   --ui-text-inverted: white; /* 反底文本色 */
 
   --ui-bg: white; /* 默认背景色 */

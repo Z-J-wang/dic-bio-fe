@@ -41,16 +41,12 @@ html {
   }
 }
 
-@media (width >= 1440px) {
-  :root {
-    --ui-container: 1440px; /* 主体内容宽度改为1440px */
-  }
+body {
+  background: #f5f7fa;
 }
 
-@media (width <= 1440px) {
-  :root {
-    --ui-container: 1280px; /* 主体内容宽度改为1280px */
-  }
+:root {
+  --ui-container: 1320px;
 }
 
 @media (width <= 768px) {
