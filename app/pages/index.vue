@@ -5,7 +5,7 @@ const { t } = useI18n()
 
 // 设置页面的的TDK
 useSeoMeta({
-  title: '首页 - smart nuxt template'
+  title: () => t('blcBio')
 })
 
 const userStore = useUserStore()

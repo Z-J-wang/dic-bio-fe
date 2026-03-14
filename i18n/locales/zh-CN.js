@@ -1,4 +1,3 @@
 export default {
-  smartNbc: '深圳国家基因库',
-  news: '新闻'
+  blcBio: '鼎利成生物科技'
 }

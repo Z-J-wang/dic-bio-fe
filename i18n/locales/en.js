@@ -1,4 +1,1 @@
-export default {
-  smartNbc: 'SMART-NBC',
-  news: 'News'
-}
+export default {}
