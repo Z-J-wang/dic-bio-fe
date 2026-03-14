@@ -8,8 +8,8 @@ export default defineNuxtConfig({
     baseURL: './',
     // 设置全局默认的 meta
     head: {
-      title: 'SMART-Nuxt-Template',
-      meta: [{ name: 'description', content: 'SMART-Nuxt-Template' }]
+      title: '鼎利成生物科技',
+      meta: [{ name: 'description', content: '鼎利成生物科技' }]
     }
   },
   css: ['~/assets/css/main.css'],
