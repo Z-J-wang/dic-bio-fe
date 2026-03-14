@@ -10,6 +10,35 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+
+  @supports (-webkit-appearance: none) {
+    /* 滚动条整体 */
+    ::-webkit-scrollbar {
+      border-radius: 4px; /* 轨道圆角 */
+      width: 8px; /* 垂直滚动条宽度 */
+      height: 8px; /* 水平滚动条高度 */
+      background: var(--color-gray-50); /* 轨道背景色 */
+    }
+
+    /* 滚动条滑块 */
+    ::-webkit-scrollbar-thumb {
+      border-radius: 4px; /* 滑块圆角 */
+      background: var(--color-slate-300); /* 滑块颜色 */
+    }
+
+    /* 轨道 */
+    ::-webkit-scrollbar-track {
+      border-radius: 4px;
+      background: transparent; /* 轨道背景 */
+    }
+  }
+
+  @supports not (-webkit-appearance: none) {
+    html {
+      scrollbar-color: var(--color-slate-300) transparent;
+      scrollbar-width: thin;
+    }
+  }
 }
 
 @media (width >= 1440px) {

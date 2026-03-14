@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鼎利成生物科技 · PC端设计稿</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ======== VARIABLES ======== */
+:root {
+  --navy:      #0f2a5e;
+  --navy-mid:  #1a3a72;
+  --blue:      #1050d0;
+  --blue-br:   #2563eb;
+  --cyan:      #00bcd4;
+  --white:     #f5f7fa;
+  --card:      #ffffff;
+  --muted:     #6b7a99;
+  --line:      #e2e8f0;
+  --tag-bg:    #eef2ff;
+  --tag-txt:   #3b5bdb;
+  --green:     #0d9e6e;
+  --gold:      #d4900a;
+  --radius:    6px;
+  --shadow:    0 2px 16px rgba(7,17,43,.08);
+  --shadow-lg: 0 8px 40px rgba(7,17,43,.14);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background: var(--white);
+  color: var(--navy);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ======== PAGE SYSTEM ======== */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ======== MOBILE PREVIEW TOGGLE ======== */
+.preview-toggle {
+  position: fixed; top: 12px; right: 16px; z-index: 9999;
+  display: flex; gap: 6px; background: var(--navy); padding: 5px 6px; border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.4);
+}
+.ptb {
+  font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 5px;
+  cursor: pointer; transition: .15s; border: none; font-family: 'Noto Sans SC', sans-serif;
+  color: rgba(255,255,255,.55); background: transparent;
+}
+.ptb.active { background: var(--blue); color: #fff; }
+
+/* ======== PC LAYOUT ======== */
+#pc-view { display: block; }
+/* #mobile-view 초기 숨김은 아래 MOBILE DESIGN 블록에서 처리 */
+
+/* ======== TOP STRIP ======== */
+.top-strip {
+  background: var(--navy); color: rgba(255,255,255,.6);
+  font-size: 12px; text-align: center; padding: 6px 24px; letter-spacing: .04em;
+}
+.top-strip b { color: #fff; font-weight: 500; }
+
+/* ======== HEADER (PC) ======== */
+header {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(245,247,250,.97); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.hdr-inner {
+  max-width: 1320px; margin: 0 auto;
+  padding: 0 40px; height: 66px;
+  display: flex; align-items: center; gap: 40px;
+}
+.logo { display: flex; align-items: center; gap: 11px; cursor: pointer; flex-shrink: 0; }
+.logo-mark { width: 40px; height: 40px; background: var(--navy); border-radius: 5px; display: flex; align-items: center; justify-content: center; }
+.logo-words { display: flex; flex-direction: column; line-height: 1.15; }
+.logo-cn { font-family: 'Noto Serif SC', serif; font-weight: 700; font-size: 17px; color: var(--navy); }
+.logo-en { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .12em; color: var(--muted); }
+nav { display: flex; gap: 2px; flex: 1; }
+nav a { font-size: 14px; font-weight: 500; color: var(--muted); padding: 6px 14px; border-radius: var(--radius); transition: .15s; cursor: pointer; }
+nav a:hover { color: var(--navy); background: var(--line); }
+.hdr-actions { display: flex; gap: 10px; margin-left: auto; align-items: center; }
+.btn-primary { font-size: 13px; font-weight: 500; background: var(--blue); color: #fff; padding: 7px 18px; border-radius: var(--radius); transition: .15s; border: none; cursor: pointer; }
+.btn-primary:hover { background: var(--blue-br); }
+
+/* ======== HERO ======== */
+.hero {
+  background: var(--navy); min-height: 480px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 72px 24px 80px; position: relative; overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(0,188,212,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0,188,212,.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.hero-glow {
+  position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(ellipse, rgba(16,80,208,.45) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-content { position: relative; text-align: center; max-width: 820px; }
+.hero-label {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .14em;
+  color: var(--cyan); border: 1px solid rgba(0,188,212,.35);
+  padding: 4px 14px; border-radius: 40px; margin-bottom: 24px; text-transform: uppercase;
+}
+.hero-label span { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); display: inline-block; animation: blink 1.8s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+.hero h1 { font-family: 'Noto Serif SC', serif; font-size: clamp(30px,4vw,52px); font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: 14px; }
+.hero h1 em { font-style: normal; color: var(--cyan); }
+.hero-sub { font-size: 16px; color: rgba(255,255,255,.55); margin-bottom: 44px; }
+.search-bar { display: flex; background: #fff; border-radius: 8px; box-shadow: 0 8px 48px rgba(0,0,0,.35); overflow: hidden; max-width: 780px; width: 100%; margin: 0 auto; height: 54px; }
+.search-bar select { border: none; outline: none; background: #f0f4f8; color: var(--navy); font-family: 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 500; padding: 0 16px; min-width: 140px; border-right: 1px solid var(--line); cursor: pointer; }
+.search-bar input { flex: 1; border: none; outline: none; font-family: 'Noto Sans SC', sans-serif; font-size: 15px; padding: 0 20px; color: var(--navy); }
+.search-bar input::placeholder { color: #aab4c8; }
+.search-bar button { background: var(--blue); color: #fff; border: none; padding: 0 28px; font-size: 15px; font-weight: 500; cursor: pointer; transition: .15s; font-family: 'Noto Sans SC', sans-serif; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.search-bar button:hover { background: var(--blue-br); }
+.hero-tags { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 18px; }
+.hero-tag { font-size: 12px; color: rgba(255,255,255,.55); cursor: pointer; padding: 3px 10px; border: 1px solid rgba(255,255,255,.15); border-radius: 20px; transition: .15s; }
+.hero-tag:hover { color: #fff; border-color: rgba(255,255,255,.4); }
+
+/* ======== STATS ======== */
+.stats-row { background: var(--navy-mid); border-top: 1px solid rgba(255,255,255,.06); }
+.stats-inner { max-width: 1320px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: repeat(4,1fr); }
+.stat-item { padding: 28px 0; text-align: center; border-right: 1px solid rgba(255,255,255,.08); }
+.stat-item:last-child { border-right: none; }
+.stat-num { font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500; color: #fff; line-height: 1; margin-bottom: 6px; }
+.stat-num em { font-style: normal; color: var(--cyan); font-size: 22px; }
+.stat-label { font-size: 13px; color: rgba(255,255,255,.5); }
+
+/* ======== SECTIONS ======== */
+.section { max-width: 1320px; margin: 0 auto; padding: 72px 40px; }
+.section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 40px; }
+.section-title { font-family: 'Noto Serif SC', serif; font-size: 26px; font-weight: 700; color: var(--navy); }
+.section-sub { font-size: 14px; color: var(--muted); }
+.section-link { margin-left: auto; font-size: 14px; color: var(--blue); cursor: pointer; font-weight: 500; }
+.section-link:hover { text-decoration: underline; }
+
+/* ======== CATEGORY GRID ======== */
+.cat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.cat-card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 24px 20px; cursor: pointer; color: var(--navy); transition: .2s; position: relative; overflow: hidden; }
+.cat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: .2s; }
+.cat-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.cat-card:hover::before { transform: scaleX(1); }
+.cat-icon { width: 44px; height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; font-size: 22px; }
+.cat-icon.blue  { background: var(--tag-bg); }
+.cat-icon.green { background: #e6f9f3; }
+.cat-icon.gold  { background: #fff8e6; }
+.cat-icon.red   { background: #fef2f0; }
+.cat-name { font-weight: 700; font-size: 15px; margin-bottom: 5px; }
+.cat-count { font-size: 13px; color: var(--muted); }
+
+/* ======== BRANDS ======== */
+.brands-section { background: #f0f4f8; padding: 48px 0; }
+.brands-inner { max-width: 1320px; margin: 0 auto; padding: 0 40px; }
+.brands-title { font-size: 13px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; font-family: 'DM Mono', monospace; margin-bottom: 28px; }
+.brand-logos { display: flex; flex-wrap: wrap; gap: 10px; }
+.brand-chip { background: #fff; border: 1.5px solid var(--line); border-radius: 6px; padding: 8px 18px; font-size: 13px; font-weight: 700; color: var(--navy-mid); font-family: 'DM Mono', monospace; letter-spacing: .04em; transition: .15s; cursor: pointer; }
+.brand-chip:hover { border-color: var(--blue); color: var(--blue); }
+
+/* ======== FEATURES ======== */
+.feature-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.feature-card { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 28px 24px; }
+.feature-icon { font-size: 28px; margin-bottom: 14px; }
+.feature-title { font-weight: 700; font-size: 16px; margin-bottom: 8px; }
+.feature-desc { font-size: 14px; color: var(--muted); line-height: 1.8; }
+
+/* ======== PAGE NAV ======== */
+.page-nav { background: var(--card); border-bottom: 1px solid var(--line); }
+.page-nav-inner { max-width: 1320px; margin: 0 auto; padding: 0 40px; display: flex; }
+.page-tab { padding: 16px 20px; font-size: 14px; font-weight: 500; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; transition: .15s; white-space: nowrap; }
+.page-tab:hover { color: var(--navy); }
+.page-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
+
+/* ======== LIST LAYOUT ======== */
+.list-layout { max-width: 1320px; margin: 0 auto; padding: 40px; display: grid; grid-template-columns: 260px 1fr; gap: 32px; }
+.sidebar { position: sticky; top: 86px; align-self: start; }
+.sidebar-block { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+.sidebar-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 14px; text-transform: uppercase; letter-spacing: .05em; }
+.filter-group { margin-bottom: 18px; }
+.filter-label { font-size: 12px; color: var(--muted); font-weight: 600; margin-bottom: 8px; letter-spacing: .04em; }
+.filter-item { display: flex; align-items: center; gap: 8px; padding: 5px 0; font-size: 13.5px; cursor: pointer; }
+.filter-item input[type=checkbox] { width: 15px; height: 15px; accent-color: var(--blue); cursor: pointer; }
+.filter-count { margin-left: auto; font-size: 11px; font-family: 'DM Mono', monospace; background: var(--tag-bg); color: var(--tag-txt); padding: 1px 7px; border-radius: 10px; }
+.list-search-bar { display: flex; border: 1.5px solid var(--line); border-radius: 7px; overflow: hidden; background: #fff; }
+.list-search-bar input { flex: 1; border: none; outline: none; padding: 9px 16px; font-size: 14px; font-family: 'Noto Sans SC', sans-serif; color: var(--navy); }
+.list-search-bar button { background: var(--blue); color: #fff; border: none; padding: 0 18px; cursor: pointer; font-size: 14px; transition: .15s; }
+.list-search-bar button:hover { background: var(--blue-br); }
+
+/* ======== PRODUCT TABLE ======== */
+.list-toolbar { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.list-count { font-size: 14px; color: var(--muted); }
+.list-count b { color: var(--navy); }
+.sort-select { margin-left: auto; border: 1.5px solid var(--line); border-radius: var(--radius); padding: 6px 12px; font-size: 13px; font-family: 'Noto Sans SC', sans-serif; color: var(--navy); background: #fff; outline: none; cursor: pointer; }
+.prod-table { width: 100%; border-collapse: collapse; }
+.prod-table thead th { font-size: 12px; font-weight: 600; color: var(--muted); text-align: left; padding: 10px 14px; border-bottom: 2px solid var(--line); letter-spacing: .04em; text-transform: uppercase; background: #f8fafc; font-family: 'DM Mono', monospace; }
+.prod-table tbody tr { border-bottom: 1px solid var(--line); transition: .12s; cursor: pointer; }
+.prod-table tbody tr:hover { background: #f4f7ff; }
+.prod-table td { padding: 13px 14px; font-size: 13.5px; vertical-align: middle; }
+.prod-name { font-weight: 600; color: var(--navy); font-size: 14px; }
+.prod-name-en { font-size: 12px; color: var(--muted); margin-top: 2px; font-family: 'DM Mono', monospace; }
+.prod-cas { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
+.prod-brand-badge { display: inline-block; font-size: 11px; font-weight: 700; font-family: 'DM Mono', monospace; background: var(--tag-bg); color: var(--tag-txt); padding: 3px 9px; border-radius: 4px; }
+.purity-bar-wrap { display: flex; align-items: center; gap: 8px; }
+.purity-bar { flex: 1; height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+.purity-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--cyan)); border-radius: 3px; }
+.purity-text { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--navy); white-space: nowrap; }
+.action-btn { border: 1.5px solid var(--line); background: #fff; border-radius: 5px; padding: 5px 11px; font-size: 12px; cursor: pointer; transition: .15s; font-family: 'Noto Sans SC', sans-serif; color: var(--navy); font-weight: 500; }
+.action-btn:hover, .action-btn.primary { background: var(--blue); color: #fff; border-color: var(--blue); }
+.action-btn.primary:hover { background: var(--blue-br); }
+.pagination { display: flex; gap: 6px; justify-content: center; margin-top: 36px; }
+.pg-btn { width: 36px; height: 36px; border-radius: 6px; border: 1.5px solid var(--line); background: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; cursor: pointer; color: var(--navy); transition: .15s; font-family: 'DM Mono', monospace; }
+.pg-btn:hover { border-color: var(--blue); color: var(--blue); }
+.pg-btn.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+/* ======== PRODUCT DETAIL ======== */
+.detail-wrap { max-width: 1320px; margin: 0 auto; padding: 40px; }
+.breadcrumb { display: flex; gap: 6px; align-items: center; font-size: 13px; color: var(--muted); margin-bottom: 32px; }
+.breadcrumb span { cursor: pointer; }
+.breadcrumb span:hover { color: var(--blue); }
+.breadcrumb-sep { color: var(--line); pointer-events: none; }
+.detail-grid { display: grid; grid-template-columns: 1fr 360px; gap: 32px; }
+.detail-badges { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 4px; font-family: 'DM Mono', monospace; letter-spacing: .05em; }
+.badge-brand { background: var(--navy); color: #fff; }
+.badge-cat { background: var(--tag-bg); color: var(--tag-txt); }
+.badge-cert { background:#e6f9f3;color:#0a7c55; }
+.detail-name { font-family: 'Noto Serif SC', serif; font-size: 28px; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.detail-name-en { font-family: 'DM Mono', monospace; font-size: 15px; color: var(--muted); margin-bottom: 16px; }
+.detail-cas-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.cas-label { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+.cas-value { font-family: 'DM Mono', monospace; font-size: 16px; color: var(--blue); background: var(--tag-bg); padding: 4px 12px; border-radius: 5px; }
+.data-card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin-bottom: 20px; }
+.data-card-header { padding: 14px 20px; border-bottom: 1px solid var(--line); background: #f8fafc; display: flex; align-items: center; gap: 10px; }
+.data-card-title { font-size: 13px; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: .06em; }
+.data-grid { display: grid; grid-template-columns: repeat(3,1fr); }
+.data-cell { padding: 16px 20px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.data-cell:nth-child(3n) { border-right: none; }
+.data-cell-label { font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 5px; }
+.data-cell-value { font-size: 15px; font-weight: 600; color: var(--navy); font-family: 'DM Mono', monospace; }
+.data-cell-value.highlight { color: var(--blue); }
+.data-cell-value.green-v { color: var(--green); }
+.tab-bar { display: flex; border-bottom: 1px solid var(--line); margin-bottom: 24px; }
+.tab-item { padding: 10px 20px; font-size: 14px; font-weight: 500; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; transition: .15s; margin-bottom: -1px; }
+.tab-item.active { color: var(--blue); border-bottom-color: var(--blue); }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+.spec-table { width: 100%; }
+.spec-table tr:nth-child(even) td { background: #f8fafc; }
+.spec-table td { padding: 11px 20px; font-size: 14px; border-bottom: 1px solid var(--line); }
+.spec-table td:first-child { color: var(--muted); font-size: 13px; font-weight: 500; width: 40%; }
+.spec-table td:last-child { font-weight: 500; color: var(--navy); font-family: 'DM Mono', monospace; }
+.coa-block { border: 1.5px solid var(--line); border-radius: 8px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+.coa-icon { width: 48px; height: 48px; background: var(--tag-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 22px; }
+.coa-info { flex: 1; }
+.coa-title { font-weight: 700; font-size: 14px; color: var(--navy); margin-bottom: 3px; }
+.coa-sub { font-size: 12px; color: var(--muted); }
+.coa-btn { background: var(--navy); color: #fff; border: none; border-radius: 6px; padding: 8px 18px; font-size: 13px; font-weight: 500; cursor: pointer; font-family: 'Noto Sans SC', sans-serif; transition: .15s; white-space: nowrap; }
+.coa-btn:hover { background: var(--blue); }
+
+/* ======== MOLECULE CARD ======== */
+.molecule-card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
+.molecule-card-header { padding: 12px 18px; border-bottom: 1px solid var(--line); background: #f8fafc; display: flex; align-items: center; justify-content: space-between; }
+.molecule-card-title { font-size: 13px; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: .06em; }
+.molecule-viewer { padding: 16px; background: #fff; display: flex; flex-direction: column; gap: 10px; }
+.mol-svg-wrap { background: #fafbfc; border: 1px solid var(--line); border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 20px; min-height: 180px; }
+.mol-svg-wrap svg { max-width: 100%; }
+.mol-formula-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.mol-tag { background: var(--tag-bg); color: var(--tag-txt); padding: 4px 12px; border-radius: 5px; font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 600; }
+
+/* ======== CONTACT SIDEBAR ======== */
+.contact-sidebar {}
+.contact-info-card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 20px; margin-bottom: 16px; }
+.contact-info-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.contact-item { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; }
+.contact-icon { color: var(--blue); font-size: 16px; width: 20px; flex-shrink: 0; margin-top: 1px; }
+.contact-text { font-size: 13px; color: var(--navy); }
+.contact-text small { display: block; font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+/* QQ CONSULT BTN */
+.qq-consult-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; padding: 14px; border-radius: 8px;
+  background: linear-gradient(135deg, #12b7f5, #1184e8);
+  color: #fff; border: none; cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif; font-size: 15px; font-weight: 600;
+  transition: .2s; box-shadow: 0 4px 16px rgba(16,80,208,.45);
+  margin-bottom: 12px;
+}
+.qq-consult-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(16,80,208,.45); }
+.qq-icon { width: 24px; height: 24px; flex-shrink: 0; }
+
+.wechat-hint { text-align: center; font-size: 12px; color: var(--muted); padding: 0 4px; line-height: 1.6; }
+
+.expert-card { background: linear-gradient(135deg, var(--navy), var(--navy-mid)); border-radius: 10px; padding: 20px; color: #fff; margin-bottom: 16px; }
+.expert-title { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.8); margin-bottom: 10px; }
+.expert-desc { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.7; margin-bottom: 14px; }
+.expert-qq-list { display: flex; flex-direction: column; gap: 8px; }
+.expert-qq-item { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,.08); border-radius: 6px; padding: 9px 12px; }
+.expert-qq-name { font-size: 13px; font-weight: 600; color: #fff; }
+.expert-qq-dept { font-size: 11px; color: rgba(255,255,255,.5); margin-top: 1px; }
+.expert-qq-link { background: #12b7f5; color: #fff; border: none; border-radius: 5px; padding: 5px 12px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: 'Noto Sans SC', sans-serif; transition: .15s; text-decoration: none; }
+.expert-qq-link:hover { background: #0f2a5e; }
+
+/* ======== RELATED PRODUCTS ======== */
+.related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.related-card { border: 1px solid var(--line); border-radius: 8px; padding: 16px; cursor: pointer; transition: .15s; background: var(--card); }
+.related-card:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
+.related-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.related-cas { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+.related-bottom { display: flex; align-items: center; justify-content: space-between; }
+.related-brand { font-size: 11px; font-weight: 700; color: var(--tag-txt); background: var(--tag-bg); padding: 2px 8px; border-radius: 3px; font-family: 'DM Mono', monospace; }
+.related-link { font-size: 12px; color: var(--blue); }
+
+/* ======== FOOTER ======== */
+footer { background: var(--navy); color: rgba(255,255,255,.55); padding: 60px 0 30px; }
+.footer-inner { max-width: 1320px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.footer-logo-mark { background: rgba(255,255,255,.08); width: 36px; height: 36px; border-radius: 5px; display: flex; align-items: center; justify-content: center; }
+.footer-logo-text { font-family: 'Noto Serif SC', serif; font-size: 16px; color: #fff; font-weight: 700; }
+.footer-desc { font-size: 13px; line-height: 1.8; color: rgba(255,255,255,.45); }
+.footer-col-title { color: rgba(255,255,255,.8); font-size: 13px; font-weight: 700; margin-bottom: 16px; text-transform: uppercase; letter-spacing: .06em; }
+.footer-link { display: block; color: rgba(255,255,255,.45); font-size: 13px; text-decoration: none; margin-bottom: 9px; transition: .15s; cursor: pointer; }
+.footer-link:hover { color: rgba(255,255,255,.8); }
+.footer-bottom { max-width: 1320px; margin: 0 auto; padding: 20px 40px 0; border-top: 1px solid rgba(255,255,255,.07); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,.3); }
+
+/* ======== QQ FLOAT BUTTON (PC) ======== */
+.qq-float {
+  position: fixed; right: 28px; bottom: 100px; z-index: 500;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.qq-float-btn {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: linear-gradient(135deg, #12b7f5, #1184e8);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; box-shadow: 0 4px 20px rgba(16,80,208,.45);
+  transition: .2s; border: none;
+  animation: floatPulse 3s ease-in-out infinite;
+}
+.qq-float-btn:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(18,183,245,.45); }
+@keyframes floatPulse { 0%,100%{ box-shadow: 0 4px 20px rgba(16,80,208,.45); } 50%{ box-shadow: 0 4px 32px rgba(18,183,245,.7); } }
+.qq-float-label { font-size: 11px; color: var(--muted); font-weight: 600; white-space: nowrap; }
+.qq-popup {
+  position: fixed; right: 90px; bottom: 90px; z-index: 600;
+  background: #fff; border-radius: 12px; width: 280px;
+  box-shadow: 0 8px 48px rgba(7,17,43,.2);
+  border: 1px solid var(--line);
+  transform-origin: bottom right;
+  animation: popIn .2s ease;
+  display: none;
+}
+.qq-popup.open { display: block; }
+@keyframes popIn { from { opacity:0; transform: scale(.9); } to { opacity:1; transform: scale(1); } }
+.qq-popup-header { background: linear-gradient(135deg, #12b7f5, #0d6fc9); padding: 16px 18px; border-radius: 12px 12px 0 0; display: flex; align-items: center; justify-content: space-between; }
+.qq-popup-title { color: #fff; font-size: 14px; font-weight: 700; }
+.qq-popup-sub { color: rgba(255,255,255,.75); font-size: 11px; margin-top: 2px; }
+.qq-popup-close { color: rgba(255,255,255,.7); background: none; border: none; cursor: pointer; font-size: 18px; line-height: 1; }
+.qq-popup-close:hover { color: #fff; }
+.qq-popup-body { padding: 14px; }
+.qq-agent-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; border: 1.5px solid var(--line); margin-bottom: 8px; cursor: pointer; transition: .15s; text-decoration: none; }
+.qq-agent-item:hover { border-color: #12b7f5; background: #f0fbff; }
+.qq-agent-avatar { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.qq-agent-av-1 { background: #e8f4ff; }
+.qq-agent-av-2 { background: #e8fff5; }
+.qq-agent-name { font-size: 14px; font-weight: 600; color: var(--navy); }
+.qq-agent-role { font-size: 11px; color: var(--muted); margin-top: 1px; }
+.qq-agent-status { margin-left: auto; width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+.qq-popup-footer { padding: 0 14px 14px; }
+.qq-popup-tip { font-size: 11px; color: var(--muted); text-align: center; padding: 8px 0; border-top: 1px solid var(--line); line-height: 1.6; }
+
+/* ======== ANIMATIONS ======== */
+.fade-up { opacity: 0; transform: translateY(24px); animation: fadeup .6s ease forwards; }
+@keyframes fadeup { to { opacity: 1; transform: none; } }
+.delay-1 { animation-delay: .1s; }
+.delay-2 { animation-delay: .2s; }
+.delay-3 { animation-delay: .35s; }
+
+
+/* ════════════════════════════════════════════
+   MOBILE DESIGN
+════════════════════════════════════════════ */
+#mobile-view {
+  display: none;
+  max-width: 390px;
+  margin: 0 auto;
+  background: var(--white);
+  height: 844px;
+  flex-direction: column;
+  position: relative;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 80px rgba(7,17,43,.2);
+}
+#mobile-frame {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile Header */
+.m-header {
+  background: rgba(245,247,250,.97); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px; height: 56px;
+  position: sticky; top: 0; z-index: 100;
+}
+.m-logo { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.m-logo-mark { width: 32px; height: 32px; background: var(--navy); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+.m-logo-text { font-family: 'Noto Serif SC', serif; font-size: 14px; font-weight: 700; color: var(--navy); }
+.m-menu-btn { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 6px; cursor: pointer; border: 1.5px solid var(--line); background: #fff; }
+.m-menu-btn svg { color: var(--navy); }
+
+/* Mobile Hero */
+.m-hero {
+  background: var(--navy); padding: 32px 20px 36px;
+  position: relative; overflow: hidden;
+}
+.m-hero-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(0,188,212,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0,188,212,.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.m-hero-glow { position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; background: radial-gradient(ellipse, rgba(16,80,208,.45) 0%, transparent 70%); pointer-events: none; }
+.m-hero-content { position: relative; }
+.m-hero-label { display: inline-flex; align-items: center; gap: 5px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .1em; color: var(--cyan); border: 1px solid rgba(0,188,212,.35); padding: 3px 10px; border-radius: 20px; margin-bottom: 14px; }
+.m-hero-label span { width: 5px; height: 5px; border-radius: 50%; background: var(--cyan); animation: blink 1.8s infinite; }
+.m-hero h1 { font-family: 'Noto Serif SC', serif; font-size: 24px; font-weight: 700; color: #fff; line-height: 1.35; margin-bottom: 8px; }
+.m-hero h1 em { font-style: normal; color: var(--cyan); }
+.m-hero-sub { font-size: 12px; color: rgba(255,255,255,.5); margin-bottom: 22px; line-height: 1.7; }
+
+/* Mobile Search */
+.m-search { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,.25); }
+.m-search-top { display: flex; height: 44px; }
+.m-search-top select { border: none; outline: none; background: #f0f4f8; color: var(--navy); font-family: 'Noto Sans SC', sans-serif; font-size: 12px; font-weight: 500; padding: 0 10px; min-width: 100px; border-right: 1px solid var(--line); }
+.m-search-top input { flex: 1; border: none; outline: none; font-family: 'Noto Sans SC', sans-serif; font-size: 14px; padding: 0 12px; color: var(--navy); }
+.m-search-top input::placeholder { color: #aab4c8; }
+.m-search-btn { background: var(--blue); color: #fff; border: none; padding: 0 16px; font-size: 14px; cursor: pointer; display: flex; align-items: center; }
+.m-hero-tags { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 14px; }
+.m-hero-tag { font-size: 11px; color: rgba(255,255,255,.5); cursor: pointer; padding: 2px 9px; border: 1px solid rgba(255,255,255,.15); border-radius: 16px; transition: .15s; }
+.m-hero-tag:hover { color: #fff; border-color: rgba(255,255,255,.4); }
+
+/* Mobile Stats */
+.m-stats { background: var(--navy-mid); display: grid; grid-template-columns: repeat(2,1fr); }
+.m-stat { padding: 16px; text-align: center; border-right: 1px solid rgba(255,255,255,.08); border-bottom: 1px solid rgba(255,255,255,.08); }
+.m-stat:nth-child(2n) { border-right: none; }
+.m-stat-num { font-family: 'DM Mono', monospace; font-size: 22px; font-weight: 500; color: #fff; line-height: 1; margin-bottom: 4px; }
+.m-stat-num em { font-style: normal; color: var(--cyan); font-size: 16px; }
+.m-stat-label { font-size: 11px; color: rgba(255,255,255,.5); }
+
+/* Mobile Section */
+.m-section { padding: 24px 16px; }
+.m-section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.m-section-title { font-family: 'Noto Serif SC', serif; font-size: 18px; font-weight: 700; color: var(--navy); }
+.m-section-link { font-size: 13px; color: var(--blue); cursor: pointer; }
+
+/* Mobile Cat Grid */
+.m-cat-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+.m-cat-card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 16px 14px; cursor: pointer; transition: .2s; position: relative; overflow: hidden; }
+.m-cat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: .2s; }
+.m-cat-card:hover { box-shadow: var(--shadow); }
+.m-cat-card:hover::before { transform: scaleX(1); }
+.m-cat-icon { font-size: 20px; margin-bottom: 8px; }
+.m-cat-name { font-weight: 700; font-size: 13px; margin-bottom: 3px; color: var(--navy); }
+.m-cat-count { font-size: 11px; color: var(--muted); }
+
+/* Mobile Brands */
+.m-brands { background: #f0f4f8; padding: 20px 16px; }
+.m-brands-title { font-size: 11px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; font-family: 'DM Mono', monospace; margin-bottom: 14px; }
+.m-brand-logos { display: flex; flex-wrap: wrap; gap: 7px; }
+.m-brand-chip { background: #fff; border: 1.5px solid var(--line); border-radius: 5px; padding: 5px 12px; font-size: 11px; font-weight: 700; color: var(--navy-mid); font-family: 'DM Mono', monospace; }
+
+/* Mobile Page Nav */
+.m-page-nav { background: var(--card); border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; }
+.m-page-nav::-webkit-scrollbar { display: none; }
+.m-page-nav-inner { display: flex; padding: 0 4px; white-space: nowrap; }
+.m-page-tab { padding: 12px 14px; font-size: 13px; font-weight: 500; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; transition: .15s; }
+.m-page-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
+
+/* Mobile List */
+.m-list-wrap { padding: 16px; }
+.m-filter-row { display: flex; gap: 8px; overflow-x: auto; margin-bottom: 16px; padding-bottom: 2px; scrollbar-width: none; }
+.m-filter-row::-webkit-scrollbar { display: none; }
+.m-filter-pill { white-space: nowrap; background: #fff; border: 1.5px solid var(--line); border-radius: 20px; padding: 5px 14px; font-size: 12px; font-weight: 500; color: var(--muted); cursor: pointer; flex-shrink: 0; }
+.m-filter-pill.active { background: var(--tag-bg); border-color: var(--blue); color: var(--blue); }
+
+.m-prod-list { display: flex; flex-direction: column; gap: 10px; }
+.m-prod-card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 14px; cursor: pointer; transition: .15s; }
+.m-prod-card:hover { box-shadow: var(--shadow); border-color: rgba(16,80,208,.35); }
+.m-prod-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+.m-prod-name { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+.m-prod-en { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
+.m-prod-cas-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+.m-cas-label { font-size: 11px; color: var(--muted); }
+.m-cas-val { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--blue); }
+.m-prod-meta { display: flex; align-items: center; justify-content: space-between; }
+.m-purity { display: flex; align-items: center; gap: 6px; flex: 1; margin-right: 12px; }
+.m-purity-bar { flex: 1; height: 5px; background: var(--line); border-radius: 3px; overflow: hidden; }
+.m-purity-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--cyan)); border-radius: 3px; }
+.m-purity-txt { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--navy); white-space: nowrap; }
+.m-detail-link { font-size: 12px; color: var(--blue); font-weight: 600; white-space: nowrap; }
+
+/* Mobile Detail */
+.m-detail-wrap { padding: 16px; }
+.m-breadcrumb { display: flex; gap: 4px; align-items: center; font-size: 12px; color: var(--muted); margin-bottom: 16px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+.m-breadcrumb::-webkit-scrollbar { display: none; }
+.m-breadcrumb span { cursor: pointer; }
+.m-breadcrumb span:hover { color: var(--blue); }
+.m-detail-name { font-family: 'Noto Serif SC', serif; font-size: 22px; font-weight: 700; line-height: 1.3; margin-bottom: 4px; }
+.m-detail-en { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+.m-cas-badge { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 16px; }
+.m-data-card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 14px; }
+.m-data-card-hdr { padding: 10px 14px; border-bottom: 1px solid var(--line); background: #f8fafc; }
+.m-data-card-title { font-size: 12px; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: .05em; }
+.m-data-grid { display: grid; grid-template-columns: repeat(2,1fr); }
+.m-data-cell { padding: 12px 14px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.m-data-cell:nth-child(2n) { border-right: none; }
+.m-data-cell-label { font-size: 10px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+.m-data-cell-value { font-size: 14px; font-weight: 600; color: var(--navy); font-family: 'DM Mono', monospace; }
+.m-data-cell-value.hl { color: var(--blue); }
+.m-data-cell-value.gv { color: var(--green); }
+
+/* Mobile Molecule */
+.m-mol-wrap { background: #fafbfc; border: 1px solid var(--line); border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 16px; margin-bottom: 10px; }
+.m-mol-wrap svg { max-width: 100%; width: 220px; }
+.m-mol-tags { display: flex; gap: 8px; flex-wrap: wrap; padding: 0 14px 14px; }
+
+/* Mobile Tabs */
+.m-tab-bar { display: flex; overflow-x: auto; border-bottom: 1px solid var(--line); margin-bottom: 14px; scrollbar-width: none; }
+.m-tab-bar::-webkit-scrollbar { display: none; }
+.m-tab-item { padding: 10px 14px; font-size: 13px; font-weight: 500; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; transition: .15s; white-space: nowrap; margin-bottom: -1px; }
+.m-tab-item.active { color: var(--blue); border-bottom-color: var(--blue); }
+.m-tab-content { display: none; }
+.m-tab-content.active { display: block; }
+.m-spec-table { width: 100%; }
+.m-spec-table tr:nth-child(even) td { background: #f8fafc; }
+.m-spec-table td { padding: 9px 12px; font-size: 12.5px; border-bottom: 1px solid var(--line); }
+.m-spec-table td:first-child { color: var(--muted); width: 42%; font-size: 12px; }
+.m-spec-table td:last-child { font-weight: 500; font-family: 'DM Mono', monospace; font-size: 12px; }
+
+/* Mobile Contact Panel */
+.m-contact-panel { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+.m-contact-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+.m-contact-item { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 10px; font-size: 13px; color: var(--navy); }
+.m-contact-item small { display: block; font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+/* Mobile QQ Button */
+.m-qq-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 13px; border-radius: 8px;
+  background: linear-gradient(135deg, #12b7f5, #1184e8);
+  color: #fff; border: none; cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif; font-size: 15px; font-weight: 600;
+  transition: .2s; box-shadow: 0 4px 16px rgba(16,80,208,.45); margin-bottom: 10px;
+}
+.m-qq-agents { display: flex; flex-direction: column; gap: 8px; }
+.m-qq-agent { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1.5px solid var(--line); border-radius: 8px; cursor: pointer; transition: .15s; text-decoration: none; }
+.m-qq-agent:hover { border-color: #12b7f5; background: #f0fbff; }
+.m-qq-av { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.m-qq-av-1 { background: #e8f4ff; }
+.m-qq-av-2 { background: #e8fff5; }
+.m-qq-info {}
+.m-qq-name { font-size: 13px; font-weight: 600; color: var(--navy); }
+.m-qq-dept { font-size: 11px; color: var(--muted); }
+.m-qq-status { margin-left: auto; font-size: 11px; color: var(--green); font-weight: 600; }
+
+/* Mobile Float QQ */
+.m-qq-float {
+  position: absolute; right: 16px; bottom: 16px; z-index: 500;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: linear-gradient(135deg, #12b7f5, #1184e8);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; box-shadow: 0 4px 20px rgba(16,80,208,.45);
+  animation: floatPulse 3s ease-in-out infinite; border: none;
+}
+.m-bottom-nav {
+  flex-shrink: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid var(--line);
+  display: flex;
+  height: 56px;
+  z-index: 100;
+}
+.m-nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; cursor: pointer; color: var(--muted); font-size: 10px; font-weight: 500; transition: .15s; }
+.m-nav-item.active { color: var(--blue); }
+.m-nav-item svg { width: 20px; height: 20px; }
+.m-nav-item span { font-size: 10px; }
+
+/* Mobile page wrapper padding for bottom nav */
+.m-content-wrap { padding-bottom: 16px; }
+
+/* Mobile doc download */
+.m-coa-block { display: flex; align-items: center; gap: 10px; border: 1.5px solid var(--line); border-radius: 8px; padding: 12px; margin-bottom: 8px; cursor: pointer; transition: .15s; }
+.m-coa-block:hover { border-color: var(--blue); background: var(--tag-bg); }
+.m-coa-icon { font-size: 20px; width: 36px; height: 36px; background: var(--tag-bg); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.m-coa-name { font-size: 13px; font-weight: 600; color: var(--navy); }
+.m-coa-size { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.m-coa-dl { margin-left: auto; font-size: 12px; color: var(--blue); font-weight: 600; }
+
+
+.preview-toggle { display: none !important; }
+#mobile-view, #mobile-wrap { display: none !important; }
+#pc-view { display: block !important; }
+.page { display: none; }
+.page.active { display: block; }
+</style>
+</head>
+<body>
+<div id="pc-view">
+
+
+<!-- QQ FLOAT -->
+<div class="qq-float">
+  <button class="qq-float-btn" onclick="toggleQQPopup()" title="QQ在线咨询">
+    <svg class="qq-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 4C11.163 4 4 10.716 4 19c0 4.574 2.047 8.68 5.308 11.547-.3 1.12-.96 2.853-2.308 3.953 0 0 3.2.2 6.2-2.1.6.4 2.3 1.4 6.8 1.4 8.837 0 16-6.716 16-15C36 10.716 28.837 4 20 4z" fill="white" opacity="0.95"/>
+      <circle cx="14.5" cy="19" r="1.8" fill="#12b7f5"/>
+      <circle cx="25.5" cy="19" r="1.8" fill="#12b7f5"/>
+    </svg>
+  </button>
+  <span class="qq-float-label">在线客服</span>
+</div>
+
+<!-- QQ POPUP -->
+<div class="qq-popup" id="qq-popup">
+  <div class="qq-popup-header">
+    <div>
+      <div class="qq-popup-title">🟢 在线客服</div>
+      <div class="qq-popup-sub">鼎利成生物科技 · 专业服务</div>
+    </div>
+    <button class="qq-popup-close" onclick="toggleQQPopup()">✕</button>
+  </div>
+  <div class="qq-popup-body">
+    <a class="qq-agent-item" href="https://wpa.qq.com/msgrd?v=3&uin=QQNUMBER1&site=qq&menu=yes" target="_blank">
+      <div class="qq-agent-avatar qq-agent-av-1">👩‍🔬</div>
+      <div>
+        <div class="qq-agent-name">李欣 · 技术顾问</div>
+        <div class="qq-agent-role">医药对照品 / 生化标准品</div>
+      </div>
+      <div class="qq-agent-status"></div>
+    </a>
+    <a class="qq-agent-item" href="https://wpa.qq.com/msgrd?v=3&uin=QQNUMBER2&site=qq&menu=yes" target="_blank">
+      <div class="qq-agent-avatar qq-agent-av-2">👨‍💼</div>
+      <div>
+        <div class="qq-agent-name">张磊 · 销售顾问</div>
+        <div class="qq-agent-role">报价 / 订单 / 选品建议</div>
+      </div>
+      <div class="qq-agent-status"></div>
+    </a>
+  </div>
+  <div class="qq-popup-footer">
+    <div class="qq-popup-tip">📌 点击客服头像将跳转至 QQ 对话窗口<br>工作时间 09:00–18:00（工作日）</div>
+  </div>
+</div>
+
+<!-- TOP STRIP -->
+<div class="top-strip">
+  全国服务热线：<b>0755-XXXX-XXXX</b>&nbsp;&nbsp;|&nbsp;&nbsp;超过 <b>100,000+</b> 种对照品与标准品&nbsp;&nbsp;|&nbsp;&nbsp;医药 · 生化 · 工业实验检测
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="hdr-inner">
+    <div class="logo" onclick="showPage('home')">
+      <div class="logo-mark">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="8" r="3.5" fill="white" opacity="0.9"/>
+          <path d="M5 20c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="white" stroke-width="1.8" fill="none" opacity="0.85"/>
+          <line x1="3" y1="12" x2="5.5" y2="12" stroke="white" stroke-width="1.4" stroke-linecap="round" opacity="0.5"/>
+          <line x1="18.5" y1="12" x2="21" y2="12" stroke="white" stroke-width="1.4" stroke-linecap="round" opacity="0.5"/>
+          <line x1="12" y1="3" x2="12" y2="1" stroke="white" stroke-width="1.4" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="logo-words">
+        <span class="logo-cn">鼎利成生物科技</span>
+        <span class="logo-en">DLC BIOTECHNOLOGY CO., LTD</span>
+      </div>
+    </div>
+    <nav>
+      <a onclick="showPage('home')">首页</a>
+      <a onclick="showPage('list')">产品目录</a>
+      <a onclick="showPage('brands')">品牌代理</a>
+      <a onclick="showPage('about')">关于我们</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="btn-primary" onclick="showPage('list')">🔍 产品检索</button>
+    </div>
+  </div>
+</header>
+
+<!-- ── PC HOME ── -->
+<div id="pc-page-home" class="page active">
+
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-label fade-up"><span></span> 深圳鼎利成生物科技有限公司 &nbsp;·&nbsp; 专业对照品供应商</div>
+      <h1 class="fade-up delay-1">精准溯源，<em>10万+</em> 种<br>对照品与标准品</h1>
+      <p class="hero-sub fade-up delay-2">涵盖医药 · 生化 · 工业实验检测&nbsp;&nbsp;|&nbsp;&nbsp;代理全球顶尖品牌&nbsp;&nbsp;|&nbsp;&nbsp;专业咨询服务</p>
+      <div class="search-bar fade-up delay-2">
+        <select><option>全部类别</option><option>医药对照品</option><option>生化标准品</option><option>工业检测</option><option>有机对照品</option><option>无机对照品</option></select>
+        <input type="text" placeholder="输入产品名称、CAS号、品牌或关键词...">
+        <button onclick="showPage('list')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          搜索产品
+        </button>
+      </div>
+      <div class="hero-tags fade-up delay-3">
+        <span class="hero-tag" onclick="showPage('list')">咖啡因</span>
+        <span class="hero-tag" onclick="showPage('list')">阿司匹林对照品</span>
+        <span class="hero-tag" onclick="showPage('list')">USP标准品</span>
+        <span class="hero-tag" onclick="showPage('list')">NIST SRM</span>
+        <span class="hero-tag" onclick="showPage('list')">青霉素标准品</span>
+        <span class="hero-tag" onclick="showPage('list')">维生素 C</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-row">
+    <div class="stats-inner">
+      <div class="stat-item"><div class="stat-num">10<em>万+</em></div><div class="stat-label">在库产品种类</div></div>
+      <div class="stat-item"><div class="stat-num">30<em>+</em></div><div class="stat-label">代理品牌</div></div>
+      <div class="stat-item"><div class="stat-num">24<em>h</em></div><div class="stat-label">快速响应服务</div></div>
+      <div class="stat-item"><div class="stat-num">15<em>年+</em></div><div class="stat-label">行业深耕经验</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">产品分类</h2>
+      <span class="section-sub">按应用场景快速定位所需标准品</span>
+      <span class="section-link" onclick="showPage('list')">查看全部产品 →</span>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card" onclick="showPage('list')"><div class="cat-icon blue">💊</div><div class="cat-name">医药对照品</div><div class="cat-count">45,000+ 种 · CP/EP/USP/BP</div></div>
+      <div class="cat-card" onclick="showPage('list')"><div class="cat-icon green">🧬</div><div class="cat-name">生化标准品</div><div class="cat-count">28,000+ 种 · 酶、蛋白、核酸</div></div>
+      <div class="cat-card" onclick="showPage('list')"><div class="cat-icon gold">⚗️</div><div class="cat-name">有机对照品</div><div class="cat-count">18,000+ 种 · 高纯度有机化合物</div></div>
+      <div class="cat-card" onclick="showPage('list')"><div class="cat-icon red">🔬</div><div class="cat-name">无机标准品</div><div class="cat-count">9,000+ 种 · 金属离子、盐类</div></div>
+      <div class="cat-card" onclick="showPage('list')"><div class="cat-icon blue">🏭</div><div class="cat-name">工业检测标准</div><div class="cat-count">6,500+ 种 · 环境、材料、食品</div></div>
+      <div class="cat-card" onclick="showPage('list')"><div class="cat-icon green">📋</div><div class="cat-name">认证参考物质</div><div class="cat-count">3,500+ 种 · NIST/ERM/CRM</div></div>
+      <div class="cat-card" onclick="showPage('list')"><div class="cat-icon gold">🌿</div><div class="cat-name">植化对照品</div><div class="cat-count">12,000+ 种 · 天然产物、中药材</div></div>
+      <div class="cat-card" onclick="showPage('list')"><div class="cat-icon red">⚡</div><div class="cat-name">农兽药残留标准</div><div class="cat-count">8,000+ 种 · 农药、兽药检测</div></div>
+    </div>
+  </div>
+
+  <div class="brands-section">
+    <div class="brands-inner">
+      <div class="brands-title">代理品牌 / Authorized Brands</div>
+      <div class="brand-logos">
+        <span class="brand-chip">CFDI 中检院</span><span class="brand-chip">USP</span><span class="brand-chip">EP</span><span class="brand-chip">BP</span><span class="brand-chip">TRC</span><span class="brand-chip">SIGMA</span><span class="brand-chip">NIST</span><span class="brand-chip">LGC</span><span class="brand-chip">AccuStandard</span><span class="brand-chip">ERM</span><span class="brand-chip">NIBSC</span><span class="brand-chip">CDN</span><span class="brand-chip">ACOS</span><span class="brand-chip">CHIRON</span><span class="brand-chip">TLC</span><span class="brand-chip">CHROMOGENIX</span><span class="brand-chip">Chem Service</span><span class="brand-chip">麦克林试剂</span><span class="brand-chip">阿拉丁试剂</span><span class="brand-chip">罗恩试剂</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><h2 class="section-title">为什么选择鼎利成</h2></div>
+    <div class="feature-grid">
+      <div class="feature-card"><div class="feature-icon">🏆</div><div class="feature-title">权威品牌，品质保证</div><div class="feature-desc">代理中检院、USP、EP、NIST等全球顶尖机构，每批次均附溯源证书与完整检测报告（CoA）。</div></div>
+      <div class="feature-card"><div class="feature-icon">⚡</div><div class="feature-title">快速响应，按时交付</div><div class="feature-desc">专业服务团队24小时响应，深圳本地仓储，确保实验与生产进度不受影响。</div></div>
+      <div class="feature-card"><div class="feature-icon">🔬</div><div class="feature-title">专业咨询，全程支持</div><div class="feature-desc">资深应用专家提供选品建议与方法优化支持，力助客户高效完成实验任务和生产检验。</div></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <div class="footer-logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="white" opacity="0.8"/><path d="M5 20c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="white" stroke-width="1.8" fill="none" opacity="0.8"/></svg></div>
+          <span class="footer-logo-text">鼎利成生物科技</span>
+        </div>
+        <p class="footer-desc">深圳鼎利成生物科技有限公司，专注于对照品与标准品的代理与销售，提供超过10万种医药、生化、工业实验检测类对照品及标准品。</p>
+        <p style="font-size:12px;color:rgba(255,255,255,.3);margin-top:14px;line-height:1.8;">深圳市龙岗区龙城街道回龙铺社区<br>花样年乐年广场13号楼A单元1001</p>
+      </div>
+      <div><div class="footer-col-title">产品</div><span class="footer-link">医药对照品</span><span class="footer-link">生化标准品</span><span class="footer-link">有机对照品</span><span class="footer-link">无机标准品</span><span class="footer-link">工业检测标准</span></div>
+      <div><div class="footer-col-title">服务</div><span class="footer-link">选品咨询</span><span class="footer-link">CoA 下载</span><span class="footer-link">定制标准品</span><span class="footer-link">技术支持</span><span class="footer-link">代理申请</span></div>
+      <div><div class="footer-col-title">联系我们</div><span class="footer-link">📞 0755-XXXX-XXXX</span><span class="footer-link">✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="92fbfcf4fdd2f6fef1bff0fbfdbcf1fdff">[email&#160;protected]</a></span><span class="footer-link">🕐 工作日 9:00–18:00</span><span class="footer-link" style="margin-top:12px;">关于我们</span><span class="footer-link">加入我们</span></div>
+    </div>
+    <div class="footer-bottom"><span>© 2024 深圳鼎利成生物科技有限公司 · 粤ICP备XXXXXXXX号</span><span>专业对照品供应商 · 品质保证</span></div>
+  </footer>
+</div>
+
+<!-- ── PC BRANDS PAGE ── -->
+<div id="pc-page-brands" class="page">
+  <div class="page-nav">
+    <div class="page-nav-inner">
+      <div class="page-tab" onclick="showPage('home')">← 返回首页</div>
+      <div class="page-tab active">品牌代理</div>
+    </div>
+  </div>
+
+  <!-- Brands Hero -->
+  <section style="background:var(--navy);padding:64px 40px;text-align:center;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(0,188,212,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(0,188,212,.07) 1px,transparent 1px);background-size:48px 48px;"></div>
+    <div style="position:relative;max-width:800px;margin:0 auto;">
+      <div style="display:inline-flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--cyan);border:1px solid rgba(0,188,212,.35);padding:4px 14px;border-radius:40px;margin-bottom:20px;text-transform:uppercase;">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--cyan);display:inline-block;animation:blink 1.8s infinite;"></span> Authorized Partners
+      </div>
+      <h1 style="font-family:'Noto Serif SC',serif;font-size:clamp(26px,3.5vw,44px);font-weight:700;color:#fff;margin-bottom:12px;line-height:1.25;">全球顶尖品牌 <span style="color:var(--cyan);">授权代理</span></h1>
+      <p style="font-size:15px;color:rgba(255,255,255,.55);max-width:600px;margin:0 auto;">鼎利成生物科技是国内多家权威标准品机构的授权代理商，为您提供原装正品及完整溯源证书</p>
+    </div>
+  </section>
+
+  <div style="max-width:1320px;margin:0 auto;padding:60px 40px;">
+
+    <!-- Category Tabs -->
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:44px;">
+      <button onclick="filterBrands('all',this)" style="padding:8px 22px;border-radius:40px;border:2px solid var(--blue);background:var(--blue);color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:'Noto Sans SC',sans-serif;" class="brand-tab-btn active">全部品牌</button>
+      <button onclick="filterBrands('pharma',this)" style="padding:8px 22px;border-radius:40px;border:2px solid var(--line);background:#fff;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;font-family:'Noto Sans SC',sans-serif;" class="brand-tab-btn">药典标准</button>
+      <button onclick="filterBrands('intl',this)" style="padding:8px 22px;border-radius:40px;border:2px solid var(--line);background:#fff;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;font-family:'Noto Sans SC',sans-serif;" class="brand-tab-btn">国际机构</button>
+      <button onclick="filterBrands('chemical',this)" style="padding:8px 22px;border-radius:40px;border:2px solid var(--line);background:#fff;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;font-family:'Noto Sans SC',sans-serif;" class="brand-tab-btn">化学试剂</button>
+      <button onclick="filterBrands('domestic',this)" style="padding:8px 22px;border-radius:40px;border:2px solid var(--line);background:#fff;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;font-family:'Noto Sans SC',sans-serif;" class="brand-tab-btn">国内品牌</button>
+    </div>
+
+    <!-- Brand Cards Grid -->
+    <div id="brands-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;">
+
+      <!-- 中检院 CFDI -->
+      <div class="brand-card" data-cat="pharma" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#c8102e,#8b0000);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'DM Mono',monospace;font-size:11px;font-weight:700;color:#fff;letter-spacing:.02em;text-align:center;line-height:1.3;">CFDI</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">中国食品药品检定研究院</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">NIFDC / CFDI</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">国家级药品标准物质权威机构，提供符合《中国药典》要求的化学对照品、生物标准品，具有最高法定效力。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">药典对照品</span>
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">12,450+ 种</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- USP -->
+      <div class="brand-card" data-cat="pharma" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#003087,#0057b8);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'DM Mono',monospace;font-size:14px;font-weight:700;color:#fff;letter-spacing:.02em;">USP</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">美国药典委员会</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">U.S. Pharmacopeia</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">美国官方药典标准物质，全球药品质量控制黄金标准，适用于API及制剂的含量测定与杂质检测。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">美国药典</span>
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">8,320+ 种</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- EP -->
+      <div class="brand-card" data-cat="pharma" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#003399,#0047ab);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'DM Mono',monospace;font-size:16px;font-weight:700;color:#fff;letter-spacing:.02em;">EP</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">欧洲药典</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">European Pharmacopoeia</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">欧洲药品质量局（EDQM）发布，覆盖欧盟各国药典标准，是欧洲及ICH协调注册不可缺少的标准来源。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">欧洲药典</span>
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">7,180+ 种</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- BP -->
+      <div class="brand-card" data-cat="pharma" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#012169,#c8102e);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'DM Mono',monospace;font-size:16px;font-weight:700;color:#fff;letter-spacing:.02em;">BP</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">英国药典</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">British Pharmacopoeia</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">英国药品和保健品监管局（MHRA）发布，提供官方化学标准物质（BPCRS），广泛用于原料药与成品检验。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">英国药典</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- NIST -->
+      <div class="brand-card" data-cat="intl" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#1b3a6b,#2e5fa3);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:#fff;letter-spacing:.02em;">NIST</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">美国国家标准与技术研究院</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">Nat'l Inst. of Standards & Tech.</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">提供标准参考物质（SRM），用于测量仪器校准、方法验证及实验室质量保证，是国际溯源体系的基石。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">SRM 标准</span>
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">3,100+ 种</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- LGC -->
+      <div class="brand-card" data-cat="intl" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#005f9e,#00b5cc);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'DM Mono',monospace;font-size:16px;font-weight:700;color:#fff;letter-spacing:.02em;">LGC</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">LGC 标准品</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">LGC Standards · UK</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">英国国家计量实验室旗下，提供高纯度有机化合物参考标准，广泛应用于食品安全、环境检测和临床诊断领域。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">有机标准品</span>
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">2,890+ 种</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- SIGMA -->
+      <div class="brand-card" data-cat="chemical" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#cc0000,#ee3333);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'DM Mono',monospace;font-size:11px;font-weight:700;color:#fff;letter-spacing:.01em;text-align:center;line-height:1.2;">SIGMA<br><span style="font-size:9px;opacity:.85;">ALDRICH</span></span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">Sigma-Aldrich</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">Merck KGaA · Germany</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">全球最大化学品供应商之一，提供超高纯度化学对照品及试剂，覆盖生命科学与工业化学多个领域。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">精细化学品</span>
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">6,940+ 种</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- TRC -->
+      <div class="brand-card" data-cat="chemical" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#1a5276,#2980b9);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'DM Mono',monospace;font-size:16px;font-weight:700;color:#fff;letter-spacing:.02em;">TRC</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">Toronto Research Chemicals</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">TRC · Canada</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">加拿大领先的有机化学品研究公司，专注于药物杂质对照品、代谢物标准品的合成与供应，品种齐全。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">杂质对照品</span>
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">5,200+ 种</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- AccuStandard -->
+      <div class="brand-card" data-cat="intl" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#1a6b3c,#27ae60);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#fff;letter-spacing:.01em;text-align:center;line-height:1.3;">Accu<br>Standard</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">AccuStandard</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">AccuStandard · USA</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">美国专业分析标准品制造商，专注于环境检测、食品安全及工业检验领域的高质量认证标准液。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">环境检测</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- ERM -->
+      <div class="brand-card" data-cat="intl" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#003380,#0052cc);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'DM Mono',monospace;font-size:16px;font-weight:700;color:#fff;letter-spacing:.02em;">ERM</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">欧洲参考物质</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">European Reference Materials</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">欧盟联合研究中心（JRC）认证参考物质，广泛用于环境、食品、材料等领域的实验室能力验证与方法确认。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">认证参考物质</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- NIBSC -->
+      <div class="brand-card" data-cat="intl" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#6a0dad,#9b59b6);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'DM Mono',monospace;font-size:11px;font-weight:700;color:#fff;letter-spacing:.01em;text-align:center;">NIBSC</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">NIBSC 生物标准品</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">UK Nat'l Inst. Biol. Standards</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">英国国家生物标准与控制研究所，提供WHO国际生物标准品，用于疫苗、血液制品及生物治疗产品的效价检测。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">生物标准品</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- CHROMOGENIX -->
+      <div class="brand-card" data-cat="intl" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#c0392b,#e74c3c);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'DM Mono',monospace;font-size:8px;font-weight:700;color:#fff;letter-spacing:.01em;text-align:center;line-height:1.4;">CHROMO<br>GENIX</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">Chromogenix</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">Chromogenix · Italy</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">意大利血栓与止血领域专业品牌，提供凝血因子、纤溶酶等生化标准品与底物，广泛用于临床血液检测。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">凝血检测</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- CDN / ACOS / TLC / CHIRON / Chem Service -->
+      <div class="brand-card" data-cat="chemical" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#2c3e50,#3d5166);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:#fff;letter-spacing:.02em;">CDN</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">CDN Isotopes</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">CDN Isotopes · Canada</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">加拿大稳定同位素标记化合物专业供应商，提供氘代、¹³C等同位素内标，用于质谱定量分析。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">同位素标准</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- Chem Service -->
+      <div class="brand-card" data-cat="chemical" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#117a65,#1abc9c);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'DM Mono',monospace;font-size:8.5px;font-weight:700;color:#fff;text-align:center;line-height:1.3;">Chem<br>Service</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">Chem Service</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">Chem Service Inc. · USA</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">美国农药及环境化学品标准品专业生产商，产品涵盖农残、兽残、多环芳烃等环境有机污染物标准溶液。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">农残检测</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- CHIRON -->
+      <div class="brand-card" data-cat="chemical" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#6c3483,#a569bd);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:#fff;letter-spacing:.02em;">CHIRON</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">Chiron AS</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">Chiron · Norway</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">挪威专业持久性有机污染物（POPs）标准品供应商，尤其在二噁英、PCBs及海洋环境污染物检测领域享有权威地位。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">持久性污染物</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- ACOS -->
+      <div class="brand-card" data-cat="chemical" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#784212,#d35400);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'DM Mono',monospace;font-size:14px;font-weight:700;color:#fff;letter-spacing:.02em;">ACOS</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">ACOS 标准品</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">ACOS · International</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">提供有机与无机分析标准品，覆盖工业检测、材料分析及科研实验各应用领域，品质稳定可靠。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">工业标准</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- 麦克林 -->
+      <div class="brand-card" data-cat="domestic" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#c0392b,#f39c12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'Noto Sans SC',sans-serif;font-size:14px;font-weight:700;color:#fff;">麦克林</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">麦克林试剂</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">Macklin · Shanghai</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">国内领先的生命科学试剂供应商，提供高品质化学试剂、标准品及生化试剂，具有完整的国内质量认证体系。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">国内试剂</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- 阿拉丁 -->
+      <div class="brand-card" data-cat="domestic" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#1a5276,#2471a3);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'Noto Sans SC',sans-serif;font-size:12px;font-weight:700;color:#fff;">阿拉丁</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">阿拉丁试剂</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">Aladdin · Shanghai</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">上海阿拉丁生化科技，专注科研试剂与标准品，品种超过10万种，广泛应用于高校与科研机构日常实验。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">科研试剂</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- 罗恩 -->
+      <div class="brand-card" data-cat="domestic" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#1b6b3a,#229954);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'Noto Sans SC',sans-serif;font-size:14px;font-weight:700;color:#fff;">罗恩</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">罗恩试剂</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">Loen · Shanghai</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">上海罗恩生化科技，提供高纯度化学对照品与生化试剂，在医药研发与质量控制领域建立了良好口碑。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">生化试剂</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+      <!-- TLC / ACOS group card -->
+      <div class="brand-card" data-cat="chemical" style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;transition:.2s;cursor:pointer;" onmouseover="this.style.boxShadow='0 8px 32px rgba(16,80,208,.14)';this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--line)';this.style.transform=''">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;background:linear-gradient(135deg,#555,#888);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'DM Mono',monospace;font-size:14px;font-weight:700;color:#fff;letter-spacing:.02em;">TLC</span>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);">TLC PharmaChem</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;">TLC PharmaChem · Canada</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">加拿大药物杂质标准品专业供应商，提供系列杂质对照品用于药物研发中间体与成品的杂质谱研究。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;background:var(--tag-bg);color:var(--tag-txt);padding:3px 9px;border-radius:4px;font-weight:600;">杂质标准品</span>
+          <span style="font-size:11px;background:#e6f9f3;color:#0a7c55;padding:3px 9px;border-radius:4px;font-weight:600;">✓ 授权代理</span>
+        </div>
+      </div>
+
+    </div><!-- end brands-grid -->
+
+    <!-- CTA Bottom -->
+    <div style="margin-top:56px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);border-radius:16px;padding:48px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+      <div>
+        <h3 style="font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:8px;">找不到所需品牌或产品？</h3>
+        <p style="font-size:14px;color:rgba(255,255,255,.6);max-width:480px;line-height:1.8;">我司还代理更多小众专业品牌，并提供杂质对照品定制合成服务。联系我们获取一对一选品建议。</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <button onclick="showPage('list')" style="padding:12px 28px;background:var(--cyan);color:var(--navy);border:none;border-radius:7px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Noto Sans SC',sans-serif;">🔍 产品检索</button>
+        <button style="padding:12px 28px;background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.3);border-radius:7px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Noto Sans SC',sans-serif;">💬 联系客服</button>
+      </div>
+    </div>
+
+  </div><!-- end section -->
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <div class="footer-logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="white" opacity="0.8"/><path d="M5 20c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="white" stroke-width="1.8" fill="none" opacity="0.8"/></svg></div>
+          <span class="footer-logo-text">鼎利成生物科技</span>
+        </div>
+        <p class="footer-desc">深圳鼎利成生物科技有限公司，专注于对照品与标准品的代理与销售，提供超过10万种医药、生化、工业实验检测类对照品及标准品。</p>
+        <p style="font-size:12px;color:rgba(255,255,255,.3);margin-top:14px;line-height:1.8;">深圳市龙岗区龙城街道回龙铺社区<br>花样年乐年广场13号楼A单元1001</p>
+      </div>
+      <div><div class="footer-col-title">产品</div><span class="footer-link">医药对照品</span><span class="footer-link">生化标准品</span><span class="footer-link">有机对照品</span><span class="footer-link">无机标准品</span></div>
+      <div><div class="footer-col-title">服务</div><span class="footer-link">选品咨询</span><span class="footer-link">CoA 下载</span><span class="footer-link">定制标准品</span><span class="footer-link">技术支持</span></div>
+      <div><div class="footer-col-title">联系我们</div><span class="footer-link">📞 0755-XXXX-XXXX</span><span class="footer-link">✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e1888f878ea1858d8283888e95848289cf828e8c">[email&#160;protected]</a></span><span class="footer-link">🕐 工作日 9:00–18:00</span></div>
+    </div>
+    <div class="footer-bottom"><span>© 2024 深圳鼎利成生物科技有限公司 · 粤ICP备XXXXXXXX号</span><span>专业对照品供应商 · 品质保证</span></div>
+  </footer>
+</div><!-- end pc-page-brands -->
+
+
+<!-- ── PC ABOUT PAGE ── -->
+<div id="pc-page-about" class="page">
+  <div class="page-nav">
+    <div class="page-nav-inner">
+      <div class="page-tab" onclick="showPage('home')">← 返回首页</div>
+      <div class="page-tab active">关于我们</div>
+    </div>
+  </div>
+
+  <!-- About Hero -->
+  <section style="background:var(--navy);padding:72px 40px;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(0,188,212,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(0,188,212,.07) 1px,transparent 1px);background-size:48px 48px;"></div>
+    <div style="position:absolute;top:-80px;right:-80px;width:500px;height:500px;background:radial-gradient(ellipse,rgba(16,80,208,.35) 0%,transparent 70%);pointer-events:none;"></div>
+    <div style="position:relative;max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--cyan);border:1px solid rgba(0,188,212,.35);padding:4px 14px;border-radius:40px;margin-bottom:20px;text-transform:uppercase;">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--cyan);display:inline-block;animation:blink 1.8s infinite;"></span> About Us · 关于我们
+        </div>
+        <h1 style="font-family:'Noto Serif SC',serif;font-size:clamp(24px,3vw,40px);font-weight:700;color:#fff;line-height:1.3;margin-bottom:16px;">深圳鼎利成<br><span style="color:var(--cyan);">生物科技有限公司</span></h1>
+        <p style="font-size:14px;color:rgba(255,255,255,.6);line-height:2;max-width:500px;">SHENZHEN DINGLICHENG BIO-TECHNOLOGY CO., LTD</p>
+        <div style="margin-top:28px;display:flex;gap:16px;flex-wrap:wrap;">
+          <div style="text-align:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:18px 24px;">
+            <div style="font-family:'DM Mono',monospace;font-size:28px;font-weight:500;color:#fff;line-height:1;">10<span style="font-size:18px;color:var(--cyan);">万+</span></div>
+            <div style="font-size:12px;color:rgba(255,255,255,.5);margin-top:4px;">在库产品种类</div>
+          </div>
+          <div style="text-align:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:18px 24px;">
+            <div style="font-family:'DM Mono',monospace;font-size:28px;font-weight:500;color:#fff;line-height:1;">30<span style="font-size:18px;color:var(--cyan);">+</span></div>
+            <div style="font-size:12px;color:rgba(255,255,255,.5);margin-top:4px;">代理品牌</div>
+          </div>
+          <div style="text-align:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:18px 24px;">
+            <div style="font-family:'DM Mono',monospace;font-size:28px;font-weight:500;color:#fff;line-height:1;">15<span style="font-size:18px;color:var(--cyan);">年+</span></div>
+            <div style="font-size:12px;color:rgba(255,255,255,.5);margin-top:4px;">行业经验</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:32px;">
+        <div style="font-size:12px;font-family:'DM Mono',monospace;letter-spacing:.1em;color:var(--cyan);margin-bottom:14px;text-transform:uppercase;">Company Profile</div>
+        <p style="font-size:14px;color:rgba(255,255,255,.75);line-height:2.1;">深圳鼎利成生物科技有限公司，作为全球多个高端标准品公司国内授权代理商，能为您提供超过 <strong style="color:#fff;">10万种</strong>的有机和无机对照品、标准品；同时提供优质的咨询服务，力助客户完成试验和生产任务。包括医药、生化、工业实验检测类对照品、标准品。</p>
+        <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);">
+          <p style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.8;">同时，我司还提供专业的<strong style="color:var(--cyan);">杂质对照品定制服务</strong>，给您一个一站式购物的体验。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="max-width:1320px;margin:0 auto;padding:60px 40px;">
+
+    <!-- Business Scope -->
+    <div style="margin-bottom:60px;">
+      <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:36px;">
+        <h2 style="font-family:'Noto Serif SC',serif;font-size:24px;font-weight:700;color:var(--navy);">主营业务</h2>
+        <span style="font-size:14px;color:var(--muted);">Business Scope</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;border-top:3px solid var(--blue);">
+          <div style="font-size:28px;margin-bottom:14px;">💊</div>
+          <div style="font-weight:700;font-size:16px;color:var(--navy);margin-bottom:10px;">医药对照品</div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.9;">涵盖化学药、中药、生物药各类原料药及成品的含量测定、杂质检测所需全系列对照品，符合CP/USP/EP/BP等国内外药典标准。</p>
+        </div>
+        <div style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;border-top:3px solid var(--green);">
+          <div style="font-size:28px;margin-bottom:14px;">🧬</div>
+          <div style="font-weight:700;font-size:16px;color:var(--navy);margin-bottom:10px;">生化标准品</div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.9;">酶、蛋白质、核酸、多糖等生物大分子标准品，以及临床诊断、疫苗效价检测所需国际生物标准品，溯源至WHO及国家级标准。</p>
+        </div>
+        <div style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;border-top:3px solid var(--gold);">
+          <div style="font-size:28px;margin-bottom:14px;">⚗️</div>
+          <div style="font-weight:700;font-size:16px;color:var(--navy);margin-bottom:10px;">工业实验检测类标准品</div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.9;">环境监测、食品安全、材料分析等工业检测应用，提供农兽药残留、重金属、有机污染物等各类认证标准溶液与固体标准品。</p>
+        </div>
+        <div style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;border-top:3px solid #9b59b6;">
+          <div style="font-size:28px;margin-bottom:14px;">🔬</div>
+          <div style="font-weight:700;font-size:16px;color:var(--navy);margin-bottom:10px;">有机 / 无机对照品</div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.9;">代理高纯度有机化合物与无机标准品，涵盖金属离子、稳定同位素内标、高纯无机盐等，满足仪器校准与方法验证需求。</p>
+        </div>
+        <div style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;border-top:3px solid var(--cyan);">
+          <div style="font-size:28px;margin-bottom:14px;">🛠️</div>
+          <div style="font-weight:700;font-size:16px;color:var(--navy);margin-bottom:10px;">杂质对照品定制</div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.9;">针对药物研发中难以购得的特殊杂质，提供专业定制合成服务，结构确认、纯度检测、CoA 全套文件一并提供。</p>
+        </div>
+        <div style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:28px 24px;border-top:3px solid #e74c3c;">
+          <div style="font-size:28px;margin-bottom:14px;">🤝</div>
+          <div style="font-weight:700;font-size:16px;color:var(--navy);margin-bottom:10px;">专业咨询服务</div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.9;">资深应用专家提供选品指导、方法验证建议和注册申报支持，一站式服务助力客户高效完成实验与生产任务。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why Choose Us -->
+    <div style="margin-bottom:60px;">
+      <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:36px;">
+        <h2 style="font-family:'Noto Serif SC',serif;font-size:24px;font-weight:700;color:var(--navy);">我们的优势</h2>
+        <span style="font-size:14px;color:var(--muted);">Our Advantages</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;display:flex;gap:20px;align-items:flex-start;">
+          <div style="width:48px;height:48px;background:var(--tag-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🏆</div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);margin-bottom:8px;">权威品牌，原装正品</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.9;">作为多个全球顶级标准品机构在国内的授权代理商，所有产品均为原装进口，附带完整的批次分析证书（CoA）与溯源文件，品质有保障。</p>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;display:flex;gap:20px;align-items:flex-start;">
+          <div style="width:48px;height:48px;background:#e6f9f3;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">📦</div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);margin-bottom:8px;">品种齐全，一站购齐</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.9;">在库超过10万种对照品与标准品，覆盖医药、生化、工业检测各大领域，满足客户从研发到生产的全流程需求，无需多家采购。</p>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;display:flex;gap:20px;align-items:flex-start;">
+          <div style="width:48px;height:48px;background:#fff8e6;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">⚡</div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);margin-bottom:8px;">快速响应，按时交付</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.9;">深圳本地仓储，常规产品24小时内发货；专业服务团队工作日快速响应报价，确保客户实验与生产进度不受影响。</p>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;display:flex;gap:20px;align-items:flex-start;">
+          <div style="width:48px;height:48px;background:#fef2f0;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🔬</div>
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--navy);margin-bottom:8px;">专业咨询，全程支持</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.9;">拥有丰富行业经验的应用专家团队，提供选品建议、方法优化指导及注册申报支持，助力客户高效完成实验任务和生产检验。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact & Location -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:0;">
+      <div style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:36px;">
+        <h3 style="font-family:'Noto Serif SC',serif;font-size:18px;font-weight:700;color:var(--navy);margin-bottom:24px;">联系方式</h3>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;align-items:flex-start;gap:14px;">
+            <div style="width:36px;height:36px;background:var(--tag-bg);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">📞</div>
+            <div>
+              <div style="font-size:12px;color:var(--muted);margin-bottom:3px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;">电话</div>
+              <div style="font-size:15px;font-weight:600;color:var(--navy);font-family:'DM Mono',monospace;">0755-XXXX-XXXX</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px;">工作日 09:00 – 18:00</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:14px;">
+            <div style="width:36px;height:36px;background:var(--tag-bg);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✉️</div>
+            <div>
+              <div style="font-size:12px;color:var(--muted);margin-bottom:3px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;">邮箱</div>
+              <div style="font-size:15px;font-weight:600;color:var(--blue);font-family:'DM Mono',monospace;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ef86818980af8b838c8d86809b8a8c87c18c8082">[email&#160;protected]</a></div>
+              <div style="font-size:12px;color:var(--muted);margin-top:2px;">24小时内回复</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:14px;">
+            <div style="width:36px;height:36px;background:var(--tag-bg);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">📍</div>
+            <div>
+              <div style="font-size:12px;color:var(--muted);margin-bottom:3px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;">地址</div>
+              <div style="font-size:14px;font-weight:600;color:var(--navy);line-height:1.8;">深圳市龙岗区龙城街道<br>回龙铺社区花样年乐年广场<br>13号楼A单元1001</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:14px;">
+            <div style="width:36px;height:36px;background:#e8f9ff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">💬</div>
+            <div>
+              <div style="font-size:12px;color:var(--muted);margin-bottom:3px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;">QQ 在线客服</div>
+              <div style="font-size:13px;color:var(--navy);line-height:1.8;">李欣（技术顾问）· 张磊（销售顾问）<br><span style="color:var(--muted);">点击右下角 QQ 图标即可联系</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--navy);border-radius:12px;padding:36px;position:relative;overflow:hidden;">
+        <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(0,188,212,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(0,188,212,.07) 1px,transparent 1px);background-size:32px 32px;"></div>
+        <div style="position:relative;">
+          <h3 style="font-family:'Noto Serif SC',serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;">公司全称</h3>
+          <p style="font-size:14px;color:var(--cyan);font-family:'DM Mono',monospace;line-height:1.8;margin-bottom:24px;">SHENZHEN DINGLICHENG<br>BIO-TECHNOLOGY CO., LTD</p>
+          <div style="border-top:1px solid rgba(255,255,255,.1);padding-top:24px;">
+            <div style="font-size:12px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;font-family:'DM Mono',monospace;margin-bottom:14px;">主营品牌一览</div>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;">
+              <span style="font-size:11px;font-family:'DM Mono',monospace;font-weight:700;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.15);">CFDI 中检院</span>
+              <span style="font-size:11px;font-family:'DM Mono',monospace;font-weight:700;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.15);">USP</span>
+              <span style="font-size:11px;font-family:'DM Mono',monospace;font-weight:700;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.15);">EP</span>
+              <span style="font-size:11px;font-family:'DM Mono',monospace;font-weight:700;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.15);">BP</span>
+              <span style="font-size:11px;font-family:'DM Mono',monospace;font-weight:700;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.15);">SIGMA</span>
+              <span style="font-size:11px;font-family:'DM Mono',monospace;font-weight:700;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.15);">NIST</span>
+              <span style="font-size:11px;font-family:'DM Mono',monospace;font-weight:700;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.15);">LGC</span>
+              <span style="font-size:11px;font-family:'DM Mono',monospace;font-weight:700;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.15);">TRC</span>
+              <span style="font-size:11px;font-family:'DM Mono',monospace;font-weight:700;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.15);">ERM</span>
+              <span style="font-size:11px;font-family:'DM Mono',monospace;font-weight:700;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.15);">NIBSC</span>
+              <span style="font-size:11px;font-family:'DM Mono',monospace;font-weight:700;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.15);">AccuStandard</span>
+              <span style="font-size:11px;font-family:'DM Mono',monospace;font-weight:700;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.15);">CHIRON</span>
+              <span style="font-size:11px;font-family:'DM Mono',monospace;font-weight:700;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.15);">麦克林</span>
+              <span style="font-size:11px;font-family:'DM Mono',monospace;font-weight:700;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.15);">阿拉丁</span>
+              <span style="font-size:11px;font-family:'DM Mono',monospace;font-weight:700;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);padding:4px 10px;border-radius:4px;font-weight:700;border:1px solid rgba(0,188,212,.4);color:var(--cyan);">更多品牌 →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end main section -->
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <div class="footer-logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" fill="white" opacity="0.8"/><path d="M5 20c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="white" stroke-width="1.8" fill="none" opacity="0.8"/></svg></div>
+          <span class="footer-logo-text">鼎利成生物科技</span>
+        </div>
+        <p class="footer-desc">深圳鼎利成生物科技有限公司，专注于对照品与标准品的代理与销售，提供超过10万种医药、生化、工业实验检测类对照品及标准品。</p>
+        <p style="font-size:12px;color:rgba(255,255,255,.3);margin-top:14px;line-height:1.8;">深圳市龙岗区龙城街道回龙铺社区<br>花样年乐年广场13号楼A单元1001</p>
+      </div>
+      <div><div class="footer-col-title">产品</div><span class="footer-link">医药对照品</span><span class="footer-link">生化标准品</span><span class="footer-link">有机对照品</span><span class="footer-link">无机标准品</span></div>
+      <div><div class="footer-col-title">服务</div><span class="footer-link">选品咨询</span><span class="footer-link">CoA 下载</span><span class="footer-link">定制标准品</span><span class="footer-link">技术支持</span></div>
+      <div><div class="footer-col-title">联系我们</div><span class="footer-link">📞 0755-XXXX-XXXX</span><span class="footer-link">✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bcd5d2dad3fcd8d0dfded5d3c8d9dfd492dfd3d1">[email&#160;protected]</a></span><span class="footer-link">🕐 工作日 9:00–18:00</span></div>
+    </div>
+    <div class="footer-bottom"><span>© 2024 深圳鼎利成生物科技有限公司 · 粤ICP备XXXXXXXX号</span><span>专业对照品供应商 · 品质保证</span></div>
+  </footer>
+</div><!-- end pc-page-about -->
+
+
+<!-- ── PC PRODUCT LIST ── -->
+<div id="pc-page-list" class="page">
+  <div class="page-nav">
+    <div class="page-nav-inner">
+      <div class="page-tab active">产品目录</div>
+    </div>
+  </div>
+  <div class="list-layout">
+    <aside class="sidebar">
+      <div class="sidebar-block">
+        <div class="sidebar-title">快速搜索</div>
+        <div class="list-search-bar"><input type="text" placeholder="名称 / CAS号 / 货号"><button>🔍</button></div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-title">筛选条件</div>
+        <div class="filter-group">
+          <div class="filter-label">品牌</div>
+          <label class="filter-item"><input type="checkbox" checked> 中检院 CFDI <span class="filter-count">12,450</span></label>
+          <label class="filter-item"><input type="checkbox"> USP <span class="filter-count">8,320</span></label>
+          <label class="filter-item"><input type="checkbox"> EP <span class="filter-count">7,180</span></label>
+          <label class="filter-item"><input type="checkbox"> SIGMA <span class="filter-count">6,940</span></label>
+          <label class="filter-item"><input type="checkbox"> TRC <span class="filter-count">5,200</span></label>
+          <label class="filter-item"><input type="checkbox"> NIST <span class="filter-count">3,100</span></label>
+          <label class="filter-item"><input type="checkbox"> LGC <span class="filter-count">2,890</span></label>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">产品类别</div>
+          <label class="filter-item"><input type="checkbox" checked> 医药对照品 <span class="filter-count">45,200</span></label>
+          <label class="filter-item"><input type="checkbox"> 生化标准品 <span class="filter-count">28,100</span></label>
+          <label class="filter-item"><input type="checkbox"> 有机对照品 <span class="filter-count">18,000</span></label>
+          <label class="filter-item"><input type="checkbox"> 无机标准品 <span class="filter-count">9,000</span></label>
+        </div>
+
+      </div>
+    </aside>
+    <main>
+      <div class="list-toolbar">
+        <div class="list-count">共找到 <b>45,218</b> 条产品 &nbsp;·&nbsp; 已筛选：医药对照品 / 中检院</div>
+        <select class="sort-select"><option>综合排序</option><option>按纯度排序</option><option>最新上架</option></select>
+      </div>
+      <table class="prod-table">
+        <thead>
+          <tr>
+            <th style="width:40%">产品名称</th>
+            <th style="width:15%">CAS 号</th>
+            <th style="width:13%">品牌</th>
+            <th style="width:22%">分子式 / 分子量</th>
+            <th style="width:10%">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr onclick="showPage('detail')">
+            <td><div class="prod-name">咖啡因对照品</div><div class="prod-name-en">Caffeine Reference Standard · C-201018</div></td>
+            <td><span class="prod-cas">58-08-2</span></td>
+            <td><span class="prod-brand-badge">CFDI</span></td>
+            <td><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--navy)">C₈H₁₀N₄O₂ / 194.19</span></td>
+            <td><button class="action-btn primary" onclick="event.stopPropagation();showPage('detail')">详情</button></td>
+          </tr>
+          <tr onclick="showPage('detail')">
+            <td><div class="prod-name">阿司匹林对照品</div><div class="prod-name-en">Aspirin Reference Standard · A-100012</div></td>
+            <td><span class="prod-cas">50-78-2</span></td>
+            <td><span class="prod-brand-badge">USP</span></td>
+            <td><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--navy)">C₉H₈O₄ / 180.16</span></td>
+            <td><button class="action-btn primary" onclick="event.stopPropagation();showPage('detail')">详情</button></td>
+          </tr>
+          <tr>
+            <td><div class="prod-name">维生素 C 对照品</div><div class="prod-name-en">L-Ascorbic Acid Reference Standard · V-200334</div></td>
+            <td><span class="prod-cas">50-81-7</span></td>
+            <td><span class="prod-brand-badge">EP</span></td>
+            <td><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--navy)">C₆H₈O₆ / 176.12</span></td>
+            <td><button class="action-btn primary">详情</button></td>
+          </tr>
+          <tr>
+            <td><div class="prod-name">青霉素 G 钾盐标准品</div><div class="prod-name-en">Penicillin G Potassium Standard · P-300221</div></td>
+            <td><span class="prod-cas">113-98-4</span></td>
+            <td><span class="prod-brand-badge">CFDI</span></td>
+            <td><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--navy)">C₁₆H₁₇KN₂O₄S / 372.47</span></td>
+            <td><button class="action-btn primary">详情</button></td>
+          </tr>
+          <tr>
+            <td><div class="prod-name">地塞米松对照品</div><div class="prod-name-en">Dexamethasone Reference Standard · D-400118</div></td>
+            <td><span class="prod-cas">50-02-2</span></td>
+            <td><span class="prod-brand-badge">BP</span></td>
+            <td><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--navy)">C₂₂H₂₉FO₅ / 392.46</span></td>
+            <td><button class="action-btn primary">详情</button></td>
+          </tr>
+          <tr>
+            <td><div class="prod-name">葡萄糖标准品</div><div class="prod-name-en">D-Glucose Standard · G-500089</div></td>
+            <td><span class="prod-cas">50-99-7</span></td>
+            <td><span class="prod-brand-badge">SIGMA</span></td>
+            <td><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--navy)">C₆H₁₂O₆ / 180.16</span></td>
+            <td><button class="action-btn primary">详情</button></td>
+          </tr>
+          <tr>
+            <td><div class="prod-name">布洛芬对照品</div><div class="prod-name-en">Ibuprofen Reference Standard · I-700221</div></td>
+            <td><span class="prod-cas">15687-27-1</span></td>
+            <td><span class="prod-brand-badge">USP</span></td>
+            <td><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--navy)">C₁₃H₁₈O₂ / 206.28</span></td>
+            <td><button class="action-btn primary">详情</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <div class="pg-btn">‹</div>
+        <div class="pg-btn active">1</div>
+        <div class="pg-btn">2</div>
+        <div class="pg-btn">3</div>
+        <div class="pg-btn">4</div>
+        <div class="pg-btn">5</div>
+        <div class="pg-btn">…</div>
+        <div class="pg-btn">452</div>
+        <div class="pg-btn">›</div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ── PC PRODUCT DETAIL ── -->
+<div id="pc-page-detail" class="page">
+  <div class="page-nav">
+    <div class="page-nav-inner">
+      <div class="page-tab" onclick="showPage('home')">← 首页</div>
+      <div class="page-tab" onclick="showPage('list')">产品目录</div>
+      <div class="page-tab active">产品详情</div>
+    </div>
+  </div>
+  <div class="detail-wrap">
+    <div class="breadcrumb">
+      <span onclick="showPage('home')">首页</span>
+      <span class="breadcrumb-sep">›</span>
+      <span onclick="showPage('list')">产品目录</span>
+      <span class="breadcrumb-sep">›</span>
+      <span onclick="showPage('list')">医药对照品</span>
+      <span class="breadcrumb-sep">›</span>
+      <span style="color:var(--navy);cursor:default;">咖啡因对照品</span>
+    </div>
+
+    <div class="detail-grid">
+      <!-- LEFT MAIN -->
+      <div>
+        <div style="margin-bottom:28px;">
+          <div class="detail-badges">
+            <span class="badge badge-brand">中检院 CFDI</span>
+            <span class="badge badge-cat">医药对照品</span>
+            <span class="badge badge-cert">✓ 附 CoA 证书</span>
+          </div>
+          <div class="detail-name">咖啡因对照品</div>
+          <div class="detail-name-en">Caffeine Reference Standard</div>
+          <div class="detail-cas-row">
+            <span class="cas-label">CAS No.</span>
+            <span class="cas-value">58-08-2</span>
+            <span style="font-size:13px;color:var(--muted);margin-left:8px;">货号：C-201018</span>
+          </div>
+        </div>
+
+        <!-- KEY PARAMS -->
+        <div class="data-card">
+          <div class="data-card-header">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <span class="data-card-title">核心技术参数</span>
+          </div>
+          <div class="data-grid">
+            <div class="data-cell"><div class="data-cell-label">纯度 Purity</div><div class="data-cell-value highlight">99.8 %</div></div>
+            <div class="data-cell"><div class="data-cell-label">分子量 MW</div><div class="data-cell-value">194.19 g/mol</div></div>
+            <div class="data-cell"><div class="data-cell-label">分子式</div><div class="data-cell-value">C₈H₁₀N₄O₂</div></div>
+            <div class="data-cell"><div class="data-cell-label">外观</div><div class="data-cell-value">白色结晶粉末</div></div>
+            <div class="data-cell"><div class="data-cell-label">熔点 MP</div><div class="data-cell-value">235–238 °C</div></div>
+            <div class="data-cell"><div class="data-cell-label">含量测定</div><div class="data-cell-value green-v">符合规定 ✓</div></div>
+          </div>
+        </div>
+
+        <!-- TABS -->
+        <div class="tab-bar">
+          <div class="tab-item active" onclick="pcSwitchTab(this,'pc-tab-spec')">技术规格</div>
+          <div class="tab-item" onclick="pcSwitchTab(this,'pc-tab-storage')">储存与安全</div>
+          <div class="tab-item" onclick="pcSwitchTab(this,'pc-tab-app')">应用信息</div>
+          <div class="tab-item" onclick="pcSwitchTab(this,'pc-tab-doc')">文件下载</div>
+        </div>
+
+        <div id="pc-tab-spec" class="tab-content active">
+          <div class="data-card">
+            <div class="data-card-header"><span class="data-card-title">详细规格参数</span></div>
+            <table class="spec-table">
+              <tr><td>中文名称</td><td>咖啡因；1,3,7-三甲基黄嘌呤</td></tr>
+              <tr><td>英文名称</td><td>Caffeine; 1,3,7-Trimethylxanthine</td></tr>
+              <tr><td>CAS 编号</td><td>58-08-2</td></tr>
+              <tr><td>EINECS 编号</td><td>200-362-1</td></tr>
+              <tr><td>品牌 / 来源</td><td>中国食品药品检定研究院（CFDI）</td></tr>
+              <tr><td>批号</td><td>100081-202115</td></tr>
+              <tr><td>标准依据</td><td>《中国药典》2020版 第一部</td></tr>
+              <tr><td>纯度（HPLC）</td><td>99.8 %</td></tr>
+              <tr><td>水分（Karl Fischer）</td><td>≤ 0.5 %</td></tr>
+              <tr><td>灼烧残渣</td><td>≤ 0.1 %</td></tr>
+              <tr><td>重金属（以 Pb 计）</td><td>≤ 10 ppm</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div id="pc-tab-storage" class="tab-content">
+          <div class="data-card">
+            <div class="data-card-header"><span class="data-card-title">储存与安全信息</span></div>
+            <table class="spec-table">
+              <tr><td>推荐储存温度</td><td>2–8 °C（冷藏）</td></tr>
+              <tr><td>储存条件</td><td>密封避光，干燥处保存</td></tr>
+              <tr><td>有效期</td><td>36 个月（自生产之日起）</td></tr>
+              <tr><td>危险标识</td><td>无危险品（Non-Hazardous）</td></tr>
+              <tr><td>UN 编号</td><td>N/A</td></tr>
+              <tr><td>运输要求</td><td>常温运输，避免剧烈震动</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div id="pc-tab-app" class="tab-content">
+          <div class="data-card">
+            <div class="data-card-header"><span class="data-card-title">应用领域</span></div>
+            <div style="padding:20px;font-size:14px;line-height:2;color:var(--navy)">
+              <p style="margin-bottom:10px;">咖啡因对照品主要用于以下场景：</p>
+              <ul style="margin-left:20px;display:flex;flex-direction:column;gap:6px;">
+                <li>药品含量测定：HPLC、UV 法测定制剂中咖啡因含量</li>
+                <li>方法学验证：用作系统适用性检验的对照品</li>
+                <li>仪器校准：液相色谱柱效测试标准物质</li>
+                <li>食品检测：饮料中咖啡因含量检测的标准品</li>
+                <li>毒理学研究：体内外毒性评价研究</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div id="pc-tab-doc" class="tab-content">
+          <div class="coa-block"><div class="coa-icon">📄</div><div class="coa-info"><div class="coa-title">批次分析证书（CoA）</div><div class="coa-sub">批号 100081-202115 · PDF · 245 KB · 由中检院出具</div></div><button class="coa-btn">⬇ 下载 CoA</button></div>
+          <div class="coa-block"><div class="coa-icon">📊</div><div class="coa-info"><div class="coa-title">安全数据表（SDS / MSDS）</div><div class="coa-sub">GHS 标准格式 · PDF · 180 KB</div></div><button class="coa-btn">⬇ 下载 SDS</button></div>
+          <div class="coa-block"><div class="coa-icon">📋</div><div class="coa-info"><div class="coa-title">质量标准文件</div><div class="coa-sub">《中国药典》2020版 咖啡因项目标准</div></div><button class="coa-btn">⬇ 下载</button></div>
+        </div>
+
+        <!-- RELATED -->
+        <div style="margin-top:36px;">
+          <div style="font-family:'Noto Serif SC',serif;font-size:18px;font-weight:700;margin-bottom:16px;">相关产品</div>
+          <div class="related-grid">
+            <div class="related-card" onclick="showPage('detail')"><div class="related-name">茶碱对照品</div><div class="related-cas">CAS 58-55-9</div><div class="related-bottom"><span class="related-brand">CFDI</span><span class="related-link">查看 →</span></div></div>
+            <div class="related-card"><div class="related-name">可可碱对照品</div><div class="related-cas">CAS 83-67-0</div><div class="related-bottom"><span class="related-brand">USP</span><span class="related-link">查看 →</span></div></div>
+            <div class="related-card"><div class="related-name">氨茶碱对照品</div><div class="related-cas">CAS 317-34-0</div><div class="related-bottom"><span class="related-brand">EP</span><span class="related-link">查看 →</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDEBAR -->
+      <div class="contact-sidebar">
+
+        <!-- MOLECULE STRUCTURE -->
+        <div class="molecule-card">
+          <div class="molecule-card-header">
+            <span class="molecule-card-title">🧪 分子结构图</span>
+            <span style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;">C₈H₁₀N₄O₂</span>
+          </div>
+          <div class="molecule-viewer">
+            <div class="mol-svg-wrap">
+              <!-- Caffeine 2D structure SVG -->
+              <svg width="240" height="180" viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Mono',monospace;">
+                <!-- Xanthine core - two fused rings (pyrimidine + imidazole) -->
+                <!-- Outer ring bonds -->
+                <line x1="80" y1="90" x2="60" y2="55" stroke="var(--blue)" stroke-width="2"/>
+                <line x1="60" y1="55" x2="80" y2="20" stroke="var(--blue)" stroke-width="2"/>
+                <line x1="80" y1="20" x2="120" y2="20" stroke="var(--blue)" stroke-width="2"/>
+                <line x1="120" y1="20" x2="140" y2="55" stroke="var(--blue)" stroke-width="2"/>
+                <line x1="140" y1="55" x2="120" y2="90" stroke="var(--blue)" stroke-width="2"/>
+                <line x1="120" y1="90" x2="80" y2="90" stroke="var(--blue)" stroke-width="2"/>
+                <!-- Second ring -->
+                <line x1="120" y1="90" x2="140" y2="125" stroke="var(--blue)" stroke-width="2"/>
+                <line x1="140" y1="125" x2="120" y2="155" stroke="var(--blue)" stroke-width="2"/>
+                <line x1="120" y1="155" x2="80" y2="155" stroke="var(--blue)" stroke-width="2"/>
+                <line x1="80" y1="155" x2="60" y2="125" stroke="var(--blue)" stroke-width="2"/>
+                <line x1="60" y1="125" x2="80" y2="90" stroke="var(--blue)" stroke-width="2"/>
+                <!-- Double bonds -->
+                <line x1="82" y1="87" x2="62" y2="52" stroke="var(--blue)" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.5"/>
+                <line x1="121" y1="92" x2="141" y2="126" stroke="var(--blue)" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.5"/>
+                <!-- Methyl groups -->
+                <line x1="60" y1="55" x2="30" y2="45" stroke="#666" stroke-width="1.5"/>
+                <line x1="140" y1="55" x2="170" y2="45" stroke="#666" stroke-width="1.5"/>
+                <line x1="60" y1="125" x2="30" y2="135" stroke="#666" stroke-width="1.5"/>
+                <!-- Carbonyl oxygens -->
+                <line x1="80" y1="20" x2="70" y2="2" stroke="#e05" stroke-width="2"/>
+                <line x1="120" y1="20" x2="130" y2="2" stroke="#e05" stroke-width="2"/>
+                <!-- N atoms -->
+                <circle cx="100" cy="90" r="3" fill="#1050d0" opacity="0.15"/>
+                <!-- Labels -->
+                <text x="96" y="90" font-size="12" fill="#1050d0" font-weight="700" text-anchor="middle" dy="4">N</text>
+                <text x="140" y="58" font-size="12" fill="#1050d0" font-weight="700" text-anchor="middle" dy="4">N</text>
+                <text x="62" y="58" font-size="12" fill="#1050d0" font-weight="700" text-anchor="middle" dy="4">N</text>
+                <text x="62" y="128" font-size="12" fill="#1050d0" font-weight="700" text-anchor="middle" dy="4">N</text>
+                <!-- Oxygen labels -->
+                <text x="68" y="5" font-size="12" fill="#cc0033" font-weight="700" text-anchor="middle">O</text>
+                <text x="132" y="5" font-size="12" fill="#cc0033" font-weight="700" text-anchor="middle">O</text>
+                <!-- CH3 labels -->
+                <text x="22" y="46" font-size="11" fill="#444" text-anchor="middle">CH₃</text>
+                <text x="178" y="46" font-size="11" fill="#444" text-anchor="middle">CH₃</text>
+                <text x="22" y="136" font-size="11" fill="#444" text-anchor="middle">CH₃</text>
+                <!-- C labels at ring corners -->
+                <text x="80" y="24" font-size="11" fill="#333" text-anchor="middle" font-weight="600">C</text>
+                <text x="120" y="24" font-size="11" fill="#333" text-anchor="middle" font-weight="600">C</text>
+                <text x="78" y="170" font-size="11" fill="#333" text-anchor="middle" font-weight="600">C</text>
+                <text x="140" y="130" font-size="11" fill="#333" text-anchor="middle" font-weight="600">C</text>
+              </svg>
+            </div>
+            <div class="mol-formula-row">
+              <span class="mol-tag">C₈H₁₀N₄O₂</span>
+              <span class="mol-tag">MW 194.19</span>
+              <span class="mol-tag">InChI Key: RYYVLZVUVIJVGH</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTACT INFO -->
+        <div class="contact-info-card">
+          <div class="contact-info-title">📞 联系与咨询</div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-text">0755-XXXX-XXXX<small>工作日 09:00 – 18:00</small></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-text"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bbd2d5ddd4fbdfd7d896d9d2d495d8d4d6">[email&#160;protected]</a><small>24小时内回复</small></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-text">深圳市龙岗区龙城街道<small>花样年乐年广场13号楼A单元1001</small></div>
+          </div>
+        </div>
+
+        <!-- QQ ONLINE SERVICE -->
+        <div class="expert-card">
+          <div class="expert-title">💬 QQ 在线客服</div>
+          <div class="expert-desc">点击下方客服头像，将直接跳转至 QQ 对话窗口，与专业顾问实时沟通。</div>
+          <div class="expert-qq-list">
+            <div class="expert-qq-item">
+              <div>
+                <div class="expert-qq-name">👩‍🔬 李欣 · 技术顾问</div>
+                <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px;">医药对照品 / 生化标准品</div>
+              </div>
+              <a class="expert-qq-link" href="https://wpa.qq.com/msgrd?v=3&uin=QQNUMBER1&site=qq&menu=yes" target="_blank">发起会话</a>
+            </div>
+            <div class="expert-qq-item">
+              <div>
+                <div class="expert-qq-name">👨‍💼 张磊 · 销售顾问</div>
+                <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px;">报价咨询 / 选品建议</div>
+              </div>
+              <a class="expert-qq-link" href="https://wpa.qq.com/msgrd?v=3&uin=QQNUMBER2&site=qq&menu=yes" target="_blank">发起会话</a>
+            </div>
+          </div>
+          <div style="margin-top:12px;font-size:11px;color:rgba(255,255,255,.3);text-align:center;">工作时间 09:00–18:00 | 非工作时间留言即可</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+<script>
+function showPage(id) {
+  document.querySelectorAll('#pc-view .page').forEach(p => p.classList.remove('active'));
+  document.getElementById('pc-page-' + id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function filterBrands(cat, btn) {
+  document.querySelectorAll('.brand-tab-btn').forEach(b => {
+    b.style.background='#fff'; b.style.color='var(--muted)'; b.style.borderColor='var(--line)';
+  });
+  btn.style.background='var(--blue)'; btn.style.color='#fff'; btn.style.borderColor='var(--blue)';
+  document.querySelectorAll('.brand-card').forEach(c => {
+    c.style.display = (cat==='all' || c.dataset.cat===cat) ? '' : 'none';
+  });
+}
+function pcSwitchTab(btn, tabId) {
+  const bar = btn.closest('.tab-bar') || btn.parentElement;
+  bar.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  const page = document.getElementById('pc-page-detail');
+  page.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  const target = document.getElementById(tabId);
+  if (target) target.classList.add('active');
+}
+function toggleQQPopup() {
+  const popup = document.getElementById('qq-popup');
+  popup.classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  const popup = document.getElementById('qq-popup');
+  const btn = document.querySelector('.qq-float-btn');
+  if (popup && !popup.contains(e.target) && btn && !btn.contains(e.target)) {
+    popup.classList.remove('open');
+  }
+});
+document.addEventListener('DOMContentLoaded', () => showPage('home'));
+</script>
+</body>
+</html>

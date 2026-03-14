@@ -10,7 +10,7 @@
  */
 
 @theme {
-  --color-primary: var(--color-green); /* 默认主题色 */
+  --color-primary: #1050d0; /* 默认主题色 */
   --color-secondary: var(--color-blue); /* 次级主题色 */
   --color-success: var(--color-green); /* 成功色 */
   --color-info: var(--color-blue); /* 信息色 */
