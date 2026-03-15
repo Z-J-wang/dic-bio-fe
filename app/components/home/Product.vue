@@ -15,7 +15,7 @@ const categories = useState('home-product-categories', () => [
   <section>
     <UContainer class="py-18">
       <div class="mb-10 flex items-baseline gap-2">
-        <h2 class="text-[1.625rem] font-bold">产品分类</h2>
+        <h2 class="font-serif text-[1.625rem] font-bold">产品分类</h2>
         <span class="text-sm text-muted">按应用场景快速定位所需标准品</span>
         <NuxtLinkLocale class="ml-auto text-sm font-medium text-(--blue) hover:underline" to="/"
           >查看全部产品 →</NuxtLinkLocale

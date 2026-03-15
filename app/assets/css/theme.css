@@ -11,7 +11,8 @@
 
 @theme {
   --font-sans: 'Noto Sans SC', sans-serif; /* 无衬线字体 */
-
+  --font-serif: 'Noto Serif SC', serif;
+  --font-mono: 'DM Mono', monospace;
   --color-primary: #1050d0; /* 默认主题色 */
   --color-secondary: var(--color-blue); /* 次级主题色 */
   --color-success: var(--color-green); /* 成功色 */

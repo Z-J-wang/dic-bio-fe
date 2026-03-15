@@ -1,0 +1,9 @@
+<svg class="qq-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M20 4C11.163 4 4 10.716 4 19c0 4.574 2.047 8.68 5.308 11.547-.3 1.12-.96 2.853-2.308 3.953 0 0 3.2.2 6.2-2.1.6.4 2.3 1.4 6.8 1.4 8.837 0 16-6.716 16-15C36 10.716 28.837 4 20 4z"
+            fill="white"
+            opacity="0.95"
+          ></path>
+          <circle cx="14.5" cy="19" r="1.8" fill="#12b7f5"></circle>
+          <circle cx="25.5" cy="19" r="1.8" fill="#12b7f5"></circle>
+        </svg>

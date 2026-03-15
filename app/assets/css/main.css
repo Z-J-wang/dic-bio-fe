@@ -112,3 +112,13 @@ body {
 .delay-3 {
   animation-delay: 0.35s;
 }
+
+@keyframes floatPulse {
+  0%,
+  100% {
+    box-shadow: 0 4px 20px rgba(16, 80, 208, 0.45);
+  }
+  50% {
+    box-shadow: 0 4px 32px rgba(18, 183, 245, 0.7);
+  }
+}

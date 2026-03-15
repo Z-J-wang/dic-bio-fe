@@ -36,13 +36,15 @@ const items = computed<NavigationMenuItem[]>(() => [
       }"
     >
       <template #title>
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2.75">
           <div class="flex h-10 w-10 items-center justify-center rounded-[5px] bg-[#0f2a5e]">
             <img :src="logo" alt="logo" class="h-5.5 w-5.5" />
           </div>
-          <div class="leading-[1.15]">
-            <p class="text-lg leading-[1.15]">{{ t('blcBio', 1, { locale: 'zh-CN' }) }}</p>
-            <p class="text-[10px] tracking-[0.12em] text-muted">{{ t('blcBio', 1, { locale: 'en' }) }}</p>
+          <div class="leading-[1.2]">
+            <p class="font-serif text-base">{{ t('blcBio', 1, { locale: 'zh-CN' }) }}</p>
+            <p class="font-mono text-[8.5px] font-normal! tracking-[0.06em] text-muted">
+              {{ t('blcBio', 1, { locale: 'en' }) }}
+            </p>
           </div>
         </div>
       </template>
@@ -67,6 +69,9 @@ const items = computed<NavigationMenuItem[]>(() => [
     <UMain>
       <slot />
     </UMain>
+
+    <GlobalContact />
+
     <BaseFooter />
   </UApp>
 </template>

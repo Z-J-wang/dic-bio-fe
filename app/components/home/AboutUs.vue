@@ -21,7 +21,7 @@ const advantages = useState('home-advantages', () => [
 <template>
   <div class="home-about-us">
     <UContainer class="py-18">
-      <h2 class="text-[1.625rem] font-bold">为什么选择鼎利成</h2>
+      <h2 class="mb-10 font-serif text-[1.625rem] font-bold">为什么选择鼎利成</h2>
       <ul class="grid grid-cols-1 gap-2 md:grid-cols-3 md:gap-4 lg:gap-6">
         <li
           v-for="item in advantages"

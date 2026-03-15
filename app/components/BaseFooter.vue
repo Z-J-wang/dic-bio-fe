@@ -50,7 +50,7 @@ const columns = computed<FooterColumn[]>(() => {
             <img :src="logo" alt="logo" class="h-4.5 w-4.5" />
           </div>
           <div class="leading-[1.15]">
-            <p class="leading-[1.15]">{{ t('blcBio', 1, { locale: 'zh-CN' }) }}</p>
+            <p class="font-serif leading-[1.15]">{{ t('blcBio', 1, { locale: 'zh-CN' }) }}</p>
           </div>
         </div>
         <div class="text-[13px] leading-[1.8] text-muted">
