@@ -42,21 +42,21 @@ const columns = computed<FooterColumn[]>(() => {
 </script>
 
 <template>
-  <UFooter :ui="{ container: 'items-start!', left: 'flex-none!', right: 'w-full' }">
+  <UFooter :ui="{ root: 'pt-15 pb-7.5', container: 'items-start! py-0!', left: 'flex-none!', right: 'w-full' }">
     <template #left>
-      <div class="max-w-109.5 space-y-3">
-        <div class="flex items-center gap-3.5">
-          <div class="flex h-10 w-10 items-center justify-center rounded-[5px] bg-[#213a6a]">
-            <img :src="logo" alt="logo" class="h-5.5 w-5.5" />
+      <div class="max-w-109.5">
+        <div class="mb-4 flex items-center gap-3.5">
+          <div class="flex h-9 w-9 items-center justify-center rounded-[5px] bg-[#213a6a]">
+            <img :src="logo" alt="logo" class="h-4.5 w-4.5" />
           </div>
           <div class="leading-[1.15]">
             <p class="leading-[1.15]">{{ t('blcBio', 1, { locale: 'zh-CN' }) }}</p>
           </div>
         </div>
-        <div class="text-[13px] text-muted">
+        <div class="text-[13px] leading-[1.8] text-muted">
           深圳鼎利成生物科技有限公司，专注于对照品与标准品的代理与销售，提供超过10万种医药、生化、工业实验检测类对照品及标准品。
         </div>
-        <div class="text-xs text-muted">
+        <div class="mt-3.5 text-xs leading-[1.8] text-muted">
           <div>深圳市龙岗区龙城街道回龙铺社区</div>
           <div>花样年乐年广场13号楼A单元1001</div>
         </div>
@@ -69,7 +69,7 @@ const columns = computed<FooterColumn[]>(() => {
           root: 'w-full flex!',
           center: 'flex-1 w-full',
           label: 'text-lg',
-          item: '[&_a]:hover:underline [&_button]:text-gray-400!',
+          item: '[&_a]:hover:underline [&_button]:text-gray-400! mb-2.25',
           link: 'text-base text-[13px]!'
         }"
       >
@@ -77,7 +77,7 @@ const columns = computed<FooterColumn[]>(() => {
     </template>
     <template #bottom>
       <UContainer>
-        <USeparator class="my-8" />
+        <USeparator class="mt-8 mb-5" :ui="{ border: 'border-[#ffffff12]' }" />
         <div class="flex items-center justify-between text-xs text-muted">
           <div>
             <span> © {{ year }} {{ t('blcBio') }} </span>

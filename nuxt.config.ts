@@ -8,7 +8,13 @@ export default defineNuxtConfig({
     // 设置全局默认的 meta
     head: {
       title: '深圳鼎利成生物科技有限公司',
-      meta: [{ name: 'description', content: '深圳鼎利成生物科技有限公司' }]
+      meta: [{ name: 'description', content: '深圳鼎利成生物科技有限公司' }],
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap'
+        }
+      ]
     }
   },
   css: ['~/assets/css/main.css'],

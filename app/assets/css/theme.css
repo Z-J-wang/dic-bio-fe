@@ -67,11 +67,30 @@
 }
 
 :root {
+  --navy: #0f2a5e;
+  --navy-mid: #1a3a72;
+  --blue: #1050d0;
+  --blue-br: #2563eb;
+  --cyan: #00bcd4;
+  --white: #f5f7fa;
+  --card: #ffffff;
+  --muted: #6b7a99;
+  --line: #e2e8f0;
+  --tag-bg: #eef2ff;
+  --tag-txt: #3b5bdb;
+  --green: #0d9e6e;
+  --gold: #d4900a;
+  --radius: 6px;
+  --shadow: 0 2px 16px rgba(7, 17, 43, 0.08);
+  --shadow-lg: 0 8px 40px rgba(7, 17, 43, 0.14);
+}
+
+:root {
   --ui-text-dimmed: var(--ui-color-neutral-400); /* 弱三级文本色 */
-  --ui-text-muted: #6b7a99; /* 弱二级文本色 */
-  --ui-text-toned: #1a3a72; /* 弱一级文本色 */
-  --ui-text: #0f2a5e; /* 默认文本色 */
-  --ui-text-highlighted: #0f2a5e; /* 强文本色 */
+  --ui-text-muted: var(--muted); /* 弱二级文本色 */
+  --ui-text-toned: var(--navy-mid); /* 弱一级文本色 */
+  --ui-text: var(--navy); /* 默认文本色 */
+  --ui-text-highlighted: var(--navy); /* 强文本色 */
   --ui-text-inverted: white; /* 反底文本色 */
 
   --ui-bg: white; /* 默认背景色 */

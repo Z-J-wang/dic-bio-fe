@@ -31,7 +31,8 @@ const items = computed<NavigationMenuItem[]>(() => [
       :ui="{
         root: 'bg-[#f5f7fa]',
         container: 'gap-10',
-        left: 'flex-none!'
+        left: 'flex-none!',
+        right: 'gap-2'
       }"
     >
       <template #title>
@@ -55,6 +56,7 @@ const items = computed<NavigationMenuItem[]>(() => [
 
       <template #right>
         <UButton class="cursor-pointer px-4.5 py-2" to="">🔍 产品检索</UButton>
+        <UButton class="cursor-pointer bg-(--navy-mid) px-4.5 py-2 hover:bg-(--navy)" to="">💬 在线客服</UButton>
       </template>
 
       <template #body>
