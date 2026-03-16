@@ -8,7 +8,6 @@ useSeoMeta({
 </script>
 
 <template>
-  <PageScrollAnimation />
   <HomeHero />
   <HomeStatisticsBar />
   <HomeProduct />

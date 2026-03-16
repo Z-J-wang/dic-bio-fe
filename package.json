@@ -9,6 +9,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev --dotenv .env.local",
     "dev:proxy": "nuxt dev --dotenv .env.proxy",
+    "dev:mock": "nuxt dev --dotenv .env.mock",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",

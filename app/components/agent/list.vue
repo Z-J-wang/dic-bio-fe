@@ -1,0 +1,96 @@
+<script setup lang="ts">
+import type { Brand, BrandQuery } from '~~/server/routes/mock/brands.get'
+
+const activeCategory = useState('brand-agent-page-active-category', () => 'all')
+const brandCategory = useState('brand-agent-page-category', () => [
+  { label: '全部品牌', value: 'all' },
+  { label: '药典标准', value: 'pharmacopeia' },
+  { label: '国际机构', value: 'international' },
+  { label: '商业标准', value: 'commercial' },
+  { label: '国内品牌', value: 'domestic' }
+])
+const brandsList = useState<Brand[]>('brand-agent-page-list', () => [])
+const page = useState('brand-agent-page-list-page', () => 0)
+const totalPages = useState('brand-agent-page-list-total-pages', () => 1)
+
+onMounted(() => {
+  getData()
+})
+
+function convertCategoryClass(category: string) {
+  const baseClass = 'rounded-4xl px-5.5 py-2.5 text-[13px] font-semibold border-[2px] cursor-pointer'
+  const defaultClass = 'text-muted border-(--line) bg-white!'
+  const activeClass = 'text-white border-(--blue) bg-(--blue)!'
+  return classNameMerge(baseClass, activeCategory.value === category ? activeClass : defaultClass)
+}
+
+async function getData() {
+  const params: BrandQuery = { page: page.value }
+  if (activeCategory.value !== 'all') {
+    params.category = activeCategory.value
+  }
+  const res = await useCustomFetch<ResponsePaginationData<Brand>>('/brands', {
+    params
+  })
+
+  const results = res.data.value?.results
+  const total_pages = res.data.value?.total_pages
+  if (results) {
+    page.value++
+    brandsList.value = results
+  }
+  if (total_pages) {
+    totalPages.value = total_pages
+  }
+}
+</script>
+
+<template>
+  <section>
+    <UContainer class="pt-15">
+      <ul class="mb-11 flex items-center gap-2.5">
+        <li v-for="item in brandCategory" :key="item.value">
+          <UButton variant="outline" :class="convertCategoryClass(item.value)" @click="activeCategory = item.value">{{
+            item.label
+          }}</UButton>
+        </li>
+      </ul>
+
+      <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div v-for="item in brandsList" :key="item.id" class="card">
+          <div class="mb-4 flex items-center gap-4">
+            <div><img :src="item.logo_url" class="h-14 w-14 rounded-[10px]" /></div>
+            <div>
+              <h3 class="text-[15px] font-bold">{{ item.name_cn }}</h3>
+              <p class="mt-0.5 font-mono text-[11px] text-muted">{{ item.name }}</p>
+            </div>
+          </div>
+          <div class="text-md mb-3.5 line-clamp-3 tracking-[1.8] text-muted">{{ item.description }}</div>
+          <div>
+            <UBadge label="✓ 授权代理" variant="soft" color="secondary" :ui="{ base: 'rounded-sm' }" />
+          </div>
+        </div>
+      </div>
+      <div v-if="totalPages > 1" class="mt-9 flex justify-center">
+        <UPagination v-model:page="page" :items-per-page="20" :total="totalPages * 20" size="lg" />
+      </div>
+    </UContainer>
+  </section>
+</template>
+
+<style lang="less" scoped>
+.card {
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  padding: 28px 24px;
+  background-color: white;
+  transition: 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--blue);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgb(16 80 208 / 14%);
+  }
+}
+</style>

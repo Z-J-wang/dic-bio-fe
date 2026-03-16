@@ -7,9 +7,9 @@ declare global {
   // 接口响应分页数据类型
   interface ResponsePaginationData<T> {
     page: number
-    per_page: number
-    total: number
-    items: T[]
+    count: number
+    total_pages: number
+    results: T[]
   }
 
   // 接口响应数据类型
