@@ -17,23 +17,30 @@ export interface Brand {
   is_authorized: boolean
 }
 
-export default defineEventHandler(() => {
+const rawData: Brand[] = Mock.mock({
+  'list|200': [
+    {
+      id: '@guid',
+      name: '@name',
+      name_cn: '@cname',
+      description: '@paragraph',
+      category: '@pick(["pharmacopeia", "international", "commercial","domestic","custom"])',
+      logo_url: '@image',
+      is_authorized: '@boolean'
+    }
+  ]
+}).list
+
+export default defineEventHandler((event) => {
+  const query = getQuery<BrandQuery>(event)
+  console.log(query)
+  const filteredData = rawData.filter((item) => {
+    return (!query.category || item.category === query.category) && (!query.search || item.name.includes(query.search))
+  })
   return {
-    count: 20,
+    count: filteredData.length,
     page: 1,
-    total_pages: 1,
-    results: Mock.mock({
-      'list|20': [
-        {
-          id: '@guid',
-          name: '@name',
-          name_cn: '@cname',
-          description: '@paragraph',
-          category: '@pick(["pharmacopeia", "international", "commercial","domestic","custom"])',
-          logo_url: '@image',
-          is_authorized: '@boolean'
-        }
-      ]
-    }).list
+    total_pages: Math.ceil(filteredData.length / 20),
+    results: filteredData.slice(0, 20)
   }
 })

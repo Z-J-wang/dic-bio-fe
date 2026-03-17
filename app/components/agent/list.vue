@@ -12,6 +12,13 @@ const brandCategory = useState('brand-agent-page-category', () => [
 const brandsList = useState<Brand[]>('brand-agent-page-list', () => [])
 const page = useState('brand-agent-page-list-page', () => 0)
 const totalPages = useState('brand-agent-page-list-total-pages', () => 1)
+const total = useState('brand-agent-page-list-total', () => 0)
+
+watch(activeCategory, () => {
+  page.value = 0
+  brandsList.value = []
+  getData()
+})
 
 onMounted(() => {
   getData()
@@ -25,7 +32,7 @@ function convertCategoryClass(category: string) {
 }
 
 async function getData() {
-  const params: BrandQuery = { page: page.value }
+  const params: BrandQuery = { page: page.value + 1 }
   if (activeCategory.value !== 'all') {
     params.category = activeCategory.value
   }
@@ -35,12 +42,16 @@ async function getData() {
 
   const results = res.data.value?.results
   const total_pages = res.data.value?.total_pages
+  const count = res.data.value?.count
   if (results) {
     page.value++
     brandsList.value = results
   }
   if (total_pages) {
     totalPages.value = total_pages
+  }
+  if (count) {
+    total.value = count
   }
 }
 </script>
@@ -72,7 +83,7 @@ async function getData() {
         </div>
       </div>
       <div v-if="totalPages > 1" class="mt-9 flex justify-center">
-        <UPagination v-model:page="page" :items-per-page="20" :total="totalPages * 20" size="lg" />
+        <UPagination v-model:page="page" :items-per-page="20" :total="total" size="lg" />
       </div>
     </UContainer>
   </section>
