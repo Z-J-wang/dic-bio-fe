@@ -1,7 +1,7 @@
 import Mock from 'mockjs'
 
 export interface ProductQuery {
-  search: string
+  search?: string
   brand?: string[]
   category_slug?: string[]
   page?: number
@@ -14,6 +14,7 @@ export interface Product {
   name_cn: string
   cas_number: string
   catalog_no: string
+  brand_name: string
   formula: string
   mol_weight: number
 }
@@ -25,7 +26,8 @@ const rawData: Product[] = Mock.mock({
       name: '@name',
       name_cn: '@cname',
       cas_number: '@name',
-      catalog_no: '@name',
+      catalog_no: '@word',
+      brand_name: '@word(2,5)',
       formula: '@name',
       mol_weight: '@integer'
     }

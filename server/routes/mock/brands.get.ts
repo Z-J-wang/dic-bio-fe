@@ -12,6 +12,7 @@ export interface Brand {
   name: string
   name_cn: string
   description: string
+  slug: string
   category: string
   logo_url: string
   is_authorized: boolean
@@ -26,6 +27,7 @@ const rawData: Brand[] = Mock.mock({
       description: '@paragraph',
       category: '@pick(["pharmacopeia", "international", "commercial","domestic","custom"])',
       logo_url: '@image',
+      slug: '@word',
       is_authorized: '@boolean'
     }
   ]

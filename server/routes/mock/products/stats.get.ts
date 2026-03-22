@@ -17,6 +17,12 @@ export interface StatsCategory extends Category {
   count: number
 }
 
+export interface StatsProductResponse {
+  total: number
+  by_category: StatsCategory[]
+  by_brand: StatsBrand[]
+}
+
 const rawDataBrand: StatsBrand[] = Mock.mock({
   'list|20-50': [
     {
@@ -27,7 +33,8 @@ const rawDataBrand: StatsBrand[] = Mock.mock({
       category: '@pick(["pharmacopeia", "international", "commercial","domestic","custom"])',
       logo_url: '@image',
       is_authorized: '@boolean',
-      count: '@integer(0, 1000)'
+      slug: '@word',
+      count: '@integer(0, 10000)'
     }
   ]
 }).list
