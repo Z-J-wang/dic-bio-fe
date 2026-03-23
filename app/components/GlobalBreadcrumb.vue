@@ -1,13 +1,29 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+export interface Breadcrumb {
+  label: string
+  to?: string
+}
+
+defineProps<{
+  breadcrumbs: Breadcrumb[]
+}>()
+</script>
 
 <template>
   <section class="border-b border-(--line) bg-white">
     <UContainer>
       <ul class="global-breadcrumb flex">
-        <li class="breadcrumb-item">
-          <NuxtLinkLocale to="/">← 返回首页</NuxtLinkLocale>
+        <li
+          v-for="(item, i) in breadcrumbs"
+          :key="i"
+          class="breadcrumb-item"
+          :class="{ active: i === breadcrumbs.length - 1 }"
+        >
+          <NuxtLinkLocale v-if="item.to" :to="item.to">{{ item.label }}</NuxtLinkLocale>
+          <span v-else>{{ item.label }}</span>
         </li>
-        <li class="breadcrumb-item active"><slot></slot></li>
+
+        <!-- <NuxtLinkLocale to="/">← 返回首页</NuxtLinkLocale> -->
       </ul>
     </UContainer>
   </section>

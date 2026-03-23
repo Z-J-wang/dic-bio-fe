@@ -15,7 +15,9 @@ export interface Brand {
   slug: string
   category: string
   logo_url: string
+  country: string
   is_authorized: boolean
+  is_active: boolean
 }
 
 const rawData: Brand[] = Mock.mock({

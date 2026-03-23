@@ -1,6 +1,6 @@
 <template>
   <div>
-    <GlobalBreadcrumb>关于我们</GlobalBreadcrumb>
+    <GlobalBreadcrumb :breadcrumbs="[{ label: '← 返回首页', to: '/' }, { label: '关于我们' }]" />
     <AboutHero />
     <UContainer class="space-y-15 py-15">
       <AboutScope />

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <GlobalBreadcrumb>品牌代理</GlobalBreadcrumb>
+    <GlobalBreadcrumb :breadcrumbs="[{ label: '← 返回首页', to: '/' }, { label: '品牌代理' }]" />
     <AgentHero />
     <AgentList />
     <section class="mb-15">
