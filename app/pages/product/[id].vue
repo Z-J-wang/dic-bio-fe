@@ -53,8 +53,91 @@ onMounted(() => {
             </li>
           </ul>
         </section>
+
+        <section class="mt-7">
+          <div class="data-card">
+            <div class="data-card-header">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+              <span class="data-card-title">核心技术参数</span>
+            </div>
+            <div class="data-grid">
+              <div class="data-cell">
+                <div class="data-cell-label">分子量 MW</div>
+                <div class="data-cell-value">{{ detail?.mol_weight }} g/mol</div>
+              </div>
+              <div class="data-cell">
+                <div class="data-cell-label">分子式</div>
+                <div class="data-cell-value">{{ detail?.formula }}</div>
+              </div>
+              <div class="data-cell">
+                <div class="data-cell-label">外观</div>
+                <div class="data-cell-value">{{ detail?.appearance }}</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="mt-5">
+          <ProductDetailTabs v-if="detail" :detail="detail" />
+        </section>
       </main>
       <aside class="w-90 shrink-0">asadda</aside>
     </UContainer>
   </div>
 </template>
+
+<style lang="less" scoped>
+.data-card {
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+
+  .data-card-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    padding: 14px 20px;
+    background: #f8fafc;
+    gap: 10px;
+
+    .data-card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+  }
+
+  .data-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    .data-cell {
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 20px;
+
+      .data-cell-label {
+        margin-bottom: 5px;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .data-cell-value {
+        font-size: 15px;
+        font-family: 'DM Mono', monospace;
+        font-weight: 600;
+        color: var(--navy);
+      }
+    }
+  }
+}
+</style>
