@@ -1,4 +1,5 @@
 <script setup lang="tsx">
+import { ProductDetailRelatedProduct } from '#components'
 import type { ProductDetail } from '~~/server/routes/mock/products/[id].get'
 
 definePageMeta({ name: 'ProductDetail', props: true })
@@ -81,6 +82,10 @@ onMounted(() => {
 
         <section class="mt-5">
           <ProductDetailTabs v-if="detail" :detail="detail" />
+        </section>
+
+        <section class="mt-5">
+          <ProductDetailRelatedProduct v-if="detail" :product-id="detail?.id" />
         </section>
       </main>
       <aside class="w-90 shrink-0">asadda</aside>
