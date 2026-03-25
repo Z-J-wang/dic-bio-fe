@@ -88,7 +88,9 @@ onMounted(() => {
           <ProductDetailRelatedProduct v-if="detail" :product-id="detail?.id" />
         </section>
       </main>
-      <aside class="w-90 shrink-0">asadda</aside>
+      <aside class="w-90 shrink-0">
+        <ProductDetailAside v-if="detail" :detail="detail" />
+      </aside>
     </UContainer>
   </div>
 </template>
