@@ -16,18 +16,18 @@ const statistics = useState('statistics-bar-data', () => [
         <li
           v-for="statistic in statistics"
           :key="statistic.label"
-          class="w-1/4 flex-wrap items-center justify-center border-r border-[#ffffff0f] py-7 text-white last:border-none"
+          class="w-1/4 flex-wrap items-center justify-center border-r border-[#ffffff0f] py-4 text-white last:border-none sm:py-7"
         >
-          <div class="flex justify-center">
+          <div class="flex justify-center gap-1">
             <CountTo
               :start-val="0"
               :end-val="statistic.number"
               :duration="1000"
-              class="stat-num text-[2rem] font-bold"
+              class="stat-num text-2xl font-bold sm:text-[2rem]"
             />
-            <span class="text-[22px] font-bold text-(--cyan)">{{ statistic.unit }}</span>
+            <span class="text-lg font-bold text-(--cyan) sm:text-[22px]">{{ statistic.unit }}</span>
           </div>
-          <div class="flex justify-center text-[0.8rem] text-[#ffffff80]">{{ statistic.label }}</div>
+          <div class="flex justify-center text-xs text-[#ffffff80]">{{ statistic.label }}</div>
         </li>
       </ul>
     </UContainer>
@@ -37,7 +37,6 @@ const statistics = useState('statistics-bar-data', () => [
 <style lang="less" scoped>
 .stat-num {
   margin-bottom: 6px;
-  font-size: 32px;
   font-family: 'DM Mono', monospace;
   font-weight: 500;
   color: #ffffff;

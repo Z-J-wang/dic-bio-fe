@@ -13,22 +13,25 @@ const categories = useState('home-product-categories', () => [
 
 <template>
   <section>
-    <UContainer class="py-18">
-      <div class="mb-10 flex items-baseline gap-2">
-        <h2 class="font-serif text-[1.625rem] font-bold">产品分类</h2>
-        <span class="text-sm text-muted">按应用场景快速定位所需标准品</span>
+    <UContainer class="py-5 md:py-18">
+      <div class="mb-4 flex items-baseline gap-2 md:mb-10">
+        <h2 class="font-serif text-lg font-bold sm:text-[1.625rem]">产品分类</h2>
+        <span class="hidden text-sm text-muted sm:block">按应用场景快速定位所需标准品</span>
         <NuxtLinkLocale class="ml-auto text-sm font-medium text-(--blue) hover:underline" to="/"
           >查看全部产品 →</NuxtLinkLocale
         >
       </div>
 
-      <ul class="grid grid-cols-2 gap-2 lg:grid-cols-4 lg:gap-4">
-        <li v-for="item in categories" :key="item.name" class="cat-card">
-          <div class="mb-3.5 flex h-11 w-11 items-center justify-center rounded-lg text-2xl" :class="item.class">
+      <ul class="grid grid-cols-3 gap-2 lg:grid-cols-4 lg:gap-4">
+        <li v-for="item in categories" :key="item.name" class="cat-card text-center sm:text-left">
+          <div
+            class="mx-auto mb-3.5 flex h-11 w-11 items-center justify-center rounded-lg text-2xl sm:mx-0"
+            :class="item.class"
+          >
             {{ item.icon }}
           </div>
           <div class="mb-1.25 font-bold">{{ item.name }}</div>
-          <div class="text-sm text-muted">{{ item.description }}</div>
+          <div class="hidden text-sm text-muted sm:block">{{ item.description }}</div>
         </li>
       </ul>
     </UContainer>

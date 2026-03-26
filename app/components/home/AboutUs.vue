@@ -20,16 +20,18 @@ const advantages = useState('home-advantages', () => [
 
 <template>
   <div class="home-about-us">
-    <UContainer class="py-18">
-      <h2 class="mb-10 font-serif text-[1.625rem] font-bold">为什么选择鼎利成</h2>
+    <UContainer class="py-5 sm:py-18">
+      <h2 class="mb-4 font-serif text-lg font-bold sm:mb-10 sm:text-[1.625rem]">为什么选择鼎利成</h2>
       <ul class="grid grid-cols-1 gap-2 md:grid-cols-3 md:gap-4 lg:gap-6">
         <li
           v-for="item in advantages"
           :key="item.title"
-          class="rounded-[10px] border border-(--line) bg-white px-6 py-7"
+          class="rounded-[10px] border border-(--line) bg-white p-4 sm:px-6 sm:py-7"
         >
-          <div class="mb-3.5 text-[1.75rem]">{{ item.icon }}</div>
-          <div class="mb-2 font-bold">{{ item.title }}</div>
+          <div class="mb-2 flex items-center gap-2 sm:flex-col sm:items-start sm:gap-3.5">
+            <div class="text-[1.75rem]">{{ item.icon }}</div>
+            <div class="font-bold">{{ item.title }}</div>
+          </div>
           <div class="text-sm leading-[1.8] text-muted">{{ item.description }}</div>
         </li>
       </ul>

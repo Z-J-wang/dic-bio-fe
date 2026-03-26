@@ -24,11 +24,13 @@ const brands = useState('home-brands', () => [
 </script>
 
 <template>
-  <section class="home-brands bg-[#f0f4f8] py-12">
+  <section class="home-brands bg-[#f0f4f8] py-4 sm:py-12">
     <UContainer>
-      <div class="mb-7 text-sm tracking-[0.08em] text-muted uppercase">代理品牌 / Authorized Brands</div>
-      <div class="flex flex-wrap gap-2.5">
-        <span v-for="brand in brands" :key="brand" class="brand-chip">{{ brand }}</span>
+      <div class="mb-4 text-sm tracking-[0.08em] text-muted uppercase sm:mb-7">代理品牌 / Authorized Brands</div>
+      <div class="flex flex-wrap gap-1 sm:gap-2.5">
+        <span v-for="brand in brands" :key="brand" class="brand-chip p-[4px_8px] text-xs sm:p-[8px_18px] md:text-sm">{{
+          brand
+        }}</span>
       </div>
     </UContainer>
   </section>
@@ -38,8 +40,6 @@ const brands = useState('home-brands', () => [
 .brand-chip {
   border: 1.5px solid var(--line);
   border-radius: 6px;
-  padding: 8px 18px;
-  font-size: 13px;
   font-family: 'DM Mono', monospace;
   font-weight: 700;
   color: var(--navy-mid);

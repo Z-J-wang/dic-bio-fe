@@ -1,3 +1,3 @@
 export default {
-  fallbackLocale: 'zh-CN'
+  fallbackLocale: 'en'
 }
