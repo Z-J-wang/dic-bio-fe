@@ -6,7 +6,7 @@
     />
     <AgentHero />
     <AgentList />
-    <section class="mb-15">
+    <section class="mb-15 hidden sm:block">
       <UContainer>
         <div class="other">
           <div>

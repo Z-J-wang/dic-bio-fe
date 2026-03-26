@@ -58,8 +58,8 @@ async function getData() {
 
 <template>
   <section>
-    <UContainer class="pt-15">
-      <ul class="mb-11 flex items-center gap-2.5">
+    <UContainer class="py-5 sm:pt-15 sm:pb-0">
+      <ul class="mb-11 hidden items-center gap-2.5 sm:flex">
         <li v-for="item in brandCategory" :key="item.value">
           <UButton variant="outline" :class="convertCategoryClass(item.value)" @click="activeCategory = item.value">{{
             item.label
@@ -67,7 +67,7 @@ async function getData() {
         </li>
       </ul>
 
-      <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+      <div class="grid grid-cols-1 gap-2 sm:gap-5 md:grid-cols-2 lg:grid-cols-4">
         <div v-for="item in brandsList" :key="item.id" class="card">
           <div class="mb-4 flex items-center gap-4">
             <div><img :src="item.logo_url" class="h-14 w-14 rounded-[10px]" /></div>
@@ -76,7 +76,9 @@ async function getData() {
               <p class="mt-0.5 font-mono text-[11px] text-muted">{{ item.name }}</p>
             </div>
           </div>
-          <div class="text-md mb-3.5 line-clamp-3 tracking-[1.8] text-muted">{{ item.description }}</div>
+          <div class="text-md mb-3.5 line-clamp-2 tracking-[1.8] text-muted sm:line-clamp-3">
+            {{ item.description }}
+          </div>
           <div>
             <UBadge label="✓ 授权代理" variant="soft" color="secondary" :ui="{ base: 'rounded-sm' }" />
           </div>
