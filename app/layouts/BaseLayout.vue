@@ -4,6 +4,8 @@ import logo from '@/assets/img/logo.svg'
 
 const localePath = useLocalePath()
 const { t } = useI18n()
+const { isMobile } = useBreakpoint()
+const route = useRoute()
 
 const items = computed<NavigationMenuItem[]>(() => [
   { label: t('general.home'), to: localePath('/') },
@@ -47,10 +49,16 @@ const items = computed<NavigationMenuItem[]>(() => [
             <img :src="logo" alt="logo" class="h-5.5 w-5.5" />
           </div>
           <div class="leading-[1.2]">
-            <p class="font-serif text-base">{{ t('blcBio', 1, { locale: 'zh-CN' }) }}</p>
-            <p class="font-mono text-[8.5px] font-normal! tracking-[0.06em] text-muted">
-              {{ t('blcBio', 1, { locale: 'en' }) }}
-            </p>
+            <template v-if="isMobile && route.path === '/product'">产品目录</template>
+            <template v-else-if="isMobile && route.path === '/agent'">代理品牌</template>
+            <template v-else-if="isMobile && route.path === '/about'">关于我们</template>
+            <template v-else-if="isMobile && route.path.startsWith('/product/')">产品详情</template>
+            <template v-else>
+              <p class="font-serif text-base">{{ t('blcBio', 1, { locale: 'zh-CN' }) }}</p>
+              <p class="font-mono text-[8.5px] font-normal! tracking-[0.06em] text-muted">
+                {{ t('blcBio', 1, { locale: 'en' }) }}
+              </p>
+            </template>
           </div>
         </div>
       </template>

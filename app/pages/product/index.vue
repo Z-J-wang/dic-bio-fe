@@ -13,7 +13,10 @@ const condition = computed(() => {
 
 <template>
   <div>
-    <GlobalBreadcrumb :breadcrumbs="[{ label: '← 返回首页', to: '/' }, { label: '产品目录' }]" />
+    <GlobalBreadcrumb
+      class="hidden sm:block"
+      :breadcrumbs="[{ label: '← 返回首页', to: '/' }, { label: '产品目录' }]"
+    />
     <UContainer class="space-y-15 py-15">
       <div class="flex gap-8">
         <aside class="min-w-65 space-y-4">
