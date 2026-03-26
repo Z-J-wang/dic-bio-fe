@@ -12,6 +12,7 @@ const typeOptions = ref([
 ])
 
 function search() {
+  if (!query.value) return
   router.push({ path: '/product', query: { type: type.value, query: query.value } })
 }
 </script>
