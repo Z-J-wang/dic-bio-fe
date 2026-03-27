@@ -25,7 +25,7 @@ const statistics = useState('statistics-bar-data', () => [
               :duration="1000"
               class="stat-num text-2xl font-bold sm:text-[2rem]"
             />
-            <span class="text-lg font-bold text-(--cyan) sm:text-[22px]">{{ statistic.unit }}</span>
+            <span class="text-sm font-bold text-(--cyan) sm:text-lg sm:text-[22px]">{{ statistic.unit }}</span>
           </div>
           <div class="flex justify-center text-xs text-[#ffffff80]">{{ statistic.label }}</div>
         </li>

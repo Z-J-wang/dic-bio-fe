@@ -32,22 +32,30 @@ const advantages = useState('about-advantages', () => [
 
 <template>
   <section>
-    <div class="mb-9 flex items-baseline gap-4">
-      <h2 class="font-serif text-[1.5rem] font-bold">我们的优势</h2>
-      <span class="text-sm text-muted">Our Advantages</span>
+    <div class="mb-2 flex items-baseline gap-4 sm:mb-9">
+      <h2 class="border-l-[3px] border-(--blue) pl-2 font-serif text-lg font-bold sm:border-0 sm:pl-0 sm:text-[1.5rem]">
+        我们的优势
+      </h2>
+      <span class="hidden text-sm text-muted sm:block">Our Advantages</span>
     </div>
 
-    <ul class="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-5">
-      <li v-for="item in advantages" :key="item.name" class="cat-card flex gap-5">
-        <div
-          class="mb-3.5 inline-flex h-12 w-12 min-w-12 flex-1 items-center justify-center rounded-[10px] text-[1.375rem]"
-          :class="item.class"
-        >
-          {{ item.icon }}
+    <ul class="grid grid-cols-2 gap-2 lg:gap-5">
+      <li
+        v-for="item in advantages"
+        :key="item.name"
+        class="cat-card flex flex-col p-4 sm:flex-row sm:gap-5 sm:p-[24px_20px]"
+      >
+        <div>
+          <div
+            class="mb-3.5 inline-flex h-12 w-12 min-w-12 flex-1 items-center justify-center rounded-[10px] text-[1.375rem]"
+            :class="item.class"
+          >
+            {{ item.icon }}
+          </div>
         </div>
         <div>
           <div class="mb-2 font-bold">{{ item.name }}</div>
-          <div class="text-sm leading-[1.9] text-muted">{{ item.description }}</div>
+          <div class="text-[11px] text-muted sm:text-sm sm:leading-[1.9]">{{ item.description }}</div>
         </div>
       </li>
     </ul>
@@ -60,7 +68,6 @@ const advantages = useState('about-advantages', () => [
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 24px 20px;
   color: var(--navy);
   background: var(--card);
   transition: 0.2s;

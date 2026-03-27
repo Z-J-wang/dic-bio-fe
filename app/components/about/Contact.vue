@@ -19,9 +19,10 @@ const tags = ref([
 
 <template>
   <section class="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-5">
-    <div class="rounded-xl border-[1.5px] border-(--line) bg-white p-9">
-      <h3 class="mb-6 font-serif text-lg font-bold">联系方式</h3>
-      <ul class="space-y-5">
+    <h3 class="border-l-[3px] border-(--blue) pl-2 font-serif text-lg font-bold sm:hidden">联系方式</h3>
+    <div class="rounded-xl border-[1.5px] border-(--line) bg-white p-4 sm:p-9">
+      <h3 class="mb-6 hidden font-serif text-lg font-bold sm:block">联系方式</h3>
+      <ul class="space-y-2 sm:space-y-5">
         <li class="flex gap-4">
           <div class="h-9 w-9 rounded-lg bg-(--tag-bg) text-center align-middle leading-9">📞</div>
           <div class="space-y-0.75">
@@ -30,6 +31,7 @@ const tags = ref([
             <div class="text-sm text-muted">工作日 09:00 - 18:00</div>
           </div>
         </li>
+        <USeparator class="sm:hidden" :ui="{ border: 'border-(--line)' }" />
         <li class="flex gap-4">
           <div class="h-9 w-9 rounded-lg bg-(--tag-bg) text-center align-middle leading-9">✉️</div>
           <div class="space-y-0.75">
@@ -40,6 +42,7 @@ const tags = ref([
             <div class="text-sm text-muted">24小时内回复</div>
           </div>
         </li>
+        <USeparator class="sm:hidden" :ui="{ border: 'border-(--line)' }" />
         <li class="flex gap-4">
           <div class="h-9 w-9 rounded-lg bg-(--tag-bg) text-center align-middle leading-9">📍</div>
           <div class="space-y-0.75">
@@ -47,6 +50,7 @@ const tags = ref([
             <p class="font-mono text-sm">深圳市龙岗区龙城街道<br />回龙铺社区花样年乐年广场<br />13号楼A单元1001</p>
           </div>
         </li>
+        <USeparator class="sm:hidden" :ui="{ border: 'border-(--line)' }" />
         <li class="flex gap-4">
           <div class="h-9 w-9 rounded-lg bg-[#e8f9ff] text-center align-middle leading-9">💬</div>
           <div class="space-y-0.75">
@@ -57,13 +61,16 @@ const tags = ref([
         </li>
       </ul>
     </div>
-    <div class="relative rounded-lg bg-(--navy) p-9">
+    <h3 class="border-l-[3px] border-(--blue) pl-2 font-serif text-lg font-bold sm:hidden">主营品牌</h3>
+    <div class="relative rounded-lg bg-(--navy) p-4 sm:p-9">
       <div class="bg-dark"></div>
       <div class="relative z-10">
-        <h2 class="mb-2 font-serif text-lg font-bold text-white">{{ $t('blcBio', 1, { locale: 'zh-CN' }) }}</h2>
-        <h3 class="font-mono text-sm text-(--cyan)">{{ $t('blcBio', 1, { locale: 'en' }) }}</h3>
-        <div class="mt-12">
-          <h3 class="mb-3.5 text-sm text-muted">主营品牌一览</h3>
+        <h2 class="mb-2 hidden font-serif text-lg font-bold text-white sm:block">
+          {{ $t('blcBio', 1, { locale: 'zh-CN' }) }}
+        </h2>
+        <h3 class="hidden font-mono text-sm text-(--cyan) sm:block">{{ $t('blcBio', 1, { locale: 'en' }) }}</h3>
+        <div class="sm:mt-12">
+          <h3 class="mb-3.5 hidden text-sm text-muted sm:block">主营品牌一览</h3>
           <ul class="flex flex-wrap gap-2">
             <li v-for="tag in tags" :key="tag" class="tag">{{ tag }}</li>
             <li class="tag cursor-pointer border-[#00bcd466]! bg-[#ffffff1a]! text-(--cyan)!">

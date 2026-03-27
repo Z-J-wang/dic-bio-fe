@@ -9,18 +9,20 @@ const statistics = useState('about-statistics', () => [
 </script>
 
 <template>
-  <section class="hero">
-    <div class="hero-grid"></div>
-    <div class="hero-glow"></div>
+  <section class="hero justify-start px-4 py-10 sm:min-h-120 sm:justify-center sm:px-6 sm:pt-18 sm:pb-20">
+    <div class="m-hero-grid sm:hero-grid"></div>
+    <div class="m-hero-glow sm:hero-glow"></div>
     <UContainer>
-      <div class="grid grid-cols-2 items-center gap-4">
+      <div class="grid grid-cols-1 items-center gap-4 sm:grid-cols-2">
         <div class="hero-content">
-          <div class="hero-label"><span></span> About Us · 关于我们</div>
-          <h1 class="fade-up delay-1">
+          <div class="hero-label mb-2 sm:mb-6"><span></span> About Us · 关于我们</div>
+          <h1 class="fade-up mb-2 delay-1 sm:mb-3">
             深圳鼎利成<br />
             <span class="text-(--cyan)">生物科技有限公司</span>
           </h1>
-          <p class="hero-sub fade-up delay-2">SHENZHEN DINGLICHENG BIO-TECHNOLOGY CO., LTD</p>
+          <p class="hero-sub fade-up mb-4 text-xs delay-2 sm:mb-11 sm:text-[15px]">
+            SHENZHEN DINGLICHENG BIO-TECHNOLOGY CO., LTD
+          </p>
 
           <ul class="flex flex-wrap gap-4">
             <li
@@ -28,15 +30,20 @@ const statistics = useState('about-statistics', () => [
               :key="statistic.label"
               class="flex-wrap items-center justify-center rounded-[10px] border border-[#ffffff1f] bg-[#ffffff12] px-6 py-4.5 text-white last:border-none"
             >
-              <div class="flex items-baseline">
-                <CountTo :start-val="0" :end-val="statistic.number" :duration="1000" class="stat-num" />
-                <span class="text-[18px] font-bold text-(--cyan)">{{ statistic.unit }}</span>
+              <div class="flex items-baseline gap-1">
+                <CountTo
+                  :start-val="0"
+                  :end-val="statistic.number"
+                  :duration="1000"
+                  class="text-2xl font-bold sm:text-[2rem]"
+                />
+                <span class="text-sm font-bold text-(--cyan) sm:text-lg">{{ statistic.unit }}</span>
               </div>
               <div class="flex justify-center text-xs text-[#ffffff80]">{{ statistic.label }}</div>
             </li>
           </ul>
         </div>
-        <div class="rounded-2xl border border-[#ffffff1f] bg-[#ffffff0d] p-8 text-left">
+        <div class="hidden rounded-2xl border border-[#ffffff1f] bg-[#ffffff0d] p-8 text-left sm:block">
           <div class="mb-3.5 text-xs text-(--cyan) uppercase">Company Profile</div>
           <div class="text-sm leading-[2.1] text-[#ffffffbf]">
             深圳鼎利成生物科技有限公司，作为全球多个高端标准品公司国内授权代理商，能为您提供超过
@@ -58,7 +65,6 @@ const statistics = useState('about-statistics', () => [
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  padding: 64px 40px;
   text-align: center;
   background: var(--navy);
   flex-direction: column;
@@ -82,13 +88,32 @@ const statistics = useState('about-statistics', () => [
     pointer-events: none;
   }
 
+  .m-hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgb(0 188 212 / 7%) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(0 188 212 / 7%) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+  }
+
+  .m-hero-glow {
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(ellipse, rgb(16 80 208 / 35%) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
   .hero-content {
     position: relative;
     text-align: left;
     // max-width: 820px;
 
     .stat-num {
-      font-size: 28px;
       font-family: 'DM Mono', monospace;
       font-weight: 500;
       color: #ffffff;
@@ -98,7 +123,6 @@ const statistics = useState('about-statistics', () => [
     .hero-label {
       display: inline-flex;
       align-items: center;
-      margin-bottom: 24px;
       border: 1px solid rgb(0 188 212 / 35%);
       border-radius: 40px;
       padding: 4px 14px;
@@ -121,7 +145,6 @@ const statistics = useState('about-statistics', () => [
   }
 
   h1 {
-    margin-bottom: 12px;
     font-size: clamp(26px, 3.5vw, 44px);
     font-family: 'Noto Serif SC', serif;
     font-weight: 700;
@@ -130,8 +153,6 @@ const statistics = useState('about-statistics', () => [
   }
 
   .hero-sub {
-    margin-bottom: 44px;
-    font-size: 15px;
     color: rgb(255 255 255 / 55%);
   }
 }
