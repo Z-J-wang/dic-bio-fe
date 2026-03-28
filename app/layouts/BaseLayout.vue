@@ -13,6 +13,13 @@ const items = computed<NavigationMenuItem[]>(() => [
   { label: t('brandAgent'), to: localePath('/agent') },
   { label: t('general.aboutUs'), to: localePath('/about') }
 ])
+
+const bottomNav = ref([
+  { icon: 'lucide:house', label: '首页', to: localePath('/') },
+  { icon: 'lucide:search', label: '产品', to: localePath('/product') },
+  { icon: 'carbon:partnership', label: '品牌', to: localePath('/agent') },
+  { icon: 'ix:about', label: '公司', to: localePath('/about') }
+])
 </script>
 
 <template>
@@ -92,6 +99,19 @@ const items = computed<NavigationMenuItem[]>(() => [
 
     <UMain>
       <slot />
+      <div
+        class="sticky bottom-0 flex items-center justify-around border-t border-(--line) bg-white px-4 py-3 sm:hidden"
+      >
+        <NuxtLinkLocale
+          v-for="item in bottomNav"
+          :key="item.label"
+          class="flex flex-col items-center space-y-0.5"
+          :to="item.to"
+        >
+          <UIcon :name="item.icon" class="size-6" />
+          <div class="text-[11px]">{{ item.label }}</div>
+        </NuxtLinkLocale>
+      </div>
     </UMain>
 
     <GlobalContact />
@@ -99,3 +119,10 @@ const items = computed<NavigationMenuItem[]>(() => [
     <BaseFooter class="hidden sm:block" />
   </UApp>
 </template>
+
+<style lang="less" scoped>
+.router-link-active {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+</style>

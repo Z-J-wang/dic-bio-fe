@@ -23,7 +23,7 @@ const categories = useState('home-product-categories', () => [
       </div>
 
       <ul class="grid grid-cols-3 gap-2 lg:grid-cols-4 lg:gap-4">
-        <li v-for="item in categories" :key="item.name" class="cat-card text-center sm:text-left">
+        <li v-for="item in categories" :key="item.name" class="cat-card p-4 text-center sm:p-[24px_20px] sm:text-left">
           <div
             class="mx-auto mb-3.5 flex h-11 w-11 items-center justify-center rounded-lg text-2xl sm:mx-0"
             :class="item.class"
@@ -44,7 +44,6 @@ const categories = useState('home-product-categories', () => [
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 24px 20px;
   color: var(--navy);
   background: var(--card);
   transition: 0.2s;
