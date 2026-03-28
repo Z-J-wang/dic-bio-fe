@@ -1,19 +1,26 @@
 <script setup lang="tsx">
+import type { Category } from '~~/server/routes/mock/categories.get'
+
 const router = useRouter()
 const type = ref('all')
 const query = ref('')
-const typeOptions = ref([
-  { label: '全部类别', value: 'all' },
-  { label: '医药对照品', value: 'medicine' },
-  { label: '生化标准品', value: 'biochemistry' },
-  { label: '工业检测', value: 'industrial' },
-  { label: '有机对照品', value: 'organic' },
-  { label: '无机对照品', value: 'inorganic' }
-])
+const typeOptions = ref([{ label: '全部类别', value: 'all' }])
+
+onMounted(async () => {
+  await getCategory()
+})
 
 function search() {
   if (!query.value) return
   router.push({ path: '/product', query: { type: type.value, query: query.value } })
+}
+
+async function getCategory() {
+  const { status, data } = await useCustomFetch<Category[]>('/categories/flat')
+
+  if (status.value === 'success' && data.value) {
+    typeOptions.value = [...typeOptions.value, ...data.value.map((item) => ({ label: item.name_cn, value: item.slug }))]
+  }
 }
 </script>
 

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Category } from '~~/server/routes/mock/categories.get'
+
 const categories = useState('home-product-categories', () => [
   { name: '医药对照品', description: '45,000+ 种 · CP/EP/USP/BP', icon: '💊', class: 'bg-(--tag-bg)', to: '/' },
   { name: '生化标准品', description: '28,000+ 种 · 酶、蛋白、核酸', icon: '🧬', class: 'bg-[#e6f9f3]', to: '/' },
@@ -9,6 +11,19 @@ const categories = useState('home-product-categories', () => [
   { name: '植物提取物', description: '12,000+ 种 · 天然产物、中药材', icon: '🌿', class: 'bg-[#fff8e6]', to: '/' },
   { name: '农兽药残留标准', description: '8,000+ 种 · 农药、兽药检测', icon: '⚡', class: 'bg-[#fef2f0]', to: '/' }
 ])
+const localePath = useLocalePath()
+
+onMounted(() => {
+  getCategory()
+})
+
+async function getCategory() {
+  const { status, data } = await useCustomFetch<Category[]>('/categories/flat')
+
+  if (status.value === 'success' && data.value) {
+    console.log(data.value)
+  }
+}
 </script>
 
 <template>
@@ -17,7 +32,7 @@ const categories = useState('home-product-categories', () => [
       <div class="mb-4 flex items-baseline gap-2 md:mb-10">
         <h2 class="font-serif text-lg font-bold sm:text-[1.625rem]">产品分类</h2>
         <span class="hidden text-sm text-muted sm:block">按应用场景快速定位所需标准品</span>
-        <NuxtLinkLocale class="ml-auto text-sm font-medium text-(--blue) hover:underline" to="/"
+        <NuxtLinkLocale class="ml-auto text-sm font-medium text-(--blue) hover:underline" :to="localePath('/product')"
           >查看全部产品 →</NuxtLinkLocale
         >
       </div>
