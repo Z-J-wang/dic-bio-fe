@@ -20,10 +20,15 @@ onMounted(() => {
 
 <template>
   <h2 class="mb-4 text-lg font-bold">相关产品</h2>
-  <div class="grid grid-cols-1 gap-3.5 md:grid-cols-3">
-    <NuxtLinkLocale v-for="(item, i) in products" :key="i" :to="'/product/' + item.id" class="related-card">
+  <div class="grid grid-cols-3 gap-2.5 sm:grid-cols-1 sm:gap-3.5 md:grid-cols-3">
+    <NuxtLinkLocale
+      v-for="(item, i) in products"
+      :key="i"
+      :to="'/product/' + item.id"
+      class="related-card p-2.5 sm:p-4"
+    >
       <div class="related-name">{{ item.name_cn }}</div>
-      <div class="related-cas font-mono">CAS {{ item.cas_number }}</div>
+      <div class="related-cas font-mono text-[10px] sm:text-[11px]">CAS {{ item.cas_number }}</div>
       <div class="flex items-center justify-between">
         <span class="related-brand">{{ item.brand_name }}</span>
         <span class="text-xs text-(--blue)">查看 →</span>
@@ -36,7 +41,6 @@ onMounted(() => {
 .related-card {
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 16px;
   background: var(--card);
   transition: 0.15s;
   cursor: pointer;
@@ -49,7 +53,6 @@ onMounted(() => {
 
   .related-cas {
     margin-bottom: 8px;
-    font-size: 11px;
     color: var(--muted);
   }
 

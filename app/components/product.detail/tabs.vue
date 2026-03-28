@@ -35,8 +35,10 @@ const tabs = computed(() => {
     />
 
     <div v-if="tab === 'specs'" class="data-card">
-      <div class="data-card-header"><span class="data-card-title">详细规格参数</span></div>
-      <table class="spec-table">
+      <div class="data-card-header p-[8px_20px] sm:p-[14px_20px]">
+        <span class="data-card-title">详细规格参数</span>
+      </div>
+      <table class="m-spec-table sm:spec-table!">
         <tbody>
           <tr>
             <td>中文名称</td>
@@ -50,7 +52,7 @@ const tabs = computed(() => {
             <td>CAS 编号</td>
             <td>{{ detail.cas_number }}</td>
           </tr>
-          <tr>
+          <tr v-if="detail.brand_name">
             <td>品牌 / 来源</td>
             <td>{{ detail.brand_name }}</td>
           </tr>
@@ -67,8 +69,10 @@ const tabs = computed(() => {
     </div>
 
     <div v-if="tab === 'storage'" class="data-card">
-      <div class="data-card-header"><span class="data-card-title">储存与安全信息</span></div>
-      <table class="spec-table">
+      <div class="data-card-header p-[8px_20px] sm:p-[14px_20px]">
+        <span class="data-card-title">储存与安全信息</span>
+      </div>
+      <table class="m-spec-table sm:spec-table!">
         <tbody>
           <tr>
             <td>推荐储存温度</td>
@@ -93,8 +97,8 @@ const tabs = computed(() => {
     </div>
 
     <div v-if="tab === 'files'">
-      <div class="coa-block">
-        <div class="coa-icon">📄</div>
+      <div class="coa-block p-4 sm:p-[18px_20px]">
+        <div class="coa-icon sm:h-12 sm:w-12">📄</div>
         <div class="flex-1 space-y-0.75">
           <div class="text-sm font-bold">批次分析证书（CoA）</div>
           <div class="text-xs text-muted">批号 100081-202115 · PDF · 245 KB · 由中检院出具</div>
@@ -102,13 +106,13 @@ const tabs = computed(() => {
         <UButton
           :to="detail.coa_url"
           target="_blank"
-          class="cursor-pointer rounded-md bg-(--navy) px-4.5 py-2 text-[13px] font-semibold"
+          class="cursor-pointer rounded-md bg-(--navy) p-2 text-xs font-semibold sm:px-4.5 sm:text-[13px]"
           >⬇ 下载 CoA</UButton
         >
       </div>
 
-      <div class="coa-block">
-        <div class="coa-icon">📄</div>
+      <div class="coa-block p-4 sm:p-[18px_20px]">
+        <div class="coa-icon sm:h-12 sm:w-12">📄</div>
         <div class="flex-1 space-y-0.75">
           <div class="text-sm font-bold">安全数据表（SDS / MSDS）</div>
           <div class="text-xs text-muted">GHS 标准格式 · PDF · 180 KB</div>
@@ -116,7 +120,7 @@ const tabs = computed(() => {
         <UButton
           :to="detail.sds_url"
           target="_blank"
-          class="cursor-pointer rounded-md bg-(--navy) px-4.5 py-2 text-[13px] font-semibold"
+          class="cursor-pointer rounded-md bg-(--navy) p-2 text-xs font-semibold sm:px-4.5 sm:text-[13px]"
           >⬇ 下载 SDS</UButton
         >
       </div>
@@ -136,7 +140,6 @@ const tabs = computed(() => {
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--line);
-    padding: 14px 20px;
     background: #f8fafc;
     gap: 10px;
 
@@ -177,13 +180,39 @@ const tabs = computed(() => {
   }
 }
 
+.m-spec-table {
+  width: 100%;
+
+  td {
+    border-bottom: 1px solid var(--line);
+    padding: 5px 20px;
+    font-size: 12px;
+  }
+
+  td:first-child {
+    width: 40%;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+  }
+
+  td:last-child {
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+}
+
 .coa-block {
   display: flex;
   align-items: center;
   margin-bottom: 12px;
   border: 1.5px solid var(--line);
   border-radius: 8px;
-  padding: 18px 20px;
   gap: 14px;
 
   .coa-icon {
@@ -191,8 +220,6 @@ const tabs = computed(() => {
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    width: 48px;
-    height: 48px;
     font-size: 22px;
     background: var(--tag-bg);
     flex-shrink: 0;

@@ -5,6 +5,7 @@ import type { ProductDetail } from '~~/server/routes/mock/products/[id].get'
 definePageMeta({ name: 'ProductDetail', props: true })
 const props = defineProps<{ id: string }>()
 const detail = ref<ProductDetail>()
+
 async function fetchData() {
   const { status, data } = await useCustomFetch<ProductDetail>('/products/' + props.id)
   const resData = data.value
@@ -21,10 +22,16 @@ onMounted(() => {
 <template>
   <div>
     <GlobalBreadcrumb
+      class="hidden sm:block"
       :breadcrumbs="[{ label: '← 返回首页', to: '/' }, { label: '产品目录', to: '/product' }, { label: '产品详情' }]"
     />
-    <UContainer class="flex gap-8 py-10">
+    <UContainer class="flex gap-8 py-5 sm:py-10">
       <main class="flex-1">
+        <UBreadcrumb
+          :items="[{ label: '首页', to: '/' }, { label: '产品目录', to: '/product' }, { label: '产品详情' }]"
+          separator-icon="lucide:chevron-right"
+          :ui="{ root: 'mb-3.5', separator: 'text-[8px]' }"
+        />
         <section>
           <div class="mb-3 space-x-2">
             <UBadge class="rounded-sm bg-(--navy) py-1 font-mono font-semibold text-white"
@@ -37,25 +44,27 @@ onMounted(() => {
               >✓ 附 CoA 证书</UBadge
             >
           </div>
-          <h2 class="mb-1.5 text-[1.75rem] font-bold">{{ detail?.name }}</h2>
-          <h3 class="mb-4 font-mono text-muted">{{ detail?.name_en }}</h3>
+          <h2 class="mb-1.5 text-[1.25rem] font-bold sm:text-[1.75rem]">{{ detail?.name }}</h2>
+          <h3 class="mb-4 font-mono text-xs text-muted sm:text-base">{{ detail?.name_en }}</h3>
           <ul class="flex gap-4">
             <li class="space-x-2">
-              <span class="text-sm font-semibold text-muted">CAS No.</span
-              ><UBadge class="rounded-sm bg-(--tag-bg) px-3 py-1 text-base text-(--blue)">{{
-                detail?.cas_number
-              }}</UBadge>
+              <span class="text-xs font-semibold text-muted sm:text-sm">CAS No.</span
+              ><UBadge
+                class="rounded-sm bg-(--tag-bg) px-1.5 py-0.5 text-sm text-(--blue) sm:px-3 sm:py-1 sm:text-base"
+                >{{ detail?.cas_number }}</UBadge
+              >
             </li>
             <li class="space-x-2">
-              <span class="text-sm font-semibold text-muted">货号：</span
-              ><UBadge class="rounded-sm bg-(--tag-bg) px-3 py-1 text-base text-(--blue)">{{
-                detail?.catalog_no
-              }}</UBadge>
+              <span class="text-xs font-semibold text-muted sm:text-sm">货号：</span
+              ><UBadge
+                class="rounded-sm bg-(--tag-bg) px-1.5 py-0.5 text-sm text-(--blue) sm:px-3 sm:py-1 sm:text-base"
+                >{{ detail?.catalog_no }}</UBadge
+              >
             </li>
           </ul>
         </section>
 
-        <section class="mt-7">
+        <section class="mt-4 sm:mt-7">
           <div class="data-card">
             <div class="data-card-header">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5">
@@ -63,18 +72,18 @@ onMounted(() => {
               </svg>
               <span class="data-card-title">核心技术参数</span>
             </div>
-            <div class="data-grid">
+            <div class="data-grid grid grid-cols-2 sm:grid-cols-3">
               <div class="data-cell">
                 <div class="data-cell-label">分子量 MW</div>
-                <div class="data-cell-value">{{ detail?.mol_weight }} g/mol</div>
+                <div class="data-cell-value text-sm sm:text-[15px]">{{ detail?.mol_weight }} g/mol</div>
               </div>
               <div class="data-cell">
                 <div class="data-cell-label">分子式</div>
-                <div class="data-cell-value">{{ detail?.formula }}</div>
+                <div class="data-cell-value text-sm sm:text-[15px]">{{ detail?.formula }}</div>
               </div>
               <div class="data-cell">
                 <div class="data-cell-label">外观</div>
-                <div class="data-cell-value">{{ detail?.appearance }}</div>
+                <div class="data-cell-value text-sm sm:text-[15px]">{{ detail?.appearance }}</div>
               </div>
             </div>
           </div>
@@ -88,7 +97,7 @@ onMounted(() => {
           <ProductDetailRelatedProduct v-if="detail" :product-id="detail?.id" />
         </section>
       </main>
-      <aside class="w-90 shrink-0">
+      <aside class="hidden w-90 shrink-0 sm:block">
         <ProductDetailAside v-if="detail" :detail="detail" />
       </aside>
     </UContainer>
@@ -121,9 +130,6 @@ onMounted(() => {
   }
 
   .data-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
     .data-cell {
       border-right: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
@@ -139,7 +145,6 @@ onMounted(() => {
       }
 
       .data-cell-value {
-        font-size: 15px;
         font-family: 'DM Mono', monospace;
         font-weight: 600;
         color: var(--navy);
