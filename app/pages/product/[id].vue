@@ -5,6 +5,7 @@ import type { ProductDetail } from '~~/server/routes/mock/products/[id].get'
 definePageMeta({ name: 'ProductDetail', props: true })
 const props = defineProps<{ id: string }>()
 const detail = ref<ProductDetail>()
+const loading = useLoading()
 
 async function fetchData() {
   const { status, data } = await useCustomFetch<ProductDetail>('/products/' + props.id + '/')
@@ -15,7 +16,10 @@ async function fetchData() {
 }
 
 onMounted(() => {
-  fetchData()
+  loading.open()
+  fetchData().finally(() => {
+    loading.close()
+  })
 })
 </script>
 

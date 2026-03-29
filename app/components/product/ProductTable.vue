@@ -15,6 +15,7 @@ export type Pagination = {
 }
 
 const props = defineProps<ProductTableProps>()
+const loading = useLoading()
 
 const tableData = ref<Product[]>([])
 const pagination = ref<Pagination>({
@@ -82,6 +83,7 @@ defineExpose({
 })
 
 async function fetchData() {
+  loading.open()
   const params: ProductQuery = {
     page_size: pagination.value.pageSize,
     page: pagination.value.pageIndex
@@ -89,15 +91,18 @@ async function fetchData() {
   if (props.search) params.search = props.search
   if (props.categories.length) params.category_slug = props.categories
   if (props.brands.length) params.brand = props.brands
+  try {
+    const { status, data } = await useCustomFetch<ResponsePaginationData<Product>>('/products/', {
+      params,
+      banNuxtCache: true
+    })
 
-  const { status, data } = await useCustomFetch<ResponsePaginationData<Product>>('/products/', {
-    params,
-    banNuxtCache: true
-  })
-
-  if (status.value === 'success' && data.value) {
-    pagination.value.total = data.value.count
-    tableData.value = data.value.results
+    if (status.value === 'success' && data.value) {
+      pagination.value.total = data.value.count
+      tableData.value = data.value.results
+    }
+  } finally {
+    loading.close()
   }
 }
 </script>

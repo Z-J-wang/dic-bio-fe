@@ -13,6 +13,7 @@ const brandsList = useState<Brand[]>('brand-agent-page-list', () => [])
 const page = useState('brand-agent-page-list-page', () => 0)
 const totalPages = useState('brand-agent-page-list-total-pages', () => 1)
 const total = useState('brand-agent-page-list-total', () => 0)
+const loading = useLoading()
 
 watch(activeCategory, () => {
   page.value = 0
@@ -21,7 +22,10 @@ watch(activeCategory, () => {
 })
 
 onMounted(() => {
-  getData()
+  loading.open()
+  getData().finally(() => {
+    loading.close()
+  })
 })
 
 function convertCategoryClass(category: string) {

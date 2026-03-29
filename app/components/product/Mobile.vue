@@ -5,19 +5,24 @@ const search = ref('')
 const total = ref(0)
 const pageIndex = ref(1)
 const products = ref<Product[]>([])
+const loading = useLoading()
 
 async function fetchData() {
+  loading.open()
   const params: ProductQuery = {}
   params.search = search.value
+  try {
+    const { status, data } = await useCustomFetch<ResponsePaginationData<Product>>('/products/', {
+      params,
+      banNuxtCache: true
+    })
 
-  const { status, data } = await useCustomFetch<ResponsePaginationData<Product>>('/products/', {
-    params,
-    banNuxtCache: true
-  })
-
-  if (status.value === 'success' && data.value) {
-    total.value = data.value.count
-    products.value = data.value.results
+    if (status.value === 'success' && data.value) {
+      total.value = data.value.count
+      products.value = data.value.results
+    }
+  } finally {
+    loading.close()
   }
 }
 

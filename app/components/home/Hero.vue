@@ -5,9 +5,13 @@ const router = useRouter()
 const type = ref('all')
 const query = ref('')
 const typeOptions = ref([{ label: '全部类别', value: 'all' }])
+const loading = useLoading()
 
-onMounted(async () => {
-  await getCategory()
+onMounted(() => {
+  loading.open()
+  getCategory().finally(() => {
+    loading.close()
+  })
 })
 
 function search() {
