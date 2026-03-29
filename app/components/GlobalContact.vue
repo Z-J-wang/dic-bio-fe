@@ -3,7 +3,7 @@ import messageIcon from '@/assets/img/message.svg'
 import { useServicePersonnel } from '@/store/service.personnel'
 
 const { servicePersonnel } = toRefs(useServicePersonnel())
-const open = ref(false)
+const open = defineModel('open', { type: Boolean, default: false })
 </script>
 
 <template>

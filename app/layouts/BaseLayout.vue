@@ -6,6 +6,7 @@ const localePath = useLocalePath()
 const { t } = useI18n()
 const { isMobile } = useBreakpoint()
 const route = useRoute()
+const open = ref(false)
 
 const items = computed<NavigationMenuItem[]>(() => [
   { label: t('general.home'), to: localePath('/') },
@@ -78,8 +79,10 @@ const bottomNav = ref([
       />
 
       <template #right>
-        <UButton class="hidden cursor-pointer px-4.5 py-2 md:block" to="">🔍 产品检索</UButton>
-        <UButton class="hidden cursor-pointer bg-(--navy-mid) px-4.5 py-2 hover:bg-(--navy) md:block" to=""
+        <UButton class="hidden cursor-pointer px-4.5 py-2 md:block" :to="localePath('/product')">🔍 产品检索</UButton>
+        <UButton
+          class="hidden cursor-pointer bg-(--navy-mid) px-4.5 py-2 hover:bg-(--navy) md:block"
+          @click="open = true"
           >💬 在线客服</UButton
         >
       </template>
@@ -114,7 +117,7 @@ const bottomNav = ref([
       </div>
     </UMain>
 
-    <GlobalContact />
+    <GlobalContact v-model:open="open" />
 
     <BaseFooter class="hidden sm:block" />
   </UApp>
