@@ -5,6 +5,7 @@
 @import '@nuxt/ui';
 @import './utils.less';
 @import './theme.css';
+
 @source '../../../node_modules/.c12/';
 
 @font-face {
@@ -12,26 +13,8 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosanssc/v40/k3kXo84MPvpLmixcA63oeALhLOCT-xWNm8Hqd37g1OkDRZe7lR4sg1IzSy-MNbE9VH8V.4.woff2)
+  src: url('https://fonts.gstatic.com/s/notosanssc/v40/k3kXo84MPvpLmixcA63oeALhLOCT-xWNm8Hqd37g1OkDRZe7lR4sg1IzSy-MNbE9VH8V.4.woff2')
     format('woff2');
-  unicode-range:
-    U + 1f1e9 -1f1f5,
-    U + 1f1f7 -1f1ff,
-    U + 1f21a,
-    U + 1f232,
-    U + 1f234 -1f237,
-    U + 1f250 -1f251,
-    U + 1f300,
-    U + 1f302 -1f308,
-    U + 1f30a -1f311,
-    U + 1f315,
-    U + 1f319 -1f320,
-    U + 1f324,
-    U + 1f327,
-    U + 1f32a,
-    U + 1f32c -1f32d,
-    U + 1f330 -1f357,
-    U + 1f359 -1f37e;
 }
 
 html {
@@ -87,6 +70,7 @@ body {
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.3;
   }
@@ -97,28 +81,34 @@ body {
   transform: translateY(24px);
   animation: fadeup 0.6s ease forwards;
 }
+
 @keyframes fadeup {
   to {
     opacity: 1;
     transform: none;
   }
 }
+
 .delay-1 {
   animation-delay: 0.1s;
 }
+
 .delay-2 {
   animation-delay: 0.2s;
 }
+
 .delay-3 {
   animation-delay: 0.35s;
 }
 
+/* no lint */
 @keyframes floatPulse {
   0%,
   100% {
-    box-shadow: 0 4px 20px rgba(16, 80, 208, 0.45);
+    box-shadow: 0 4px 20px rgb(16 80 208 / 45%);
   }
+
   50% {
-    box-shadow: 0 4px 32px rgba(18, 183, 245, 0.7);
+    box-shadow: 0 4px 32px rgb(18 183 245 / 70%);
   }
 }

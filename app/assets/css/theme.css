@@ -15,7 +15,6 @@
   --font-mono: 'DM Mono', monospace;
   --color-primary: #1050d0; /* 默认主题色 */
   --color-secondary: #0a7c55; /* 次级主题色 */
-
   --spacing: 0.25rem; /* 基础间距 .25rem */
 
   /* 文字大小 */
@@ -77,8 +76,8 @@
   --green: #0d9e6e;
   --gold: #d4900a;
   --radius: 6px;
-  --shadow: 0 2px 16px rgba(7, 17, 43, 0.08);
-  --shadow-lg: 0 8px 40px rgba(7, 17, 43, 0.14);
+  --shadow: 0 2px 16px rgb(7 17 43 / 8%);
+  --shadow-lg: 0 8px 40px rgb(7 17 43 / 14%);
 }
 
 :root {
@@ -88,17 +87,14 @@
   --ui-text: var(--navy); /* 默认文本色 */
   --ui-text-highlighted: var(--navy); /* 强文本色 */
   --ui-text-inverted: white; /* 反底文本色 */
-
   --ui-bg: white; /* 默认背景色 */
   --ui-bg-muted: var(--ui-color-neutral-50); /* 弱背景色 */
   --ui-bg-elevated: var(--ui-color-neutral-100); /* 较强背景色 */
   --ui-bg-accented: var(--ui-color-neutral-200); /* 强背景色 */
   --ui-bg-inverted: var(--ui-color-neutral-900); /* 反底背景色 */
-
   --ui-border: var(--ui-color-neutral-200); /* 默认边框色 */
   --ui-border-muted: var(--ui-color-neutral-200); /* 弱边框色 */
   --ui-border-accented: var(--ui-color-neutral-300); /* 强边框色 */
   --ui-border-inverted: var(--ui-color-neutral-900); /* 反底边框色 */
-
   --ui-radius: 0.25rem; /* 全局基础圆角 */
 }
