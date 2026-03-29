@@ -28,14 +28,14 @@ export default defineNuxtConfig({
       apiBaseUrl: '/api' // 默认的 apiBaseUrl，此处应该填写生产环境的服务器的 apiBaseUrl
     }
   },
-  devServer: { port: 8090 },
+  devServer: {
+    port: 8090
+  },
   compatibilityDate: '2025-07-15',
   nitro: {
     devProxy: {
       '/api': {
-        target: '',
-        changeOrigin: true,
-        prependPath: true
+        target: 'http://43.167.169.151/api'
       }
     }
   },

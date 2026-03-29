@@ -36,7 +36,7 @@ async function getData() {
   if (activeCategory.value !== 'all') {
     params.category = activeCategory.value
   }
-  const res = await useCustomFetch<ResponsePaginationData<Brand>>('/brands', {
+  const res = await useCustomFetch<ResponsePaginationData<Brand>>('/brands/', {
     params
   })
 

@@ -4,7 +4,7 @@ export function useCustomFetch<T>(
   url: string | (() => string),
   options: UseFetchOptions<T> & {
     banNuxtCache?: boolean // 是否禁用 Nuxt 的请求缓存功能
-  } = { banNuxtCache: false }
+  } = { banNuxtCache: true }
 ) {
   const nuxtApp = useNuxtApp()
   const runtimeConfig = useRuntimeConfig()

@@ -7,7 +7,7 @@ const props = defineProps<{ id: string }>()
 const detail = ref<ProductDetail>()
 
 async function fetchData() {
-  const { status, data } = await useCustomFetch<ProductDetail>('/products/' + props.id)
+  const { status, data } = await useCustomFetch<ProductDetail>('/products/' + props.id + '/')
   const resData = data.value
   if (status.value === 'success' && resData) {
     detail.value = resData

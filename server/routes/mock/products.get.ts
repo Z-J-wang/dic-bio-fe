@@ -11,7 +11,7 @@ export interface ProductQuery {
 export interface Product {
   id: string
   name: string
-  name_cn: string
+  name_en: string
   cas_number: string
   catalog_no: string
   brand_name: string

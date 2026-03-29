@@ -16,10 +16,10 @@ function search() {
 }
 
 async function getCategory() {
-  const { status, data } = await useCustomFetch<Category[]>('/categories/flat')
+  const { status, data } = await useCustomFetch<Category[]>('/categories/flat/')
 
   if (status.value === 'success' && data.value) {
-    typeOptions.value = [...typeOptions.value, ...data.value.map((item) => ({ label: item.name_cn, value: item.slug }))]
+    typeOptions.value = [...typeOptions.value, ...data.value.map((item) => ({ label: item.name, value: item.slug }))]
   }
 }
 </script>

@@ -6,7 +6,7 @@ const props = defineProps<{ productId: string }>()
 const products = ref<Product[]>([])
 
 async function fetchData() {
-  const { status, data } = await useCustomFetch<Product[]>(`/products/${props.productId}/related`)
+  const { status, data } = await useCustomFetch<Product[]>(`/products/${props.productId}/related/`)
 
   if (status.value === 'success' && data.value) {
     products.value = data.value
@@ -27,7 +27,7 @@ onMounted(() => {
       :to="'/product/' + item.id"
       class="related-card p-2.5 sm:p-4"
     >
-      <div class="related-name">{{ item.name_cn }}</div>
+      <div class="related-name">{{ item.name }}</div>
       <div class="related-cas font-mono text-[10px] sm:text-[11px]">CAS {{ item.cas_number }}</div>
       <div class="flex items-center justify-between">
         <span class="related-brand">{{ item.brand_name }}</span>

@@ -10,7 +10,7 @@ async function fetchData() {
   const params: ProductQuery = {}
   params.search = search.value
 
-  const { status, data } = await useCustomFetch<ResponsePaginationData<Product>>('/products', {
+  const { status, data } = await useCustomFetch<ResponsePaginationData<Product>>('/products/', {
     params,
     banNuxtCache: true
   })
@@ -52,8 +52,8 @@ onMounted(() => {
       >
         <div class="mb-2 flex items-start justify-between gap-2">
           <div>
-            <div class="mb-0.5 text-sm font-bold">{{ product.name_cn }}</div>
-            <div class="font-mono text-[11px] text-muted">{{ product.name }}</div>
+            <div class="mb-0.5 text-sm font-bold">{{ product.name }}</div>
+            <div class="font-mono text-[11px] text-muted">{{ product.name_en }}</div>
           </div>
           <div>
             <UBadge class="prod-brand-badge">{{ product.brand_name }}</UBadge>

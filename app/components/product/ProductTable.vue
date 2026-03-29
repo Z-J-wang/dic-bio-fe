@@ -28,9 +28,9 @@ const columns: TableColumn<Product>[] = [
     header: '产品名称',
     cell: ({ row }) => (
       <div class="space-y-0.5">
-        <div class="text-sm font-semibold text-(--navy)">{row.original.name_cn}</div>
+        <div class="text-sm font-semibold text-(--navy)">{row.original.name}</div>
         <div class="font-mono text-xs text-muted">
-          {row.original.name} · {row.original.catalog_no}
+          {row.original.name_en} · {row.original.catalog_no}
         </div>
       </div>
     )
@@ -77,13 +77,20 @@ onMounted(() => {
   fetchData()
 })
 
+defineExpose({
+  total: computed(() => pagination.value.total)
+})
+
 async function fetchData() {
-  const params: ProductQuery = {}
+  const params: ProductQuery = {
+    page_size: pagination.value.pageSize,
+    page: pagination.value.pageIndex
+  }
   if (props.search) params.search = props.search
   if (props.categories.length) params.category_slug = props.categories
   if (props.brands.length) params.brand = props.brands
 
-  const { status, data } = await useCustomFetch<ResponsePaginationData<Product>>('/products', {
+  const { status, data } = await useCustomFetch<ResponsePaginationData<Product>>('/products/', {
     params,
     banNuxtCache: true
   })

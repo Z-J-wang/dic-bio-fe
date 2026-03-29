@@ -1,6 +1,9 @@
 <script setup lang="tsx">
-const { search, total, brands, categories, brandsName, categoriesName, brandOptions, categoryOptions } =
+const route = useRoute()
+const { search, brands, categories, brandsName, categoriesName, brandOptions, categoryOptions } =
   toRefs(useProductFilters())
+
+const Table = useTemplateRef('Table')
 const condition = computed(() => {
   let cond = []
   if (search.value) cond.push(search.value)
@@ -8,6 +11,12 @@ const condition = computed(() => {
   if (categories.value.length) cond = [...cond, ...categoriesName.value]
 
   return cond.join(' / ')
+})
+
+onMounted(() => {
+  const { type, query } = route.query
+  if (type) categories.value = [type as string]
+  if (query) search.value = query as string
 })
 </script>
 
@@ -39,21 +48,21 @@ const condition = computed(() => {
               v-model="categories"
               label="产品类别"
               :items="categoryOptions"
-              label-key="name_cn"
+              label-key="name"
               value-key="slug"
             />
           </div>
         </aside>
         <main class="flex-1">
           <div class="text-sm text-muted">
-            共找到 <span class="font-bold text-default">{{ total.toLocaleString() }}</span> 条产品<span
+            共找到 <span class="font-bold text-default">{{ Table?.total.toLocaleString() || 0 }}</span> 条产品<span
               v-if="search || brands.length || categories.length"
             >
               · 已筛选：{{ condition }}</span
             >
           </div>
           <USeparator :ui="{ border: 'border-(--line)', root: 'mt-6 mb-5.5' }" />
-          <ProductTable class="w-full" :search="search" :brands="brands" :categories="categories" />
+          <ProductTable ref="Table" class="w-full" :search="search" :brands="brands" :categories="categories" />
         </main>
       </div>
     </UContainer>

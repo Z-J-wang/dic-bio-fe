@@ -8,10 +8,11 @@ export interface CategoryQuery {
 export interface Category {
   id: string
   name: string
-  name_cn: string
+  name_en: string
   slug: string
   icon: string
   sort_order?: number
+  description?: string
 }
 
 const rawData: Category[] = Mock.mock({
@@ -19,7 +20,7 @@ const rawData: Category[] = Mock.mock({
     {
       id: '@guid',
       name: '@name',
-      name_cn: '@cname',
+      name_en: '@cname',
       slug: '@name',
       icon: '💊'
     }
