@@ -37,12 +37,12 @@ async function getCategory() {
     <div class="m-hero-grid sm:hero-grid"></div>
     <div class="sm:hero-glow m-hero-glow"></div>
     <div class="hero-content">
-      <div class="hero-label mb-3 sm:mb-6"><span></span> 深圳鼎利成生物科技有限公司 &nbsp;·&nbsp; 专业对照品供应商</div>
+      <div class="hero-label mb-3 sm:mb-6"><span></span> 深圳鼎利成生物科技有限公司 · 专业对照品供应商</div>
       <h1 class="fade-up text-[clamp(26px,4vw,52px)] delay-1">
         精准溯源，<span class="text-(--cyan)">10万+</span> 种<br />对照品与标准品
       </h1>
       <p class="hero-sub fade-up mb-4 text-sm delay-2 sm:mb-11 sm:text-base">
-        涵盖医药 · 生化 · 工业实验检测&nbsp;&nbsp;|&nbsp;&nbsp;代理全球顶尖品牌&nbsp;&nbsp;|&nbsp;&nbsp;专业咨询服务
+        涵盖医药 · 生化 · 工业实验检测 | 代理全球顶尖品牌 | 专业咨询服务
       </p>
       <div class="search-bar fade-up delay-2">
         <UFieldGroup class="w-full bg-transparent">
