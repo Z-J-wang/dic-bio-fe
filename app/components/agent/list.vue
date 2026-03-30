@@ -30,7 +30,7 @@ onMounted(() => {
 
 function convertCategoryClass(category: string) {
   const baseClass = 'rounded-4xl px-5.5 py-2.5 text-[13px] font-semibold border-[2px] cursor-pointer'
-  const defaultClass = 'text-muted border-(--line) bg-white!'
+  const defaultClass = 'text-muted border-(--line)! bg-white! text-[13px]'
   const activeClass = 'text-white border-(--blue) bg-(--blue)!'
   return classNameMerge(baseClass, activeCategory.value === category ? activeClass : defaultClass)
 }
@@ -65,7 +65,7 @@ async function getData() {
     <UContainer class="py-5 sm:pt-15 sm:pb-0">
       <ul class="mb-11 hidden items-center gap-2.5 sm:flex">
         <li v-for="item in brandCategory" :key="item.value">
-          <UButton variant="outline" :class="convertCategoryClass(item.value)" @click="activeCategory = item.value">{{
+          <UButton :class="convertCategoryClass(item.value)" @click="activeCategory = item.value">{{
             item.label
           }}</UButton>
         </li>

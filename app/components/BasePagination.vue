@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<BasePagination>(), {
   as: 'div',
   showControls: true,
   showItemsPerPage: true,
-  itemsPerPageOptions: () => [10, 20, 50, 100, 500, 1000],
+  itemsPerPageOptions: () => [10, 20, 50, 100],
   openAll: false,
   ui: () => ({ first: 'hidden', last: 'hidden' })
 })

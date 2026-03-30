@@ -1,7 +1,7 @@
 <script setup lang="tsx">
 import type { TableColumn } from '@nuxt/ui'
 import type { Product, ProductQuery } from '~~/server/routes/mock/products.get'
-import { UBadge, UButton } from '#components'
+import { NuxtLinkLocale, UBadge, UButton } from '#components'
 
 export interface ProductTableProps {
   search: string
@@ -29,14 +29,22 @@ const columns: TableColumn<Product>[] = [
     header: '产品名称',
     cell: ({ row }) => (
       <div class="space-y-0.5">
-        <div class="text-sm font-semibold text-(--navy)">{row.original.name}</div>
+        <NuxtLinkLocale class="text-sm font-semibold text-(--navy)" to={'/product/' + row.original.id}>
+          {row.original.name}
+        </NuxtLinkLocale>
         <div class="font-mono text-xs text-muted">
           {row.original.name_en} · {row.original.catalog_no}
         </div>
       </div>
     )
   },
-  { accessorKey: 'cas_number', header: 'CAS 号' },
+  {
+    accessorKey: 'cas_number',
+    header: 'CAS 号',
+    meta: {
+      class: { td: 'font-mono text-xs text-muted' }
+    }
+  },
   {
     accessorKey: 'brand_name',
     header: '品牌',
@@ -55,7 +63,10 @@ const columns: TableColumn<Product>[] = [
       <span>
         {row.original.formula} / {row.original.mol_weight.toLocaleString()}
       </span>
-    )
+    ),
+    meta: {
+      class: { td: 'font-mono text-xs text-muted' }
+    }
   },
   {
     header: '操作',

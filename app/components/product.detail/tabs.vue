@@ -38,31 +38,31 @@ const tabs = computed(() => {
       <div class="data-card-header p-[8px_20px] sm:p-[14px_20px]">
         <span class="data-card-title">详细规格参数</span>
       </div>
-      <table class="m-spec-table sm:spec-table!">
+      <table class="spec-table">
         <tbody>
           <tr>
-            <td>中文名称</td>
-            <td>{{ detail.name }}</td>
+            <td class="p-[5px_20px] text-xs sm:p-[11px_20px] sm:text-sm">中文名称</td>
+            <td class="p-[5px_20px] text-xs sm:p-[11px_20px] sm:text-[13px]">{{ detail.name }}</td>
           </tr>
           <tr>
-            <td>英文名称</td>
-            <td>{{ detail.name_en }}</td>
+            <td class="p-[5px_20px] text-xs sm:p-[11px_20px] sm:text-sm">英文名称</td>
+            <td class="p-[5px_20px] text-xs sm:p-[11px_20px] sm:text-[13px]">{{ detail.name_en }}</td>
           </tr>
           <tr>
-            <td>CAS 编号</td>
-            <td>{{ detail.cas_number }}</td>
+            <td class="p-[5px_20px] text-xs sm:p-[11px_20px] sm:text-sm">CAS 编号</td>
+            <td class="p-[5px_20px] text-xs sm:p-[11px_20px] sm:text-[13px]">{{ detail.cas_number }}</td>
           </tr>
           <tr v-if="detail.brand_name">
-            <td>品牌 / 来源</td>
-            <td>{{ detail.brand_name }}</td>
+            <td class="p-[5px_20px] text-xs sm:p-[11px_20px] sm:text-sm">品牌 / 来源</td>
+            <td class="p-[5px_20px] text-xs sm:p-[11px_20px] sm:text-[13px]">{{ detail.brand_name }}</td>
           </tr>
           <tr>
-            <td>批号</td>
-            <td>{{ detail.lot_no }}</td>
+            <td class="p-[5px_20px] text-xs sm:p-[11px_20px] sm:text-sm">批号</td>
+            <td class="p-[5px_20px] text-xs sm:p-[11px_20px] sm:text-[13px]">{{ detail.lot_no }}</td>
           </tr>
           <tr>
-            <td>标准依据</td>
-            <td>{{ detail.standard }}</td>
+            <td class="p-[5px_20px] text-xs sm:p-[11px_20px] sm:text-sm">标准依据</td>
+            <td class="p-[5px_20px] text-xs sm:p-[11px_20px] sm:text-[13px]">{{ detail.standard }}</td>
           </tr>
         </tbody>
       </table>
@@ -72,19 +72,19 @@ const tabs = computed(() => {
       <div class="data-card-header p-[8px_20px] sm:p-[14px_20px]">
         <span class="data-card-title">储存与安全信息</span>
       </div>
-      <table class="m-spec-table sm:spec-table!">
+      <table class="spec-table">
         <tbody>
           <tr>
-            <td>推荐储存温度</td>
-            <td>{{ detail.storage_temp }}</td>
+            <td class="p-[5px_20px] text-xs sm:p-[11px_20px] sm:text-sm">推荐储存温度</td>
+            <td class="p-[5px_20px] text-xs sm:p-[11px_20px] sm:text-[13px]">{{ detail.storage_temp }}</td>
           </tr>
           <tr>
-            <td>储存条件</td>
-            <td>{{ detail.storage_note }}</td>
+            <td class="p-[5px_20px] text-xs sm:p-[11px_20px] sm:text-sm">储存条件</td>
+            <td class="p-[5px_20px] text-xs sm:p-[11px_20px] sm:text-[13px]">{{ detail.storage_note }}</td>
           </tr>
           <tr>
-            <td>有效期</td>
-            <td>{{ detail.expiry_date }}</td>
+            <td class="p-[5px_20px] text-xs sm:p-[11px_20px] sm:text-sm">有效期</td>
+            <td class="p-[5px_20px] text-xs sm:p-[11px_20px] sm:text-[13px]">{{ detail.expiry_date }}</td>
           </tr>
         </tbody>
       </table>
@@ -158,40 +158,13 @@ const tabs = computed(() => {
 
   td {
     border-bottom: 1px solid var(--line);
-    padding: 11px 20px;
-    font-size: 14px;
+    // padding: 11px 20px;
+    // font-size: 14px;
   }
 
   td:first-child {
     width: 40%;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--muted);
-  }
-
-  td:last-child {
-    font-family: 'DM Mono', monospace;
-    font-weight: 500;
-    color: var(--navy);
-  }
-
-  tr:nth-child(even) td {
-    background: #f8fafc;
-  }
-}
-
-.m-spec-table {
-  width: 100%;
-
-  td {
-    border-bottom: 1px solid var(--line);
-    padding: 5px 20px;
-    font-size: 12px;
-  }
-
-  td:first-child {
-    width: 40%;
-    font-size: 12px;
+    // font-size: 13px;
     font-weight: 500;
     color: var(--muted);
   }
