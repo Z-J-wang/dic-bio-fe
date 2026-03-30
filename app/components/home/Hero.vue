@@ -16,7 +16,11 @@ onMounted(() => {
 
 function search() {
   if (!query.value) return
-  router.push({ path: '/product', query: { type: type.value, query: query.value } })
+  const params: { query: string; type?: string } = { query: query.value }
+  if (type.value !== 'all') {
+    params.type = type.value
+  }
+  router.push({ path: '/product', query: params })
 }
 
 async function getCategory() {

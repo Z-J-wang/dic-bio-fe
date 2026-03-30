@@ -2,8 +2,8 @@ import Mock from 'mockjs'
 
 export interface ProductQuery {
   search?: string
-  brand?: string[]
-  category_slug?: string[]
+  brand?: string
+  category_slug?: string
   page?: number
   page_size?: number
 }

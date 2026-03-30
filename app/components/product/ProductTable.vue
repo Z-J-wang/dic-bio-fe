@@ -71,7 +71,8 @@ watch(
   () => [props.search, props.brands, props.categories, pagination.value.pageIndex, pagination.value.pageSize],
   () => {
     fetchData()
-  }
+  },
+  { deep: true }
 )
 
 onMounted(() => {
@@ -89,8 +90,8 @@ async function fetchData() {
     page: pagination.value.pageIndex
   }
   if (props.search) params.search = props.search
-  if (props.categories.length) params.category_slug = props.categories
-  if (props.brands.length) params.brand = props.brands
+  if (props.categories.length) params.category_slug = props.categories.join(',')
+  if (props.brands.length) params.brand = props.brands.join(',')
   try {
     const { status, data } = await useCustomFetch<ResponsePaginationData<Product>>('/products/', {
       params,

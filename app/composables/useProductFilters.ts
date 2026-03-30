@@ -29,11 +29,13 @@ export function useProductFilters() {
 
   async function getProductsStats(init: boolean = false) {
     loading.open()
-    const params = {
-      search: search.value,
-      brand: brands.value.join(','),
-      category_slug: categories.value.join(',')
+    const params: Record<string, string> = {
+      search: search.value
     }
+
+    if (categories.value.length) params.category_slug = categories.value.join(',')
+    if (brands.value.length) params.brand = brands.value.join(',')
+
     try {
       const { status, data } = await useCustomFetch<StatsProductResponse>('/products/stats/', {
         method: 'GET',
