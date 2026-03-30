@@ -1,12 +1,12 @@
 import type { StatsBrand, StatsCategory, StatsProductResponse } from '~~/server/routes/mock/products/stats.get'
 
 export function useProductFilters() {
-  const search = useState('product-search', () => '')
-  const total = useState('product-total', () => 0)
-  const brands = useState<string[]>('product-brands', () => [])
-  const categories = useState<string[]>('product-categories', () => [])
-  const brandOptions = useState<StatsBrand[]>('product-brand-options', () => [])
-  const categoryOptions = useState<StatsCategory[]>('product-category-options', () => [])
+  const search = ref('')
+  const total = ref(0)
+  const brands = ref<string[]>([])
+  const categories = ref<string[]>([])
+  const brandOptions = ref<StatsBrand[]>([])
+  const categoryOptions = ref<StatsCategory[]>([])
   const loading = useLoading()
 
   const brandsName = computed(() =>
