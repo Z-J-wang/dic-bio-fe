@@ -4,11 +4,16 @@ import { useServicePersonnel } from '@/store/service.personnel'
 
 const { servicePersonnel } = toRefs(useServicePersonnel())
 const open = defineModel('open', { type: Boolean, default: false })
+const { isMobile } = useBreakpoint()
 </script>
 
 <template>
   <div class="fixed right-7 bottom-25">
-    <UPopover v-model:open="open" :content="{ side: 'left', align: 'end' }">
+    <UPopover
+      v-model:open="open"
+      :content="{ side: isMobile ? 'top' : 'left', align: 'end' }"
+      :ui="{ content: 'rounded-xl' }"
+    >
       <div class="flex flex-col items-center gap-1.5">
         <UButton class="qq-float-btn" title="QQ在线咨询">
           <img :src="messageIcon" alt="messageIcon" />
