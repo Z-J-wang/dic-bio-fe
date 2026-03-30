@@ -1,6 +1,10 @@
+<script setup lang="ts">
+const { isMobile } = useBreakpoint()
+</script>
+
 <template>
   <div>
-    <ProductPC class="hidden sm:block" />
-    <ProductMobile class="sm:hidden" />
+    <ProductMobile v-if="isMobile" />
+    <ProductPC v-else />
   </div>
 </template>

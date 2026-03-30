@@ -100,8 +100,10 @@ const bottomNav = ref([
       </template>
     </UHeader>
 
-    <UMain>
-      <slot />
+    <UMain class="flex flex-col">
+      <div class="flex-1">
+        <slot />
+      </div>
       <div
         class="sticky bottom-0 flex items-center justify-around border-t border-(--line) bg-white px-4 py-3 sm:hidden"
       >

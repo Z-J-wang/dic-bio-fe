@@ -81,14 +81,12 @@ const columns: TableColumn<Product>[] = [
 watch(
   () => [props.search, props.brands, props.categories, pagination.value.pageIndex, pagination.value.pageSize],
   () => {
-    fetchData()
+    setTimeout(() => {
+      fetchData()
+    }, 100)
   },
-  { deep: true }
+  { deep: true, immediate: true }
 )
-
-onMounted(() => {
-  fetchData()
-})
 
 defineExpose({
   total: computed(() => pagination.value.total)
@@ -104,9 +102,10 @@ async function fetchData() {
   if (props.categories.length) params.category_slug = props.categories.join(',')
   if (props.brands.length) params.brand = props.brands.join(',')
   try {
+    console.log('fetching with params', params)
     const { status, data } = await useCustomFetch<ResponsePaginationData<Product>>('/products/', {
       params,
-      banNuxtCache: true
+      banNuxtCache: false
     })
 
     if (status.value === 'success' && data.value) {

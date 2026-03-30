@@ -16,15 +16,17 @@ export function useProductFilters() {
     categories.value.map((category) => categoryOptions.value.find((c) => c.slug === category)?.name)
   )
   watch(
-    [() => search, () => brands, () => categories],
-    async () => {
-      await getProductsStats()
+    [() => search.value, () => brands.value, () => categories.value],
+    () => {
+      setTimeout(() => {
+        getProductsStats()
+      }, 100)
     },
     { deep: true }
   )
 
-  onMounted(async () => {
-    await getProductsStats(true)
+  onMounted(() => {
+    getProductsStats(true)
   })
 
   async function getProductsStats(init: boolean = false) {

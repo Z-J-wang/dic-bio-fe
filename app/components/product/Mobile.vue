@@ -6,11 +6,12 @@ const total = ref(0)
 const pageIndex = ref(1)
 const products = ref<Product[]>([])
 const loading = useLoading()
+const route = useRoute()
 
 async function fetchData() {
   loading.open()
   const params: ProductQuery = {}
-  params.search = search.value
+  if (search.value) params.search = search.value
   try {
     const { status, data } = await useCustomFetch<ResponsePaginationData<Product>>('/products/', {
       params,
@@ -27,6 +28,8 @@ async function fetchData() {
 }
 
 onMounted(() => {
+  const { query } = route.query
+  if (query) search.value = query as string
   fetchData()
 })
 </script>

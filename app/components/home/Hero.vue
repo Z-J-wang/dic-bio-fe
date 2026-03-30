@@ -6,6 +6,7 @@ const type = ref('all')
 const query = ref('')
 const typeOptions = ref([{ label: '全部类别', value: 'all' }])
 const loading = useLoading()
+const localePath = useLocalePath()
 
 onMounted(() => {
   loading.open()
@@ -57,6 +58,7 @@ async function getCategory() {
             v-model.trim="query"
             placeholder="输入产品名称、CAS号、品牌或关键词..."
             :ui="{ root: 'flex-1 w-full', base: 'h-13.5' }"
+            @keyup.enter="search"
           />
           <UButton
             class="cursor-pointer bg-(--blue) px-7 text-white hover:bg-(--blue-br) md:h-13.5"
@@ -67,12 +69,14 @@ async function getCategory() {
         </UFieldGroup>
       </div>
       <div class="hero-tags fade-up gap-1.5 delay-3 sm:gap-2.5">
-        <span class="hero-tag" onclick="showPage('list')">咖啡因</span>
-        <span class="hero-tag" onclick="showPage('list')">阿司匹林对照品</span>
-        <span class="hero-tag" onclick="showPage('list')">USP标准品</span>
-        <span class="hero-tag" onclick="showPage('list')">NIST SRM</span>
-        <span class="hero-tag" onclick="showPage('list')">青霉素标准品</span>
-        <span class="hero-tag" onclick="showPage('list')">维生素 C</span>
+        <NuxtLinkLocale class="hero-tag" :to="localePath('/product?query=咖啡因')">咖啡因</NuxtLinkLocale>
+        <NuxtLinkLocale class="hero-tag" :to="localePath('/product?query=阿司匹林对照品')"
+          >阿司匹林对照品</NuxtLinkLocale
+        >
+        <NuxtLinkLocale class="hero-tag" :to="localePath('/product?query=USP标准品')">USP标准品</NuxtLinkLocale>
+        <NuxtLinkLocale class="hero-tag" :to="localePath('/product?query=NIST SRM')">NIST SRM</NuxtLinkLocale>
+        <NuxtLinkLocale class="hero-tag" :to="localePath('/product?query=青霉素标准品')">青霉素标准品</NuxtLinkLocale>
+        <NuxtLinkLocale class="hero-tag" :to="localePath('/product?query=维生素 C')">维生素 C</NuxtLinkLocale>
       </div>
     </div>
   </section>
