@@ -34,9 +34,8 @@ defineProps<{
       <div class="contact-item">
         <div class="contact-icon">✉️</div>
         <div class="contact-text">
-          <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bbd2d5ddd4fbdfd7d896d9d2d495d8d4d6"
-            >[email&nbsp;protected]</a
-          ><small>24小时内回复</small>
+          <a href="mailto:infodlc@126.com">infodlc@126.com</a>
+          <small>24小时内回复</small>
         </div>
       </div>
       <div class="contact-item">
