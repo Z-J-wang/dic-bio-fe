@@ -80,11 +80,25 @@ async function getData() {
               <p class="mt-0.5 font-mono text-[11px] text-muted">{{ item.name }}</p>
             </div>
           </div>
-          <div class="text-md mb-3.5 line-clamp-2 tracking-[1.8] text-muted sm:line-clamp-3">
+          <div class="mb-3.5 line-clamp-2 text-[13px] tracking-[1.8] text-muted sm:line-clamp-3">
             {{ item.description }}
           </div>
-          <div>
-            <UBadge label="✓ 授权代理" variant="soft" color="secondary" :ui="{ base: 'rounded-sm' }" />
+          <div class="flex gap-1.5">
+            <UBadge
+              v-for="tag in item.tags"
+              :key="tag"
+              :label="tag"
+              variant="soft"
+              color="primary"
+              :ui="{ base: 'rounded-sm' }"
+            />
+            <UBadge
+              v-if="item.is_authorized"
+              label="✓ 授权代理"
+              variant="soft"
+              color="secondary"
+              :ui="{ base: 'rounded-sm' }"
+            />
           </div>
         </div>
       </div>

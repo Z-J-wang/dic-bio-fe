@@ -10,7 +10,8 @@ const rawData: Brand[] = Mock.mock({
       description: '@paragraph',
       category: '@pick(["pharmacopeia", "international", "commercial","domestic","custom"])',
       logo_url: '@image',
-      is_authorized: '@boolean'
+      is_authorized: '@boolean',
+      tags: '@pick(["pharmacopeia", "international", "commercial","domestic","custom"])'
     }
   ]
 }).list
