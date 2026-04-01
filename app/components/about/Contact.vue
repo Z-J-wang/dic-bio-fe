@@ -27,7 +27,7 @@ const tags = ref([
           <div class="h-9 w-9 rounded-lg bg-(--tag-bg) text-center align-middle leading-9">📞</div>
           <div class="space-y-0.75">
             <h3 class="text-sm text-muted">电话</h3>
-            <p class="font-mono text-sm">+86 1234567890</p>
+            <p class="font-mono text-sm">+86 0755-89567629</p>
             <div class="text-sm text-muted">工作日 09:00 - 18:00</div>
           </div>
         </li>
@@ -37,7 +37,7 @@ const tags = ref([
           <div class="space-y-0.75">
             <h3 class="text-sm text-muted">邮箱</h3>
             <p class="font-mono text-sm">
-              <a href="mailto:">[email protected]</a>
+              <a href="mailto:">infodlc@126.com</a>
             </p>
             <div class="text-sm text-muted">24小时内回复</div>
           </div>
