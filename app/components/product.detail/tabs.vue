@@ -97,11 +97,11 @@ const tabs = computed(() => {
     </div>
 
     <div v-if="tab === 'files'">
-      <div class="coa-block p-4 sm:p-[18px_20px]">
+      <div v-if="detail.coa_url" class="coa-block p-4 sm:p-[18px_20px]">
         <div class="coa-icon sm:h-12 sm:w-12">📄</div>
         <div class="flex-1 space-y-0.75">
           <div class="text-sm font-bold">批次分析证书（CoA）</div>
-          <div class="text-xs text-muted">批号 100081-202115 · PDF · 245 KB · 由中检院出具</div>
+          <!-- <div class="text-xs text-muted">批号 100081-202115 · PDF · 245 KB · 由中检院出具</div> -->
         </div>
         <UButton
           :to="detail.coa_url"
@@ -111,11 +111,11 @@ const tabs = computed(() => {
         >
       </div>
 
-      <div class="coa-block p-4 sm:p-[18px_20px]">
+      <div v-if="detail.sds_url" class="coa-block p-4 sm:p-[18px_20px]">
         <div class="coa-icon sm:h-12 sm:w-12">📄</div>
         <div class="flex-1 space-y-0.75">
           <div class="text-sm font-bold">安全数据表（SDS / MSDS）</div>
-          <div class="text-xs text-muted">GHS 标准格式 · PDF · 180 KB</div>
+          <!-- <div class="text-xs text-muted">GHS 标准格式 · PDF · 180 KB</div> -->
         </div>
         <UButton
           :to="detail.sds_url"
