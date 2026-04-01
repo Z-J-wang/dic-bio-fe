@@ -81,7 +81,7 @@ const columns = computed<FooterColumn[]>(() => {
         <div class="flex items-center justify-between text-xs text-muted">
           <div>
             <span> © {{ year }} {{ t('blcBio') }} </span>
-            · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">粤ICP备XXXXXXXX号</a>
+            · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">粤ICP备2023028591号</a>
           </div>
           <div>专业对照品供应商 · 品质保证</div>
         </div>
