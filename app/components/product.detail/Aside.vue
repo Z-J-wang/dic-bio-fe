@@ -29,7 +29,7 @@ defineProps<{
       <div class="contact-info-title">📞 联系与咨询</div>
       <div class="contact-item">
         <div class="contact-icon">📞</div>
-        <div class="contact-text">0755-XXXX-XXXX<small>工作日 09:00 – 18:00</small></div>
+        <div class="contact-text">0755-89567629<small>工作日 09:00 – 18:00</small></div>
       </div>
       <div class="contact-item">
         <div class="contact-icon">✉️</div>

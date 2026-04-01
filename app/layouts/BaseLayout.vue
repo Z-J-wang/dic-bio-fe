@@ -28,7 +28,7 @@ const bottomNav = ref([
     <section
       class="hidden h-8 items-center justify-center gap-2 bg-[#0f2a5e] px-6 py-1.5 text-xs tracking-wider text-[#ffffff99] sm:flex"
     >
-      <div>全国服务热线：<span class="text-white">0755-XXXX-XXXX</span></div>
+      <div>全国服务热线：<span class="text-white">0755-89567629</span></div>
       <USeparator orientation="vertical" class="h-7/10" />
       <div>超过 <span class="text-white">100,000+</span> 种对照品与标准品</div>
       <USeparator orientation="vertical" />
@@ -93,7 +93,7 @@ const bottomNav = ref([
           <USeparator class="my-1" />
           <div class="space-y-1 py-1.5 text-sm text-muted">
             <div>联系我们</div>
-            <div class="font-bold text-(--navy)">📞 0755-XXXX-XXXX</div>
+            <div class="font-bold text-(--navy)">📞 0755-89567629</div>
             <div>工作日 09:00–18:00</div>
           </div>
         </div>

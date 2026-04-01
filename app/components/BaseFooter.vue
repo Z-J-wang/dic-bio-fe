@@ -30,7 +30,7 @@ const columns = computed<FooterColumn[]>(() => {
     {
       label: '联系我们',
       children: [
-        { label: '📞 0755-XXXX-XXXX' },
+        { label: '📞 0755-89567629' },
         { label: '✉️ [email protected]' },
         { label: '🕐 工作日 9:00–18:00' },
         { label: '关于我们' },
