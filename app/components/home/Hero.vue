@@ -7,6 +7,7 @@ const query = ref('')
 const typeOptions = ref([{ label: '全部类别', value: 'all' }])
 const loading = useLoading()
 const localePath = useLocalePath()
+const { isMobile } = useBreakpoint()
 
 onMounted(() => {
   loading.open()
@@ -38,7 +39,9 @@ async function getCategory() {
     <div class="m-hero-grid sm:hero-grid"></div>
     <div class="sm:hero-glow m-hero-glow"></div>
     <div class="hero-content">
-      <div class="hero-label mb-3 sm:mb-6"><span></span> 深圳鼎利成生物科技有限公司 · 专业对照品供应商</div>
+      <div class="hero-label mb-3 sm:mb-6">
+        <span></span> 深圳鼎利成生物科技有限公司 <br v-if="isMobile" />· 专业对照品供应商
+      </div>
       <h1 class="fade-up text-[clamp(26px,4vw,52px)] delay-1">
         精准溯源，<span class="text-(--cyan)">10万+</span> 种<br />对照品与标准品
       </h1>
