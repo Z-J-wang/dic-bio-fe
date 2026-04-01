@@ -72,14 +72,11 @@ async function getCategory() {
         </UFieldGroup>
       </div>
       <div class="hero-tags fade-up gap-1.5 delay-3 sm:gap-2.5">
-        <NuxtLinkLocale class="hero-tag" :to="localePath('/product?query=咖啡因')">咖啡因</NuxtLinkLocale>
-        <NuxtLinkLocale class="hero-tag" :to="localePath('/product?query=阿司匹林对照品')"
-          >阿司匹林对照品</NuxtLinkLocale
-        >
-        <NuxtLinkLocale class="hero-tag" :to="localePath('/product?query=USP标准品')">USP标准品</NuxtLinkLocale>
-        <NuxtLinkLocale class="hero-tag" :to="localePath('/product?query=NIST SRM')">NIST SRM</NuxtLinkLocale>
-        <NuxtLinkLocale class="hero-tag" :to="localePath('/product?query=青霉素标准品')">青霉素标准品</NuxtLinkLocale>
-        <NuxtLinkLocale class="hero-tag" :to="localePath('/product?query=维生素 C')">维生素 C</NuxtLinkLocale>
+        <NuxtLinkLocale class="hero-tag" :to="localePath('/agent?query=NIST')">NIST</NuxtLinkLocale>
+        <NuxtLinkLocale class="hero-tag" :to="localePath('/agent?query=NIBSC')">NIBSC</NuxtLinkLocale>
+        <NuxtLinkLocale class="hero-tag" :to="localePath('/agent?query=ERM')">ERM</NuxtLinkLocale>
+        <NuxtLinkLocale class="hero-tag" :to="localePath('/agent?query=CHROMOGENIX')">CHROMOGENIX</NuxtLinkLocale>
+        <NuxtLinkLocale class="hero-tag" :to="localePath('/agent?query=DLC杂质')">DLC杂质</NuxtLinkLocale>
       </div>
     </div>
   </section>

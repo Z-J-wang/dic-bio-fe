@@ -31,7 +31,7 @@ const columns = computed<FooterColumn[]>(() => {
       label: '联系我们',
       children: [
         { label: '📞 0755-89567629' },
-        { label: '✉️infodlc@126.com' },
+        { label: '✉️ infodlc@126.com', to: 'mailto:infodlc@126.com' },
         { label: '🕐 工作日 9:00–18:00' },
         { label: '关于我们' },
         { label: '加入我们' }

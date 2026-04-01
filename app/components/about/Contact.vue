@@ -37,7 +37,7 @@ const tags = ref([
           <div class="space-y-0.75">
             <h3 class="text-sm text-muted">邮箱</h3>
             <p class="font-mono text-sm">
-              <a href="mailto:">infodlc@126.com</a>
+              <a href="mailto:infodlc@126.com">infodlc@126.com</a>
             </p>
             <div class="text-sm text-muted">24小时内回复</div>
           </div>

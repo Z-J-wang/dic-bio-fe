@@ -14,6 +14,7 @@ const page = useState('brand-agent-page-list-page', () => 0)
 const totalPages = useState('brand-agent-page-list-total-pages', () => 1)
 const total = useState('brand-agent-page-list-total', () => 0)
 const loading = useLoading()
+const route = useRoute()
 
 watch(activeCategory, () => {
   page.value = 0
@@ -35,8 +36,12 @@ function convertCategoryClass(category: string) {
   return classNameMerge(baseClass, activeCategory.value === category ? activeClass : defaultClass)
 }
 
-async function getData() {
+async function getData(init: boolean = false) {
   const params: BrandQuery = { page: page.value + 1 }
+  const q = route.query.query as string
+  if (init && q) {
+    params.search = q
+  }
   if (activeCategory.value !== 'all') {
     params.category = activeCategory.value
   }
