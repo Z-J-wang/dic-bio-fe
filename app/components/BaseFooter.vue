@@ -53,7 +53,7 @@ const columns = computed<FooterColumn[]>(() => {
             <p class="font-serif leading-[1.15]">{{ t('blcBio', 1, { locale: 'zh-CN' }) }}</p>
           </div>
         </div>
-        <div class="text-[13px] leading-[1.8] text-muted">
+        <div class="text-[13px] leading-[1.8] text-[#ffffff73]">
           深圳鼎利成生物科技有限公司，专注于对照品与标准品的代理与销售，提供超过10万种医药、生化、工业实验检测类对照品及标准品。
         </div>
         <div class="mt-3.5 text-xs leading-[1.8] text-muted">
@@ -69,8 +69,8 @@ const columns = computed<FooterColumn[]>(() => {
           root: 'w-full flex!',
           center: 'flex-1 w-full',
           label: 'text-lg',
-          item: '[&_a]:hover:underline [&_button]:text-gray-400! mb-2.25',
-          link: 'text-base text-[13px]!'
+          item: '[&>a]:hover:underline! mb-2.25  [&_button]:cursor-text',
+          link: 'text-base text-[13px]! text-[#ffffff73]!  decoration-2'
         }"
       >
       </UFooterColumns>
