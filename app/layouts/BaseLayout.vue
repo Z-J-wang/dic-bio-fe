@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
-import logo from '@/assets/img/logo.svg'
+import logo from '@/assets/img/logo.png'
 
 const localePath = useLocalePath()
 const { t } = useI18n()

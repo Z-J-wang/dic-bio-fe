@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { FooterColumn } from '@nuxt/ui'
-import logo from '@/assets/img/logo.svg'
+import logo from '@/assets/img/logo.png'
 
 const { t } = useI18n()
 const year = new Date().getFullYear()
@@ -31,7 +31,7 @@ const columns = computed<FooterColumn[]>(() => {
       label: '联系我们',
       children: [
         { label: '📞 0755-89567629' },
-        { label: '✉️ [email protected]' },
+        { label: '✉️infodlc@126.com' },
         { label: '🕐 工作日 9:00–18:00' },
         { label: '关于我们' },
         { label: '加入我们' }
