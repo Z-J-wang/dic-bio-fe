@@ -55,8 +55,8 @@ provide('openContact', open)
     >
       <template #title>
         <div class="flex items-center gap-2.75">
-          <div class="flex h-10 w-10 items-center justify-center rounded-[5px] bg-[#0f2a5e]">
-            <img :src="logo" alt="logo" class="h-5.5 w-5.5" />
+          <div class="flex h-10 w-10 items-center justify-center">
+            <img :src="logo" alt="logo" class="w-full" />
           </div>
           <div class="leading-[1.2]">
             <template v-if="isMobile && route.path === '/product'">产品目录</template>
