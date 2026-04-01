@@ -46,8 +46,8 @@ const columns = computed<FooterColumn[]>(() => {
     <template #left>
       <div class="max-w-109.5">
         <div class="mb-4 flex items-center gap-3.5">
-          <div class="flex h-9 w-9 items-center justify-center">
-            <img :src="logo" alt="logo" class="w-full" />
+          <div class="flex h-9 w-9 items-center justify-center rounded-[5px] bg-[#F5F7FA]">
+            <img :src="logo" alt="logo" class="w-[85%]" />
           </div>
           <div class="leading-[1.15]">
             <p class="font-serif leading-[1.15]">{{ t('blcBio', 1, { locale: 'zh-CN' }) }}</p>
