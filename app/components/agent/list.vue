@@ -24,7 +24,7 @@ watch(activeCategory, () => {
 
 onMounted(() => {
   loading.open()
-  getData().finally(() => {
+  getData(true).finally(() => {
     loading.close()
   })
 })
