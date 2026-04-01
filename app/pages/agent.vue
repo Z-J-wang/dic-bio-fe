@@ -1,3 +1,8 @@
+<script setup lang="ts">
+const openContact = inject('openContact')
+const localePath = useLocalePath()
+</script>
+
 <template>
   <div>
     <GlobalBreadcrumb
@@ -16,11 +21,13 @@
             </div>
           </div>
           <div class="space-x-3">
-            <UButton class="cursor-pointer bg-(--cyan)! px-7 py-3 text-sm font-bold" to="">🔍 产品检索</UButton>
+            <UButton class="cursor-pointer bg-(--cyan)! px-7 py-3 text-sm font-bold" :to="localePath('/product')"
+              >🔍 产品检索</UButton
+            >
             <UButton
               variant="outline"
               class="cursor-pointer border-[1.5px] border-[#ffffff4d] bg-[#ffffff1f]! px-7 py-3 text-sm font-bold text-white"
-              to=""
+              @click="openContact = true"
               >💬 在线客服</UButton
             >
           </div>

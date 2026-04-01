@@ -21,6 +21,8 @@ const bottomNav = ref([
   { icon: 'carbon:partnership', label: '品牌', to: localePath('/agent') },
   { icon: 'ix:about', label: '公司', to: localePath('/about') }
 ])
+
+provide('openContact', open)
 </script>
 
 <template>
