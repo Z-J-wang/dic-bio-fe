@@ -16,11 +16,11 @@ defineProps<{
       </div>
       <div class="molecule-viewer">
         <div class="mol-svg-wrap">
-          <img class="size-full" :src="detail.image_url" />
+          <img class="size-full" :src="detail.mol_url || detail.image_url" />
         </div>
         <div class="mol-formula-row">
           <span class="mol-tag">{{ detail.formula }}</span>
-          <span class="mol-tag">{{ detail.mol_weight }}</span>
+          <span class="mol-tag">{{ detail.mol_weight?.toLocaleString() }}</span>
           <!-- <span class="mol-tag">InChI Key: RYYVLZVUVIJVGH</span> -->
         </div>
       </div>

@@ -61,7 +61,7 @@ function confirm(close: () => void) {
               <div class="text-xm line-clamp-1">{{ item.label }}</div>
               <UBadge
                 :ui="{ base: 'text-[11px] font-mono bg-(--tag-bg) text-(--tag-txt) py-px px-1.75 rounded-[10px]' }"
-                >{{ item?.count.toLocaleString() }}</UBadge
+                >{{ item?.count?.toLocaleString() }}</UBadge
               >
             </div>
           </template>

@@ -61,7 +61,7 @@ const columns: TableColumn<Product>[] = [
     header: '分子式 / 分子量',
     cell: ({ row }) => (
       <span>
-        {row.original.formula} / {row.original.mol_weight.toLocaleString()}
+        {row.original.formula} / {row.original.mol_weight?.toLocaleString()}
       </span>
     ),
     meta: {
@@ -102,7 +102,6 @@ async function fetchData() {
   if (props.categories.length) params.category_slug = props.categories.join(',')
   if (props.brands.length) params.brand = props.brands.join(',')
   try {
-    console.log('fetching with params', params)
     const { status, data } = await useCustomFetch<ResponsePaginationData<Product>>('/products/', {
       params,
       banNuxtCache: false
@@ -111,6 +110,7 @@ async function fetchData() {
     if (status.value === 'success' && data.value) {
       pagination.value.total = data.value.count
       tableData.value = data.value.results
+      console.log(data.value.results)
     }
   } finally {
     loading.close()
