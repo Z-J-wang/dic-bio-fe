@@ -10,14 +10,14 @@ const brandCategory = useState('brand-agent-page-category', () => [
   { label: '国内品牌', value: 'domestic' }
 ])
 const brandsList = useState<Brand[]>('brand-agent-page-list', () => [])
-const page = useState('brand-agent-page-list-page', () => 0)
+const page = useState('brand-agent-page-list-page', () => 1)
 const totalPages = useState('brand-agent-page-list-total-pages', () => 1)
 const total = useState('brand-agent-page-list-total', () => 0)
 const loading = useLoading()
 const route = useRoute()
 
 watch(activeCategory, () => {
-  page.value = 0
+  page.value = 1
   brandsList.value = []
   getData()
 })
@@ -36,8 +36,14 @@ function convertCategoryClass(category: string) {
   return classNameMerge(baseClass, activeCategory.value === category ? activeClass : defaultClass)
 }
 
+function updatePage(newPage: number) {
+  console.log('Page changed to:', newPage)
+  page.value = newPage
+  getData()
+}
+
 async function getData(init: boolean = false) {
-  const params: BrandQuery = { page: page.value + 1 }
+  const params: BrandQuery = { page: page.value }
   const q = route.query.query as string
   if (init && q) {
     params.search = q
@@ -53,7 +59,6 @@ async function getData(init: boolean = false) {
   const total_pages = res.data.value?.total_pages
   const count = res.data.value?.count
   if (results) {
-    page.value++
     brandsList.value = results
   }
   if (total_pages) {
@@ -108,7 +113,7 @@ async function getData(init: boolean = false) {
         </div>
       </div>
       <div v-if="totalPages > 1" class="mt-9 flex justify-center">
-        <UPagination v-model:page="page" :items-per-page="20" :total="total" size="lg" />
+        <UPagination v-model:page="page" :items-per-page="20" :total="total" size="lg" @update:page="updatePage" />
       </div>
     </UContainer>
   </section>
