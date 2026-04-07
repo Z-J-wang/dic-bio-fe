@@ -27,7 +27,7 @@ const tags = ref([
           <div class="h-9 w-9 rounded-lg bg-(--tag-bg) text-center align-middle leading-9">📞</div>
           <div class="space-y-0.75">
             <h3 class="text-sm text-muted">电话</h3>
-            <p class="font-mono text-sm">+86 0755-89567629</p>
+            <p class="font-mono text-sm">0755-89567629</p>
             <div class="text-sm text-muted">工作日 09:00 - 18:00</div>
           </div>
         </li>
