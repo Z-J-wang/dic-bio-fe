@@ -8,6 +8,11 @@ const products = ref<Product[]>([])
 const loading = useLoading()
 const route = useRoute()
 
+function updatePage(page: number) {
+  pageIndex.value = page
+  fetchData()
+}
+
 async function fetchData() {
   loading.open()
   const params: ProductQuery = {}
@@ -80,11 +85,11 @@ onMounted(() => {
     <div class="my-5 flex justify-center">
       <UPagination
         show-edges
-        :sibling-count="1"
+        :sibling-count="0"
         :page="pageIndex"
         :items-per-page="10"
         :total="total"
-        @update:page="(page) => (pageIndex = page)"
+        @update:page="updatePage"
       />
     </div>
   </UContainer>
