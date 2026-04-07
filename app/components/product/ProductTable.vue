@@ -125,6 +125,7 @@ async function fetchData() {
     :ui="{ thead: 'bg-[#f8fafc]', th: 'font-semibold text-xs font-mono text-muted' }"
   />
   <BasePagination
+    v-if="pagination.total > pagination.pageSize"
     size="lg"
     show-edges
     :page="pagination.pageIndex"

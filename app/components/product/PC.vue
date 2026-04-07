@@ -14,8 +14,9 @@ const condition = computed(() => {
 })
 
 onMounted(() => {
-  const { type, query } = route.query
+  const { type, query, brand } = route.query
   if (type) categories.value = [type as string]
+  if (brand) brands.value = [brand as string]
   if (query) search.value = query as string
 })
 </script>
