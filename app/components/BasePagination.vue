@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<BasePagination>(), {
 defineEmits(['update:page', 'update:items-per-page'])
 
 const { t } = useI18n()
-const perPage = useState('base-pagination-items-per-page', () => 10)
+const perPage = ref(10)
 const itemsPerPageOptions = computed(() => {
   const perPageOptions = props.itemsPerPageOptions.map((pageSize) => ({
     value: pageSize,

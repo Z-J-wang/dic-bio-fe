@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Brand, BrandQuery } from '~~/server/routes/mock/brands.get'
 
-const activeCategory = useState('brand-agent-page-active-category', () => 'all')
+const activeCategory = ref('all')
 const brandCategory = useState('brand-agent-page-category', () => [
   { label: '全部品牌', value: 'all' },
   { label: '药典标准', value: 'pharmacopeia' },
@@ -9,10 +9,10 @@ const brandCategory = useState('brand-agent-page-category', () => [
   { label: '商业标准', value: 'commercial' },
   { label: '国内品牌', value: 'domestic' }
 ])
-const brandsList = useState<Brand[]>('brand-agent-page-list', () => [])
-const page = useState('brand-agent-page-list-page', () => 1)
-const totalPages = useState('brand-agent-page-list-total-pages', () => 1)
-const total = useState('brand-agent-page-list-total', () => 0)
+const brandsList = ref<Brand[]>([])
+const page = ref(1)
+const totalPages = ref(1)
+const total = ref(0)
 const loading = useLoading()
 const route = useRoute()
 
