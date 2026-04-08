@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useServicePersonnel } from '@/store/service.personnel'
+
+const { servicePersonnel } = toRefs(useServicePersonnel())
 const tags = ref([
   'CFDI 中检院',
   'USP',
@@ -15,6 +18,10 @@ const tags = ref([
   '麦克林',
   '阿拉丁'
 ])
+
+const servicePersonnelInfo = computed(() =>
+  servicePersonnel.value.map((item) => `${item.name}（${item.position}）`).join('· ')
+)
 </script>
 
 <template>
@@ -55,7 +62,7 @@ const tags = ref([
           <div class="h-9 w-9 rounded-lg bg-[#e8f9ff] text-center align-middle leading-9">💬</div>
           <div class="space-y-0.75">
             <h3 class="text-sm text-muted">QQ 在线客服</h3>
-            <p class="font-mono text-sm">李欣（技术顾问）· 张磊（销售顾问）</p>
+            <p class="font-mono text-sm">{{ servicePersonnelInfo }}</p>
             <div class="text-sm text-muted">点击右下角 QQ 图标即可联系</div>
           </div>
         </li>

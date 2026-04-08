@@ -10,20 +10,28 @@ export interface ServicePersonnel {
 export const useServicePersonnel = defineStore('servicePersonnel', () => {
   const servicePersonnel = ref<ServicePersonnel[]>([
     {
-      name: '李欣',
+      name: '刘经理',
       position: '技术顾问',
       gender: 'female',
       introduction: '医药对照品 / 生化标准品',
       status: 'active',
-      link: ''
+      link: 'https://wpa.qq.com/dKquLMtuC?v=1'
     },
     {
-      name: '张磊',
-      position: '销售顾问',
-      gender: 'male',
-      introduction: '报价咨询 / 选品建议',
+      name: '李经理',
+      position: '技术顾问',
+      gender: 'female',
+      introduction: '医药对照品 / 生化标准品',
       status: 'active',
-      link: ''
+      link: 'https://wpa.qq.com/FFFwXKB7R?v=1'
+    },
+    {
+      name: '崔经理',
+      position: '技术顾问',
+      gender: 'female',
+      introduction: '医药对照品 / 生化标准品',
+      status: 'active',
+      link: 'https://wpa.qq.com/Un0ftxRdH?v=1'
     }
   ])
 

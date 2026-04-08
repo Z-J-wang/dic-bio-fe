@@ -1,31 +1,22 @@
+<script setup lang="ts">
+import { useServicePersonnel } from '@/store/service.personnel'
+
+const { servicePersonnel } = toRefs(useServicePersonnel())
+</script>
+
 <template>
   <div class="expert-card">
     <div class="expert-title">💬 QQ 在线客服</div>
     <div class="expert-desc">点击下方客服头像，将直接跳转至 QQ 对话窗口，与专业顾问实时沟通。</div>
     <div class="expert-qq-list">
-      <div class="expert-qq-item">
+      <div v-for="(item, i) in servicePersonnel" :key="i" class="expert-qq-item">
         <div>
-          <div class="expert-qq-name">👩&zwj;🔬 李欣 · 技术顾问</div>
-          <div style="margin-top: 2px; font-size: 11px; color: rgb(255 255 255 / 50%)">医药对照品 / 生化标准品</div>
+          <div class="expert-qq-name">
+            {{ item.gender === 'female' ? '👩‍🔬' : '👨‍💼' }} {{ item.name }} · {{ item.position }}
+          </div>
+          <div style="margin-top: 2px; font-size: 11px; color: rgb(255 255 255 / 50%)">{{ item.introduction }}</div>
         </div>
-        <a
-          class="expert-qq-link"
-          href="https://wpa.qq.com/msgrd?v=3&amp;uin=QQNUMBER1&amp;site=qq&amp;menu=yes"
-          target="_blank"
-          >发起会话</a
-        >
-      </div>
-      <div class="expert-qq-item">
-        <div>
-          <div class="expert-qq-name">👨&zwj;💼 张磊 · 销售顾问</div>
-          <div style="margin-top: 2px; font-size: 11px; color: rgb(255 255 255 / 50%)">报价咨询 / 选品建议</div>
-        </div>
-        <a
-          class="expert-qq-link"
-          href="https://wpa.qq.com/msgrd?v=3&amp;uin=QQNUMBER2&amp;site=qq&amp;menu=yes"
-          target="_blank"
-          >发起会话</a
-        >
+        <a class="expert-qq-link" :href="item.link" target="_blank">发起会话</a>
       </div>
     </div>
     <div style="margin-top: 12px; font-size: 11px; text-align: center; color: rgb(255 255 255 / 30%)">
