@@ -1,4 +1,5 @@
-<script setup lang="ts">
+<script setup lang="tsx">
+import { NuxtLinkLocale } from '#components'
 import { useServicePersonnel } from '@/store/service.personnel'
 
 const { servicePersonnel } = toRefs(useServicePersonnel())
@@ -20,7 +21,11 @@ const tags = ref([
 ])
 
 const servicePersonnelInfo = computed(() =>
-  servicePersonnel.value.map((item) => `${item.name}（${item.position}）`).join('· ')
+  servicePersonnel.value
+    .map(
+      (item) => `<a class="hover:underline" href="${item.link}" target="_blank">${item.name}（${item.position}）</a>`
+    )
+    .join('· ')
 )
 </script>
 
@@ -62,8 +67,7 @@ const servicePersonnelInfo = computed(() =>
           <div class="h-9 w-9 rounded-lg bg-[#e8f9ff] text-center align-middle leading-9">💬</div>
           <div class="space-y-0.75">
             <h3 class="text-sm text-muted">QQ 在线客服</h3>
-            <p class="font-mono text-sm">{{ servicePersonnelInfo }}</p>
-            <div class="text-sm text-muted">点击右下角 QQ 图标即可联系</div>
+            <p class="font-mono text-sm" v-html="servicePersonnelInfo" />
           </div>
         </li>
       </ul>
