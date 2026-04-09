@@ -15,7 +15,9 @@ function updatePage(page: number) {
 
 async function fetchData() {
   loading.open()
-  const params: ProductQuery = {}
+  const params: ProductQuery = {
+    page: pageIndex.value
+  }
   if (search.value) params.search = search.value
   try {
     const { status, data } = await useCustomFetch<ResponsePaginationData<Product>>('/products/', {
