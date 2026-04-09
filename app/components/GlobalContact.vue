@@ -8,7 +8,7 @@ const { isMobile } = useBreakpoint()
 </script>
 
 <template>
-  <div class="fixed right-7 bottom-25">
+  <div class="fixed right-7 bottom-35">
     <UPopover
       v-model:open="open"
       :content="{ side: isMobile ? 'top' : 'left', align: 'end' }"
