@@ -73,10 +73,10 @@ async function getCategory() {
       </div>
       <div class="hero-tags fade-up gap-1.5 delay-3 sm:gap-2.5">
         <NuxtLinkLocale class="hero-tag" :to="localePath('/product?brand=NIST')">NIST</NuxtLinkLocale>
-        <NuxtLinkLocale class="hero-tag" :to="localePath('/product?brand=NIBSC')">NIBSC</NuxtLinkLocale>
+        <NuxtLinkLocale class="hero-tag" :to="localePath('/product?brand=nibsc')">NIBSC</NuxtLinkLocale>
         <NuxtLinkLocale class="hero-tag" :to="localePath('/product?brand=ERM')">ERM</NuxtLinkLocale>
         <NuxtLinkLocale class="hero-tag" :to="localePath('/product?brand=CHROMOGENIX')">CHROMOGENIX</NuxtLinkLocale>
-        <NuxtLinkLocale class="hero-tag" :to="localePath('/product?brand=DLC杂质')">DLC杂质</NuxtLinkLocale>
+        <NuxtLinkLocale class="hero-tag" :to="localePath('/product?brand=dlc-impurity')">DLC杂质</NuxtLinkLocale>
       </div>
     </div>
   </section>
