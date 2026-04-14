@@ -35,7 +35,7 @@ export default defineNuxtConfig({
   nitro: {
     devProxy: {
       '/api': {
-        target: 'http://43.167.169.151/api'
+        target: 'http://www.dlc-bio.com/api'
       }
     }
   },

@@ -16,6 +16,7 @@ function updatePage(page: number) {
 async function fetchData() {
   loading.open()
   const params: ProductQuery = {
+    page_size: 10,
     page: pageIndex.value
   }
   if (search.value) params.search = search.value
@@ -70,7 +71,7 @@ onMounted(() => {
             <div class="mb-0.5 text-sm font-bold">{{ product.name }}</div>
             <div class="font-mono text-[11px] text-muted">{{ product.name_en }}</div>
           </div>
-          <div>
+          <div class="shrink-0">
             <UBadge class="prod-brand-badge">{{ product.brand_name }}</UBadge>
           </div>
         </div>

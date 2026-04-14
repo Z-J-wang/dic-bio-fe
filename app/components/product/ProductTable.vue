@@ -1,7 +1,7 @@
 <script setup lang="tsx">
 import type { TableColumn } from '@nuxt/ui'
 import type { Product, ProductQuery } from '~~/server/routes/mock/products.get'
-import { NuxtLinkLocale, UBadge, UButton } from '#components'
+import { NuxtLinkLocale, UBadge, UButton, UTooltip } from '#components'
 
 export interface ProductTableProps {
   search: string
@@ -28,13 +28,20 @@ const columns: TableColumn<Product>[] = [
     accessorKey: 'name',
     header: '产品名称',
     cell: ({ row }) => (
-      <div class="space-y-0.5">
-        <NuxtLinkLocale class="text-sm font-semibold text-(--navy)" to={'/product/' + row.original.id}>
-          {row.original.name}
-        </NuxtLinkLocale>
-        <div class="font-mono text-xs text-muted">
-          {row.original.name_en} · {row.original.catalog_no}
-        </div>
+      <div class="max-w-75 space-y-0.5">
+        <UTooltip text={row.original.name}>
+          <NuxtLinkLocale
+            class="line-clamp-1 text-sm font-semibold text-ellipsis text-(--navy)"
+            to={'/product/' + row.original.id}
+          >
+            {row.original.name}
+          </NuxtLinkLocale>
+        </UTooltip>
+        <UTooltip text={`${row.original.name_en} · ${row.original.catalog_no}`}>
+          <div class="line-clamp-1 font-mono text-xs text-ellipsis text-muted">
+            {row.original.name_en} · {row.original.catalog_no}
+          </div>
+        </UTooltip>
       </div>
     )
   },
